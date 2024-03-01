@@ -1,0 +1,27 @@
+@mixin justifyPosition($jc) {
+  display: flex;
+  align-items: center;
+  justify-content: $jc;
+}
+
+@mixin GLBorder($bl, $br, $bc) {
+  //총선이니까 'GL'으로 명을 지어봤어요, 중복적으로 사용될 얘들은 어떻게 이름지을지도 정해보아요!
+  border: 1px solid $bl;
+  border-radius: $br;
+  background-color: $bc;
+}
+
+@mixin GLCard() {
+  padding: 20px 1rem;
+
+  border: none;
+  border-radius: 1rem;
+
+  background-color: #ffffff;
+}
+
+@mixin defaultFontStyle($lh, $fw, $fs) {
+  line-height: $lh;
+  font-weight: $fw;
+  font-size: $fs;
+}
