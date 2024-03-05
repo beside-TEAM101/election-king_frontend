@@ -1,0 +1,15 @@
+@import "../styles/mixins";
+
+$PURPLE_COLOR: #6750a4;
+$GRAY_04: #444141;
+
+.title {
+  @include justifyPosition(center);
+  color: $PURPLE_COLOR;
+}
+
+@include mobile() {
+  .title {
+    color: red;
+  }
+}

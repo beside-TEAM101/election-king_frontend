@@ -1,6 +1,8 @@
 @mixin justifyPosition($jc) {
   display: flex;
   align-items: center;
+  flex-direction: row;
+
   justify-content: $jc;
 }
 
@@ -24,4 +26,10 @@
   line-height: $lh;
   font-weight: $fw;
   font-size: $fs;
+}
+
+@mixin mobile {
+  @media (max-width: 600px) {
+    @content;
+  }
 }
