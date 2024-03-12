@@ -1,0 +1,39 @@
+@mixin justifyPosition($jc) {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+
+	justify-content: $jc;
+}
+
+@mixin EKBorder($bl, $br, $bc) {
+	border: 1px solid $bl;
+	border-radius: $br;
+	background-color: $bc;
+}
+
+@mixin EKCard($pt: 20px, $pl: 1rem, $pb: 20px, $pr: 1rem, $br, $bc) {
+	padding-top: $pt;
+	padding-left: $pl;
+	padding-bottom: $pb;
+	padding-right: $pr;
+
+	border: none;
+	// border-radius: 1rem;
+	// background-color: #f3f4f6;
+
+	border-radius: $br;
+	background-color: $bc;
+}
+
+@mixin fontTheme($lh, $fw, $fs) {
+	line-height: $lh;
+	font-weight: $fw;
+	font-size: $fs;
+}
+
+@mixin mobile {
+	@media (max-width: 600px) {
+		@content;
+	}
+}

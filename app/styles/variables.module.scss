@@ -1,0 +1,277 @@
+@import '../styles/mixins';
+
+$PURPLE_COLOR: #6750a4;
+$GRAY_04: #444141;
+
+.title {
+	@include justifyPosition(center);
+	color: $PURPLE_COLOR;
+}
+
+@include mobile() {
+	.title {
+		color: red;
+	}
+}
+
+.headlineWrap {
+	@include justifyPosition(space-between);
+
+	img {
+		margin-right: -20px;
+	}
+}
+
+.headLineBold24 {
+	@include fontTheme(33.6px, 700, 24px);
+}
+
+.dayWrap:first-of-type(1) {
+	border: 1px solid red;
+	width: 1px;
+	height: 100vh;
+	background-color: red;
+}
+
+.my-s {
+	margin: 1rem auto;
+}
+
+.justifCenter {
+	width: 100%;
+	@include justifyPosition(flex-start);
+	gap: 0.5rem;
+}
+
+// header
+
+.header {
+	margin: 1rem 0.75rem;
+	@include justifyPosition(space-between);
+
+	img {
+		cursor: pointer;
+	}
+}
+
+.footer {
+	img {
+		overflow: hidden;
+	}
+}
+
+.dayWrap {
+	@extend .my-s;
+	@include justifyPosition(flex-start);
+
+	@include EKCard(1rem, 20px, 1rem, 20px, 1rem, #f3f4f6);
+
+	p {
+		@include fontTheme(14.4px, 600, 12px);
+	}
+
+	.dayBox {
+		flex-grow: 1;
+	}
+
+	.dayBox:first-child {
+		border-right: 1px solid #b1bcd0;
+		margin-right: 28px;
+	}
+}
+
+.dayItem {
+	@include justifyPosition(flex-start);
+
+	p {
+		@include fontTheme(24px, 600, 20px);
+		margin-right: 5px;
+
+		margin: 8px 5px 8px 0;
+	}
+
+	span {
+		@include fontTheme(14.4px, 400, 12px);
+		color: #8b949b;
+	}
+}
+
+.searchOptions {
+	display: flex;
+	flex-direction: column;
+
+	&__wrap {
+		@include EKCard(24px, 20px, 24px, 20px, 8px, #f3f4f6);
+		h2 {
+			@include fontTheme(27px, 600, 20px);
+			color: #41444f;
+		}
+
+		&__box {
+			h3 {
+				@include fontTheme(18px, 600, 15px);
+				color: #41444f;
+			}
+
+			label {
+				@include fontTheme(16.8px, 600, 14px);
+				color: #41444f;
+			}
+		}
+
+		&__item {
+			width: 100%;
+			display: inline-block;
+			flex-grow: 1;
+		}
+	}
+}
+
+.mainButton {
+	width: 100%;
+
+	display: flex; // background-color:;
+	justify-content: center;
+
+	margin-top: 34px;
+
+	color: #ffffff;
+
+	@include EKCard(13px, auto, 13px, auto, 4px, #3284fc);
+	@include fontTheme(16.8px, 600, 14px);
+}
+
+//result
+.candidateWrap {
+	h1 {
+		@include fontTheme(27px, 600, 20px);
+	}
+}
+
+.candidateCard {
+	@include justifyPosition(flex-start);
+	@include EKCard(1rem, 1rem, 1rem, 1rem, 8px, #f3f4f6);
+
+	gap: 1rem;
+
+	&__img {
+		flex-grow: 10%;
+
+		border: 5px solid red;
+		border-radius: 50%;
+	}
+
+	&__info {
+		label {
+			@include fontTheme(24px, 600, 16px);
+			color: #111111;
+		}
+
+		p {
+			@include fontTheme(20px, 400, 14px);
+			color: #666666;
+		}
+	}
+}
+
+//select
+.selectOption {
+	position: relative;
+	display: inline-block;
+	text-align: left;
+
+	&__box {
+		display: inline-flex;
+		width: 100%;
+		align-items: center;
+		justify-content: space-between;
+
+		padding: 12px 11px 10px 1rem;
+
+		border: 1px solid #b1bcd0;
+		border-radius: 8px;
+
+		background-color: transparent;
+
+		&hover {
+			opacity: 0.9;
+		}
+	}
+
+	&__items {
+		position: absolute;
+		right: 0;
+		z-index: 10;
+		margin-top: 4px;
+		transform-origin: top right;
+		overflow: hidden;
+		border-radius: 8px;
+		background-color: #ffffff;
+	}
+
+	&__focusItem {
+		background-color: red;
+		color: #3284fc;
+	}
+
+	&__itemList {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		padding: 10px 12px;
+	}
+}
+
+// EKdropdown
+
+.dropdown {
+	cursor: pointer;
+	user-select: none;
+	flex-grow: 1;
+
+	background-color: transparent;
+	&__btn {
+		position: relative;
+
+		@include fontTheme(16.8px, 500, 14px);
+
+		background-color: transparent;
+		color: #41444f;
+		margin: 0 auto;
+
+		box-shadow: 1px 1px 6px 2px rgba(0, 0, 0, 0.04);
+
+		@include justifyPosition(space-between);
+
+		display: inline-flex;
+		width: 100%;
+		align-items: center;
+		justify-content: space-between;
+
+		padding: 12px 11px 10px 1rem;
+
+		border: 1px solid #b1bcd0;
+		border-radius: 4px;
+
+		background-color: transparent;
+
+		&hover {
+			opacity: 0.9;
+		}
+	}
+
+	&__content {
+		position: absolute;
+
+		background-color: #f3f4f6;
+		border-radius: 4px;
+	}
+
+	&__item {
+		display: flex;
+
+		// padding: 12px 11px 10px 1rem;
+		padding: 12px 11px 12px 1rem;
+		border-radius: 4px;
+	}
+}
