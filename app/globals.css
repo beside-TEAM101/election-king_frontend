@@ -4,19 +4,19 @@
 
 	--white_01: #ffffff;
 
-	--black_01: #000000; /* common font color */
-	--black_02: #373a44; /* common font color */
+	--black_01: #000000;
+	--black_02: #373a44;
 	--black_03: #111111;
 
 	--gray_01: #ccccd5;
 	--gray_02: #868686;
-	--gray_03: #7f7f7f; /* common radio arrow color  */
-	--gray_04: #444141; /* common btn, radio color */
+	--gray_03: #7f7f7f;
+	--gray_04: #444141;
 	--gray_05: #41444f;
 	--gray_06: #666666;
 	--gray_07: #b1bcd0;
 
-	--purple_color: #6750a4; /* common radio color */
+	--purple_color: #6750a4;
 	--blue_color_01: #3184ff;
 	--blue_color_02: #3284fc;
 
@@ -38,9 +38,8 @@ hr {
 }
 
 html {
-	margin: auto;
 	max-width: 375px;
-	/* overflow-x: hidden; */
+	margin: auto;
 
 	background-color: #f3f4f6;
 
@@ -52,10 +51,43 @@ body {
 	background-color: #ffffff;
 }
 
+p,
+div,
+input,
+nav,
+textarea,
+select,
+header,
+section,
+article,
+aside,
+footer,
+form,
+button,
+table,
+thead,
+tbody,
+tr,
+td,
+th,
+ul,
+li,
+ol,
+dl,
+dt,
+dd {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: inherit;
+}
+
 main {
 	height: 100%;
+
 	padding-left: 20px;
 	padding-right: 20px;
+
 	background-color: #ffffff;
 }
 
@@ -63,15 +95,6 @@ ul,
 ol {
 	list-style: none;
 }
-
-/* input {
-	outline: none;
-	border: none;
-
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-} */
 
 button {
 	border: none;
@@ -82,4 +105,66 @@ button {
 
 button:hover {
 	opacity: 0.8 !important;
+}
+
+[type='radio'],
+label {
+	cursor: pointer;
+}
+
+.radio {
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	padding-left: 26px;
+	padding-top: 6px;
+}
+
+.radio + .radio {
+	margin-left: 20px;
+}
+
+.radio input[type='radio'] {
+	display: none;
+	align-items: center;
+}
+
+.radio span {
+	position: absolute;
+	top: 7px;
+	left: 0;
+	height: 20px;
+	width: 20px;
+
+	display: block;
+
+	border-radius: 50%;
+	border: 2.7px solid #b1bcd0;
+}
+
+.radio span:after {
+	content: '';
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	height: 11px;
+	width: 11px;
+
+	display: block;
+
+	transform: translate(-50%, -50%) scale(0);
+	transition: 200ms ease-in-out 0s;
+
+	border-radius: 50%;
+
+	background-color: #3284fc;
+}
+
+.radio input[type='radio']:checked ~ span:after {
+	transform: translate(-50%, -50%) scale(1);
+}
+
+.radio input[type='radio']:checked ~ span {
+	border: 2.7px solid #3284fc;
 }

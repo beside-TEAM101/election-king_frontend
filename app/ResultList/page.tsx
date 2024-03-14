@@ -1,6 +1,6 @@
 import React from 'react'
-import variables from '@/app/styles/variables.module.scss'
 import Image from 'next/image'
+import variables from '@/app/assets/variables.module.scss'
 
 const page = () => (
 	<div className={variables.candidateWrap}>

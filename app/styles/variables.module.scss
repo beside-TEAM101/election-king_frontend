@@ -1,12 +1,25 @@
 @import '../styles/mixins';
 
-$PURPLE_COLOR: #6750a4;
-$GRAY_04: #444141;
+$WHITE_01: #ffffff;
+$WHITE_02: #f1f0f8;
+$WHITE_03: #f5f5f9;
+$WHITE_04: #f3f4f6;
 
-.title {
-	@include justifyPosition(center);
-	color: $PURPLE_COLOR;
-}
+$BLUE_01: #3184ff;
+$BLUE_02: #3284fc;
+
+$GRAY_01: #ccccd5;
+$GRAY_02: #868686;
+$GRAY_03: #7f7f7f;
+$GRAY_04: #444141;
+$GRAY_05: #41444f;
+$GRAY_06: #666666;
+$GRAY_07: #b1bcd0;
+$GRAY_08: #8b949b;
+
+$BLACK_01: #000000;
+$BLACK_02: #111111;
+$BLACK_03: #373a44;
 
 @include mobile() {
 	.title {
@@ -17,20 +30,13 @@ $GRAY_04: #444141;
 .headlineWrap {
 	@include justifyPosition(space-between);
 
+	h1 {
+		@include fontTheme(33.6px, 700, 24px);
+	}
+
 	img {
 		margin-right: -20px;
 	}
-}
-
-.headLineBold24 {
-	@include fontTheme(33.6px, 700, 24px);
-}
-
-.dayWrap:first-of-type(1) {
-	border: 1px solid red;
-	width: 1px;
-	height: 100vh;
-	background-color: red;
 }
 
 .my-s {
@@ -38,16 +44,17 @@ $GRAY_04: #444141;
 }
 
 .justifCenter {
-	width: 100%;
 	@include justifyPosition(flex-start);
+	width: 100%;
 	gap: 0.5rem;
+
+	margin-bottom: 18px;
 }
 
-// header
-
 .header {
-	margin: 1rem 0.75rem;
 	@include justifyPosition(space-between);
+
+	margin: 1rem 0.75rem;
 
 	img {
 		cursor: pointer;
@@ -55,16 +62,14 @@ $GRAY_04: #444141;
 }
 
 .footer {
-	img {
-		overflow: hidden;
-	}
+	margin-top: 52px;
 }
 
 .dayWrap {
 	@extend .my-s;
 	@include justifyPosition(flex-start);
 
-	@include EKCard(1rem, 20px, 1rem, 20px, 1rem, #f3f4f6);
+	@include EKCard(1rem, 20px, 1rem, 20px, 1rem, $WHITE_04);
 
 	p {
 		@include fontTheme(14.4px, 600, 12px);
@@ -74,9 +79,15 @@ $GRAY_04: #444141;
 		flex-grow: 1;
 	}
 
-	.dayBox:first-child {
-		border-right: 1px solid #b1bcd0;
-		margin-right: 28px;
+	hr {
+		height: 52px;
+		width: 0.5px;
+
+		margin: auto 10px;
+
+		border: none;
+
+		background-color: $GRAY_07;
 	}
 }
 
@@ -85,44 +96,41 @@ $GRAY_04: #444141;
 
 	p {
 		@include fontTheme(24px, 600, 20px);
-		margin-right: 5px;
-
-		margin: 8px 5px 8px 0;
+		margin: 8px 10px 8px 0;
 	}
 
 	span {
-		@include fontTheme(14.4px, 400, 12px);
-		color: #8b949b;
+		@include fontTheme(14.4px, 400, 12px, $GRAY_08);
 	}
 }
 
 .searchOptions {
+	@include EKCard(24px, 20px, 24px, 20px, 8px, $WHITE_04);
+
 	display: flex;
 	flex-direction: column;
 
-	&__wrap {
-		@include EKCard(24px, 20px, 24px, 20px, 8px, #f3f4f6);
-		h2 {
-			@include fontTheme(27px, 600, 20px);
-			color: #41444f;
+	h2 {
+		@include fontTheme(27px, 600, 20px);
+	}
+
+	h3 {
+		margin: 12px auto;
+		@include fontTheme(18px, 600, 15px);
+	}
+	&__box {
+		label {
+			@include fontTheme(16.8px, 600, 14px);
 		}
+	}
 
-		&__box {
-			h3 {
-				@include fontTheme(18px, 600, 15px);
-				color: #41444f;
-			}
+	&__radioGroup {
+		display: flex;
+		align-items: center;
+		flex-grow: 1;
 
-			label {
-				@include fontTheme(16.8px, 600, 14px);
-				color: #41444f;
-			}
-		}
-
-		&__item {
-			width: 100%;
-			display: inline-block;
-			flex-grow: 1;
+		label {
+			@include fontTheme(16.8px, 500, 14px);
 		}
 	}
 }
@@ -130,18 +138,15 @@ $GRAY_04: #444141;
 .mainButton {
 	width: 100%;
 
-	display: flex; // background-color:;
+	display: flex;
 	justify-content: center;
 
 	margin-top: 34px;
 
-	color: #ffffff;
-
 	@include EKCard(13px, auto, 13px, auto, 4px, #3284fc);
-	@include fontTheme(16.8px, 600, 14px);
+	@include fontTheme(16.8px, 600, 14px, $WHITE_01);
 }
 
-//result
 .candidateWrap {
 	h1 {
 		@include fontTheme(27px, 600, 20px);
@@ -150,7 +155,7 @@ $GRAY_04: #444141;
 
 .candidateCard {
 	@include justifyPosition(flex-start);
-	@include EKCard(1rem, 1rem, 1rem, 1rem, 8px, #f3f4f6);
+	@include EKCard(1rem, 1rem, 1rem, 1rem, 8px, $WHITE_04);
 
 	gap: 1rem;
 
@@ -163,115 +168,69 @@ $GRAY_04: #444141;
 
 	&__info {
 		label {
-			@include fontTheme(24px, 600, 16px);
-			color: #111111;
+			@include fontTheme(24px, 600, 16px, $BLACK_02);
 		}
 
 		p {
-			@include fontTheme(20px, 400, 14px);
-			color: #666666;
+			@include fontTheme(20px, 400, 14px, $GRAY_06);
 		}
 	}
 }
-
-//select
-.selectOption {
-	position: relative;
-	display: inline-block;
-	text-align: left;
-
-	&__box {
-		display: inline-flex;
-		width: 100%;
-		align-items: center;
-		justify-content: space-between;
-
-		padding: 12px 11px 10px 1rem;
-
-		border: 1px solid #b1bcd0;
-		border-radius: 8px;
-
-		background-color: transparent;
-
-		&hover {
-			opacity: 0.9;
-		}
-	}
-
-	&__items {
-		position: absolute;
-		right: 0;
-		z-index: 10;
-		margin-top: 4px;
-		transform-origin: top right;
-		overflow: hidden;
-		border-radius: 8px;
-		background-color: #ffffff;
-	}
-
-	&__focusItem {
-		background-color: red;
-		color: #3284fc;
-	}
-
-	&__itemList {
-		width: 100%;
-		display: flex;
-		align-items: center;
-		padding: 10px 12px;
-	}
-}
-
-// EKdropdown
 
 .dropdown {
-	cursor: pointer;
-	user-select: none;
 	flex-grow: 1;
 
+	user-select: none;
+	cursor: pointer;
+
 	background-color: transparent;
+
 	&__btn {
+		@include justifyPosition(space-between);
+		@include fontTheme(16.8px, 500, 14px, $GRAY_05);
+
+		width: 100%;
 		position: relative;
 
-		@include fontTheme(16.8px, 500, 14px);
-
-		background-color: transparent;
-		color: #41444f;
-		margin: 0 auto;
-
-		box-shadow: 1px 1px 6px 2px rgba(0, 0, 0, 0.04);
-
-		@include justifyPosition(space-between);
-
-		display: inline-flex;
-		width: 100%;
-		align-items: center;
-		justify-content: space-between;
-
 		padding: 12px 11px 10px 1rem;
+		margin: 0 auto;
 
 		border: 1px solid #b1bcd0;
 		border-radius: 4px;
+		box-shadow: 1px 1px 6px 2px rgba(0, 0, 0, 0.04);
 
 		background-color: transparent;
 
 		&hover {
 			opacity: 0.9;
+		}
+
+		&:focus {
+			img {
+				transform: rotateZ(180deg);
+				transition-duration: 0.2s;
+			}
 		}
 	}
 
 	&__content {
 		position: absolute;
 
-		background-color: #f3f4f6;
 		border-radius: 4px;
+		background-color: $WHITE_04;
 	}
 
 	&__item {
 		display: flex;
 
-		// padding: 12px 11px 10px 1rem;
 		padding: 12px 11px 12px 1rem;
+
 		border-radius: 4px;
+	}
+
+	&__focusItem {
+		//디자인 대기중
+		background-color: gold;
+		color: pink;
 	}
 }

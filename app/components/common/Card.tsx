@@ -9,7 +9,7 @@
 // 	children?: ReactNode
 // 	size?: 'lg' | 'md' | 'sm'
 // }
-// export default function EKCard({
+// export default function Card({
 // 	children = undefined,
 // 	size = 'sm',
 // }: CardProps) {

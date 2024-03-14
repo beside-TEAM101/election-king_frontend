@@ -19,17 +19,16 @@
 	padding-right: $pr;
 
 	border: none;
-	// border-radius: 1rem;
-	// background-color: #f3f4f6;
 
 	border-radius: $br;
 	background-color: $bc;
 }
 
-@mixin fontTheme($lh, $fw, $fs) {
+@mixin fontTheme($lh, $fw, $fs, $fc: $GRAY_04) {
 	line-height: $lh;
 	font-weight: $fw;
 	font-size: $fs;
+	color: $fc;
 }
 
 @mixin mobile {

@@ -14,7 +14,7 @@ interface DropdownProps {
 	placeholder?: string
 }
 
-export default function EKSDropdown({
+export default function Dropdown({
 	currentOption,
 	options,
 	onSelect,
@@ -25,7 +25,7 @@ export default function EKSDropdown({
 			<Menu.Button className={variables.dropdown__btn}>
 				{currentOption || <p>{placeholder}</p>}
 				<Image
-					src="/icons/dropdown-arrow.svg"
+					src="/assets/icons/dropdown-arrow.svg"
 					alt="dropdown arrow button"
 					width="16"
 					height="16"
@@ -40,7 +40,7 @@ export default function EKSDropdown({
 								<button
 									type="button"
 									className={classNames(
-										active ? variables.selectOption__focusItem : '',
+										active ? variables.dropdown__focusItem : '',
 										variables.dropdown__item
 									)}
 									onClick={() => onSelect(option)}>

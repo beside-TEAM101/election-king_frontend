@@ -5,7 +5,7 @@ import Header from './Header'
 import Footer from './Footer'
 
 const pretendard = PreFont({
-	src: '../public/fonts/Pretendard-Regular.woff2',
+	src: '../public/assets/fonts/Pretendard-Regular.woff2',
 	display: 'swap',
 })
 
