@@ -7,7 +7,6 @@ function classNames(...classes: string[]) {
 }
 
 interface DropdownProps {
-	defaultOption?: string
 	currentOption?: string
 	options: string[]
 	onSelect: (options: string) => void
@@ -18,12 +17,12 @@ export default function Dropdown({
 	currentOption,
 	options,
 	onSelect,
-	placeholder,
+	placeholder = '서울시',
 }: DropdownProps) {
 	return (
 		<Menu as="div" className={variables.dropdown}>
 			<Menu.Button className={variables.dropdown__btn}>
-				{currentOption || <p>{placeholder}</p>}
+				{currentOption || <span>{placeholder}</span>}
 				<Image
 					src="/assets/icons/dropdown-arrow.svg"
 					alt="dropdown arrow button"
@@ -34,19 +33,21 @@ export default function Dropdown({
 
 			<Menu.Items className={variables.dropdown__content}>
 				<div>
-					{options.map((option, index) => (
-						<Menu.Item key={index}>
-							{({ active }) => (
-								<button
-									type="button"
-									className={classNames(
-										active ? variables.dropdown__focusItem : '',
-										variables.dropdown__item
-									)}
-									onClick={() => onSelect(option)}>
-									{option}
-								</button>
-							)}
+					{options.map((option) => (
+						<Menu.Item>
+							<div key={option}>
+								{({ active }) => (
+									<button
+										type="button"
+										className={classNames(
+											active ? variables.dropdown__focusItem : '',
+											variables.dropdown__item
+										)}
+										onClick={() => onSelect(option)}>
+										{option}
+									</button>
+								)}
+							</div>
 						</Menu.Item>
 					))}
 				</div>

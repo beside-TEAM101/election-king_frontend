@@ -88,7 +88,7 @@ export default function Home() {
 										onChange={(e) => setValue(e.target.value)}
 									/>
 									<label htmlFor={item.value}>{item.value}</label>
-									<span></span>
+									<span />
 								</div>
 							</div>
 						))}
