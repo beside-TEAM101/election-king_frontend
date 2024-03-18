@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Menu } from '@headlessui/react'
-import variables from '@/app/styles/variables.module.scss'
+import variables from '@/styles/variables.module.scss'
 import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
 
 function classNames(...classes: string[]) {
@@ -34,7 +34,7 @@ export default function Dropdown({
 
 			<Menu.Items className={variables.dropdown__content}>
 				<div>
-					{options.map((option) => (
+					{/* {options.map((option) => (
 						<Menu.Item>
 							<div key={option}>
 								{({ active }) => (
@@ -50,7 +50,7 @@ export default function Dropdown({
 								)}
 							</div>
 						</Menu.Item>
-					))}
+					))} */}
 				</div>
 			</Menu.Items>
 		</Menu>

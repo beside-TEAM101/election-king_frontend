@@ -1,8 +1,8 @@
 'use client'
 
-import variables from '@/app/styles/variables.module.scss'
 import Image from 'next/image'
 import headLineImage from '@/public/assets/images/headlLine-character.png'
+import variables from '@/styles/variables.module.scss'
 
 export default function HeadLine() {
 	return (

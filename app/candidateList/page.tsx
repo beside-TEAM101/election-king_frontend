@@ -1,10 +1,10 @@
 'use client'
 
 import Image from 'next/image'
-import variables from '@/app/styles/variables.module.scss'
+import variables from '@/styles/variables.module.scss'
 import Link from 'next/link'
 import sampleImage from '@/public/assets/images/profile.png'
-import Header from '../components/Header/page'
+import Header from '@/components/common/Header'
 // import useCandidateStore from '../store/useCandidateStore'
 
 export default function List() {

@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import variables from '@/app/styles/variables.module.scss'
+import variables from '@/styles/variables.module.scss'
 import FooterImage from '@/public/assets/images/footer-character.png'
 
 function Footer() {

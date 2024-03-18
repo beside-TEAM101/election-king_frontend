@@ -1,10 +1,11 @@
 'use client'
 
-import variables from '@/app/styles/variables.module.scss'
+import variables from '@/styles/variables.module.scss'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import Dropdown from './components/common/Dropdown'
-import HeadLine from './components/HeadLine/pages'
+import Dropdown from '@/components/common/Dropdown'
+import HeadLine from '@/components/common/HeadLine'
+import Footer from '@/components/common/Footer'
 
 export default function HomePage() {
 	const radioItems: { value: string; label: string }[] = [
@@ -98,6 +99,7 @@ export default function HomePage() {
 					후보 조회하기
 				</button>
 			</div>
+			<Footer />
 		</div>
 	)
 }

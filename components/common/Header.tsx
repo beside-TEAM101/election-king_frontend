@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import variables from '@/app/styles/variables.module.scss'
 import goBackBtn from '@/public/assets/icons/back-arrow.svg'
 import goMainBtn from '@/public/assets/icons/home.svg'
+import variables from '@/styles/variables.module.scss'
 
 function Header() {
 	return (
