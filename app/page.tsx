@@ -1,6 +1,7 @@
 'use client'
 
 import variables from '@/styles/variables.module.scss'
+import home from '@/styles/home.module.scss'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Dropdown from '@/components/common/Dropdown'
@@ -20,7 +21,7 @@ export default function HomePage() {
 	const router = useRouter()
 
 	return (
-		<div>
+		<div className={home.container}>
 			<HeadLine />
 			<div className={variables.dayWrap}>
 				<div className={variables.dayBox}>
@@ -94,7 +95,7 @@ export default function HomePage() {
 					type="button"
 					className={variables.mainButton}
 					onClick={() => {
-						router.push('/candidateList')
+						router.push('/list')
 					}}>
 					후보 조회하기
 				</button>

@@ -38,6 +38,7 @@ hr {
 }
 
 html {
+	overflow: hidden;
 	background-color: #f3f4f6;
 }
 
@@ -47,12 +48,7 @@ body {
 	height: 100vh;
 	overflow-y: auto;
 	background-color: #ffffff;
-
-	max-width: 375px;
 	margin: auto;
-
-	display: flex;
-	flex-direction: column;
 	width: 100%;
 }
 
@@ -88,13 +84,15 @@ dd {
 }
 
 main {
-	/* width: 100%; */
+	max-width: 600px;
+	width: 100%;
+	min-height: 100%;
+	box-sizing: border-box;
 	flex-grow: 1;
-
-	padding-left: 20px;
-	padding-right: 20px;
-
+	padding-inline: 20px;
+	padding-bottom: 20px;
 	background-color: #ffffff;
+	margin: 0 auto;
 }
 
 ul,
@@ -107,7 +105,8 @@ a {
 button {
 	border: none;
 	outline: none;
-
+	padding: 0;
+	background: none;
 	cursor: pointer;
 }
 
