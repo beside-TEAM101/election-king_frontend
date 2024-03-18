@@ -27,6 +27,34 @@ $BLACK_03: #373a44;
 	}
 }
 
+/* Header start */
+.header {
+	@include justifyPosition(space-between);
+
+	// padding: 1rem 0.75rem;
+	padding: 1rem 0;
+
+	img {
+		cursor: pointer;
+	}
+}
+/* Header end */
+
+/* MainPage start */
+.my-s {
+	margin: 1rem auto;
+}
+
+.justifCenter {
+	@include justifyPosition(flex-start);
+
+	width: 100%;
+
+	gap: 0.5rem;
+
+	margin-bottom: 18px;
+}
+
 .headlineWrap {
 	@include justifyPosition(space-between);
 
@@ -37,32 +65,6 @@ $BLACK_03: #373a44;
 	img {
 		margin-right: -20px;
 	}
-}
-
-.my-s {
-	margin: 1rem auto;
-}
-
-.justifCenter {
-	@include justifyPosition(flex-start);
-	width: 100%;
-	gap: 0.5rem;
-
-	margin-bottom: 18px;
-}
-
-.header {
-	@include justifyPosition(space-between);
-
-	margin: 1rem 0.75rem;
-
-	img {
-		cursor: pointer;
-	}
-}
-
-.footer {
-	margin-top: 52px;
 }
 
 .dayWrap {
@@ -83,7 +85,8 @@ $BLACK_03: #373a44;
 		height: 52px;
 		width: 0.5px;
 
-		margin: auto 10px;
+		// margin: auto 10px;
+		margin: auto 16px auto 10px;
 
 		border: none;
 
@@ -130,27 +133,39 @@ $BLACK_03: #373a44;
 		flex-grow: 1;
 
 		label {
-			@include fontTheme(16.8px, 500, 14px);
+			@include fontTheme(16.8px, 600, 14px);
 		}
 	}
 }
 
 .mainButton {
+	@include EKCard(13px, auto, 13px, auto, 4px, #3284fc);
+	@include fontTheme(16.8px, 500, 15px, $WHITE_01);
+
 	width: 100%;
 
 	display: flex;
 	justify-content: center;
 
 	margin-top: 34px;
+}
+/* Main end */
 
-	@include EKCard(13px, auto, 13px, auto, 4px, #3284fc);
-	@include fontTheme(16.8px, 600, 14px, $WHITE_01);
+/* Footer start */
+.footer {
+	position: fixed;
+	bottom: 0;
+
+	// margin-top: 52px;
 }
 
+/* candidateList start */
 .candidateWrap {
 	h1 {
 		@include fontTheme(27px, 600, 20px);
 	}
+	max-height: 700px; /* 임시 최대 높이 설정 */
+	overflow-y: auto; /* 세로 스크롤 표시 */
 }
 
 .candidateCard {
@@ -159,7 +174,11 @@ $BLACK_03: #373a44;
 
 	gap: 1rem;
 
+	margin-top: 1rem;
+
 	&__img {
+		@include justifyPosition(center);
+
 		flex-grow: 10%;
 
 		border: 5px solid red;
@@ -175,8 +194,30 @@ $BLACK_03: #373a44;
 			@include fontTheme(20px, 400, 14px, $GRAY_06);
 		}
 	}
-}
 
+	&__items {
+		@include justifyPosition(center);
+		@include fontTheme(20px, 400, 14px, $GRAY_06);
+
+		gap: 4px;
+
+		margin-top: 2px;
+
+		span:nth-child(3) {
+			width: 132px;
+
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+
+			word-break: break-all;
+			// border: 1px solid red;
+		}
+	}
+}
+/* candidateList end */
+
+/* common dropdown start */
 .dropdown {
 	flex-grow: 1;
 
@@ -229,8 +270,8 @@ $BLACK_03: #373a44;
 	}
 
 	&__focusItem {
-		//디자인 대기중
 		background-color: gold;
 		color: pink;
 	}
 }
+/* common dropdown start */

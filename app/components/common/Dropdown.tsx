@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Menu } from '@headlessui/react'
 import variables from '@/app/styles/variables.module.scss'
+import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(' ')
@@ -24,10 +25,10 @@ export default function Dropdown({
 			<Menu.Button className={variables.dropdown__btn}>
 				{currentOption || <span>{placeholder}</span>}
 				<Image
-					src="/assets/icons/dropdown-arrow.svg"
+					src={arrowBtnIcon}
 					alt="dropdown arrow button"
-					width="16"
-					height="16"
+					width={16}
+					height={16}
 				/>
 			</Menu.Button>
 

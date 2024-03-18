@@ -1,11 +1,12 @@
 'use client'
 
 import variables from '@/app/styles/variables.module.scss'
-import Image from 'next/image'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Dropdown from './components/common/Dropdown'
+import HeadLine from './components/HeadLine/pages'
 
-export default function Home() {
+export default function HomePage() {
 	const radioItems: { value: string; label: string }[] = [
 		{ value: '국회의원 선거', label: '국회의원 선거' },
 		{ value: '지자체장 선거', label: '지자체장 선거' },
@@ -15,20 +16,11 @@ export default function Home() {
 	const fieldOptions = ['서울시', '경기도', '인천시', '부산시', '대전시']
 	const [field, setField] = useState('')
 
+	const router = useRouter()
+
 	return (
 		<div>
-			<div className={variables.headlineWrap}>
-				<h1>
-					22대 총선 선거 <br /> 누가누가 잘뽑나?
-				</h1>
-				<Image
-					src="/assets/images/headlLine-character.png"
-					alt="헤드라인 대표 이미지"
-					width={168}
-					height={172}
-				/>
-			</div>
-
+			<HeadLine />
 			<div className={variables.dayWrap}>
 				<div className={variables.dayBox}>
 					<p>사전 투표</p>
@@ -63,7 +55,7 @@ export default function Home() {
 							options={fieldOptions}
 						/>
 						<Dropdown
-							placeholder="서울시"
+							placeholder="강남구"
 							currentOption={field}
 							onSelect={(selected) => {
 								setField(selected)
@@ -77,8 +69,10 @@ export default function Home() {
 					<h3>어떤 선거후보를 찾으세요?</h3>
 					<div className={variables.searchOptions__radioGroup}>
 						{radioItems.map((item) => (
-							<div className={variables.searchOptions__radioGroup}>
-								<div key={item.value} className="radio">
+							<div
+								key={item.value}
+								className={variables.searchOptions__radioGroup}>
+								<div className="radio">
 									<input
 										name="test1"
 										type="radio"
@@ -95,7 +89,12 @@ export default function Home() {
 					</div>
 				</div>
 
-				<button type="button" className={variables.mainButton}>
+				<button
+					type="button"
+					className={variables.mainButton}
+					onClick={() => {
+						router.push('/candidateList')
+					}}>
 					후보 조회하기
 				</button>
 			</div>

@@ -38,17 +38,22 @@ hr {
 }
 
 html {
-	max-width: 375px;
-	margin: auto;
-
 	background-color: #f3f4f6;
-
-	font-size: 1rem;
-	color: #41444f;
 }
 
 body {
+	font-size: 1rem;
+	color: #41444f;
+	height: 100vh;
+	overflow-y: auto;
 	background-color: #ffffff;
+
+	max-width: 375px;
+	margin: auto;
+
+	display: flex;
+	flex-direction: column;
+	width: 100%;
 }
 
 p,
@@ -83,7 +88,8 @@ dd {
 }
 
 main {
-	height: 100%;
+	/* width: 100%; */
+	flex-grow: 1;
 
 	padding-left: 20px;
 	padding-right: 20px;
@@ -95,7 +101,9 @@ ul,
 ol {
 	list-style: none;
 }
-
+a {
+	text-decoration: none;
+}
 button {
 	border: none;
 	outline: none;
@@ -167,4 +175,9 @@ label {
 
 .radio input[type='radio']:checked ~ span {
 	border: 2.7px solid #3284fc;
+}
+
+::-webkit-scrollbar {
+	width: 0;
+	height: 0;
 }
