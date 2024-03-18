@@ -1,15 +1,19 @@
+'use client'
+
 import Image from 'next/image'
-import Link from 'next/link'
 import goBackBtn from '@/public/assets/icons/back-arrow.svg'
 import goMainBtn from '@/public/assets/icons/home.svg'
 import variables from '@/styles/variables.module.scss'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 function Header() {
+	const router = useRouter()
 	return (
 		<div className={variables.header}>
-			<Link href="/">
+			<button type="button" onClick={() => router.back()}>
 				<Image src={goBackBtn} alt="뒤로가기 아이콘" width={24} height={24} />
-			</Link>
+			</button>
 			<Link href="/">
 				<Image
 					src={goMainBtn}
