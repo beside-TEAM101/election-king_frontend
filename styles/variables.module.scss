@@ -282,6 +282,10 @@ $BLACK_03: #373a44;
 
 		right: 0;
 		z-index: 10;
+
+		max-height: 220px;
+		overflow-y: scroll;
+
 		margin: 4px;
 		width: 98%;
 		overflow: hidden;

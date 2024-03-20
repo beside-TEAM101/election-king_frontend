@@ -93,7 +93,8 @@ export default function List({
 		const fetchData = async () => {
 			try {
 				const response = await axios.get(
-					`http://3.39.25.35:8080/candidates?pageIndex=${pageIndex}&pageSize=${pageSize}&city=${city}&district=${district}`
+					// `http://3.39.25.35:8080/candidates?pageIndex=${pageIndex}&pageSize=${pageSize}&city=${city}&district=${district}`
+					`http://election-api.team-101.com/candidates?pageIndex=${pageIndex}&pageSize=${pageSize}&city=${city}&district=${district}`
 				)
 				setCandidates(response.data.result)
 			} catch (error) {
