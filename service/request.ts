@@ -20,14 +20,14 @@ const onRequest = (
 
 const onResponse = (res: AxiosResponse): AxiosResponse => {
 	const { method, url } = res.config
-	const { code, message } = res.data
-	if (code === 'SUCCESS') {
+	const { status, statusText } = res
+	if (statusText === 'OK') {
 		console.log(
-			`🛬 [API - RESPONSE] ${method?.toUpperCase()} ${url} | ${code} : ${message}`
+			`🛬 [API - RESPONSE] ${method?.toUpperCase()} ${url} | ${status} : ${statusText}`
 		)
 	} else {
 		console.log(
-			`🚨 [API - ERROR] ${method?.toUpperCase()} ${url} | ${code} : ${message}`
+			`🚨 [API - ERROR] ${method?.toUpperCase()} ${url} | ${status} : ${statusText}`
 		)
 	}
 
