@@ -1,4 +1,7 @@
 export type TDetailResponse = {
+	name: string
+	age: number
+	job: string
 	education: string // 학력
 	career: string // 이력
 	conviction: number // 전과 수
