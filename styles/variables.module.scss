@@ -35,8 +35,8 @@ $BLACK_03: #373a44;
 .header {
 	@include justifyPosition(space-between);
 
-	// padding: 1rem 0.75rem;
-	padding: 1rem 0;
+	// padding: 16px 12px;
+	padding: 16px 0;
 
 	img {
 		cursor: pointer;
@@ -46,7 +46,16 @@ $BLACK_03: #373a44;
 
 /* MainPage start */
 .my-s {
-	margin: 1rem auto;
+	margin: 16px auto;
+}
+
+.profileBorderCss {
+	@include justifyPosition(center);
+
+	flex-grow: 10%;
+
+	border: 5px solid red;
+	border-radius: 50%;
 }
 
 .justifCenter {
@@ -54,16 +63,16 @@ $BLACK_03: #373a44;
 
 	width: 100%;
 
-	gap: 0.5rem;
+	gap: 8px;
 
-	margin-bottom: 18px;
+	margin-bottom: -6px;
 }
 
 .headlineWrap {
 	@include justifyPosition(space-between);
 
 	h1 {
-		@include fontTheme(33.6px, 700, 24px);
+		@include fontTheme(34px, 700, 24px);
 	}
 
 	img {
@@ -75,10 +84,10 @@ $BLACK_03: #373a44;
 	@extend .my-s;
 	@include justifyPosition(flex-start);
 
-	@include EKCard(1rem, 20px, 1rem, 20px, 1rem, $WHITE_04);
+	@include CardStyle(16px, 20px, 16px, 20px, 8px, $WHITE_04);
 
 	p {
-		@include fontTheme(14.4px, 600, 12px);
+		@include fontTheme(14px, 600, 12px);
 	}
 
 	.dayBox {
@@ -89,7 +98,6 @@ $BLACK_03: #373a44;
 		height: 52px;
 		width: 0.5px;
 
-		// margin: auto 10px;
 		margin: auto 16px auto 10px;
 
 		border: none;
@@ -107,12 +115,12 @@ $BLACK_03: #373a44;
 	}
 
 	span {
-		@include fontTheme(14.4px, 400, 12px, $GRAY_08);
+		@include fontTheme(14px, 400, 12px, $GRAY_08);
 	}
 }
 
 .searchOptions {
-	@include EKCard(24px, 20px, 24px, 20px, 8px, $WHITE_04);
+	@include CardStyle(24px, 20px, 24px, 20px, 8px, $WHITE_04);
 
 	display: flex;
 	flex-direction: column;
@@ -126,8 +134,9 @@ $BLACK_03: #373a44;
 		@include fontTheme(18px, 600, 15px);
 	}
 	&__box {
+		margin-top: 16px;
 		label {
-			@include fontTheme(16.8px, 600, 14px);
+			@include fontTheme(17px, 600, 14px);
 		}
 	}
 
@@ -137,14 +146,14 @@ $BLACK_03: #373a44;
 		flex-grow: 1;
 
 		label {
-			@include fontTheme(16.8px, 600, 14px);
+			@include fontTheme(17px, 600, 14px);
 		}
 	}
 }
 
 .mainButton {
-	@include EKCard(13px, auto, 13px, auto, 4px, #3284fc);
-	@include fontTheme(16.8px, 500, 15px, $WHITE_01);
+	@include CardStyle(13px, auto, 13px, auto, 4px, #3284fc);
+	@include fontTheme(17px, 500, 15px, $WHITE_01);
 
 	width: 100%;
 
@@ -177,11 +186,15 @@ $BLACK_03: #373a44;
 
 .candidateCard {
 	@include justifyPosition(flex-start);
-	@include EKCard(1rem, 1rem, 1rem, 1rem, 8px, $WHITE_04);
+	@include CardStyle(16px, 16px, 16px, 16px, 8px, $WHITE_04);
 
-	gap: 1rem;
+	gap: 16px;
 
-	margin-top: 1rem;
+	margin-top: 16px;
+
+	&:hover {
+		opacity: 0.9;
+	}
 
 	&__img {
 		@include justifyPosition(center);
@@ -226,30 +239,41 @@ $BLACK_03: #373a44;
 
 /* common dropdown start */
 .dropdown {
-	flex-grow: 1;
+	// flex-grow: 1;
 
-	user-select: none;
-	cursor: pointer;
+	// user-select: none;
+	// cursor: pointer;
+	// flex-grow: 1;
+
+	flex-grow: 1;
+	position: relative;
+	display: inline-block;
+	text-align: left;
 
 	background-color: transparent;
 
 	&__btn {
-		@include justifyPosition(space-between);
-		@include fontTheme(16.8px, 500, 14px, $GRAY_05);
+		// @include justifyPosition(space-between);
+		// @include fontTheme(17px, 500, 14px, $GRAY_05);
+		display: inline-flex;
 
 		width: 100%;
-		position: relative;
+		align-items: center;
+		justify-content: space-between;
+		border-radius: 4px;
+		// padding: 12px 11px 10px 16px;
+		font-size: 14px;
 
-		padding: 12px 11px 10px 1rem;
-		margin: 0 auto;
+		// position: relative;
+
+		// margin: 0 auto;
 
 		border: 1px solid #b1bcd0;
-		border-radius: 4px;
 		box-shadow: 1px 1px 6px 2px rgba(0, 0, 0, 0.04);
 
 		background-color: transparent;
 
-		&hover {
+		&:hover {
 			opacity: 0.9;
 		}
 
@@ -264,21 +288,69 @@ $BLACK_03: #373a44;
 	&__content {
 		position: absolute;
 
+		right: 0;
+		z-index: 10;
+
+		max-height: 220px;
+		overflow-y: scroll;
+
+		margin: 4px;
+		width: 98%;
+		overflow: hidden;
+		padding: 6px;
+
 		border-radius: 4px;
-		background-color: $WHITE_04;
+		background-color: $WHITE_01;
+		box-shadow: 1px 1px 6px 2px rgba(0, 0, 0, 0.04);
 	}
 
 	&__item {
 		display: flex;
+		width: 100%;
+		padding: 10px 11px 10px 16px;
+		font-size: 14px;
+		// border-radius: 4px;
 
-		padding: 12px 11px 12px 1rem;
-
-		border-radius: 4px;
+		background-color: $WHITE_01;
+		@include fontTheme(20px, 400, 14px, $GRAY_06);
 	}
 
 	&__focusItem {
-		background-color: gold;
-		color: pink;
+		background-color: $WHITE_01;
+
+		@include fontTheme(20px, 400, 14px, $GRAY_06);
+
+		&:hover {
+			background-color: $WHITE_03;
+			@include fontTheme(20px, 400, 14px, $GRAY_04);
+		}
+	}
+
+	&__noOutline {
+		display: flex;
+		justify-content: start;
+		border: none;
+
+		@include fontTheme(27px, 600, 20px);
+		box-shadow: none;
+		margin: 22px 4px 0 0;
+
+		gap: 4px;
+		// width: 90px;
+		// max-width: 72px;
+	}
+
+	&__isOutline {
+		padding: 12px 11px 10px 16px;
 	}
 }
 /* common dropdown start */
+
+.noData {
+	height: 600px;
+	background-color: #f3f4f6;
+
+	border-radius: 6px;
+	@include justifyPosition(center);
+	@include fontTheme(17px, 600, 14px, $GRAY_08);
+}

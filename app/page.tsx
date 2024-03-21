@@ -2,40 +2,63 @@
 
 import variables from '@/styles/variables.module.scss'
 import home from '@/styles/home.module.scss'
-import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import Dropdown from '@/components/common/Dropdown'
 import HeadLine from '@/components/common/HeadLine'
 import Footer from '@/components/common/Footer'
+import React, { useState } from 'react'
+import { hangjun } from '@/app/constants/hangjun'
+import Image from 'next/image'
+import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
 
 export default function HomePage() {
+	const [city, setCity] = useState('')
+	const [district, setDistrict] = useState('')
+	const { sido, sigugun } = hangjun
+
 	const radioItems: { value: string; label: string }[] = [
 		{ value: '국회의원 선거', label: '국회의원 선거' },
 		{ value: '지자체장 선거', label: '지자체장 선거' },
 	]
 
 	const [value, setValue] = useState<string | null>('국회의원 선거')
-	const fieldOptions = ['서울시', '경기도', '인천시', '부산시', '대전시']
-	const [field, setField] = useState('')
 
 	const router = useRouter()
+
+	const handleButtonClick = () => {
+		// const apiUrl = `/candidates?pageIndex=${pageIndex}&pageSize=${pageSize}&city=${city}&district=${district}`
+		// 여기서 apiUrl을 이용하여 API를 호출하는 코드를 작성해야 합니다.
+
+		// 순서 2: 페이지 이동
+		router.push('/list')
+	}
+
+	const today = new Date()
+	const EarlyDday = new Date(2024, 3, 5)
+	const Dday = new Date(2024, 3, 10)
+	const gap = EarlyDday.getTime() - today.getTime()
+	const gapDay = Dday.getTime() - today.getTime()
+
+	const EarlyVote = Math.ceil(gap / (1000 * 60 * 60 * 24))
+	const voteDday = Math.ceil(gapDay / (1000 * 60 * 60 * 24))
 
 	return (
 		<div className={home.container}>
 			<HeadLine />
+			{/* <p>{`${city}-${district}`}</p> */}
+
 			<div className={variables.dayWrap}>
 				<div className={variables.dayBox}>
 					<p>사전 투표</p>
 					<div className={variables.dayItem}>
-						<p>D-16</p>
-						<span>4월 6일</span>
+						<p>D-{EarlyVote}</p>
+						<span>4월 5 ~ 6일</span>
 					</div>
 				</div>
 				<hr />
 				<div className={variables.dayBox}>
 					<p>본 투표</p>
 					<div className={variables.dayItem}>
-						<p>D-16</p>
+						<p>D-{voteDday}</p>
 						<span>4월 10일</span>
 					</div>
 				</div>
@@ -48,25 +71,52 @@ export default function HomePage() {
 				<div className={variables.searchOptions__box}>
 					<h3>어디서 투표하세요?</h3>
 					<div className={variables.justifCenter}>
-						<Dropdown
-							placeholder="서울시"
-							currentOption={field}
-							onSelect={(selected) => {
-								setField(selected)
-							}}
-							options={fieldOptions}
-						/>
-						<Dropdown
-							placeholder="강남구"
-							currentOption={field}
-							onSelect={(selected) => {
-								setField(selected)
-							}}
-							options={fieldOptions}
-						/>
+						<div className="selectBox">
+							<select
+								className="select"
+								onChange={(e) => setCity(e.target.value)}>
+								{sido.map((el) => (
+									<option key={el.sido} value={el.sido}>
+										{el.codeNm}
+									</option>
+								))}
+							</select>
+							<span className="icoArrow">
+								<Image
+									src={arrowBtnIcon}
+									alt="dropdown arrow button"
+									width={16}
+									height={16}
+								/>
+							</span>
+						</div>
+
+						<div className="selectBox">
+							<select
+								className="select"
+								onChange={(e) => setDistrict(e.target.value)}>
+								<option className="selectOption" value="">
+									종로구
+								</option>
+								{sigugun
+									.filter((el) => el.sido === city)
+									.map((el) => (
+										<option key={el.sigugun} value={el.sigugun}>
+											{el.codeNm}
+										</option>
+									))}
+							</select>
+							<span className="icoArrow">
+								<Image
+									src={arrowBtnIcon}
+									alt="dropdown arrow button"
+									width={16}
+									height={16}
+								/>
+							</span>
+						</div>
 					</div>
 				</div>
-
 				<div className={variables.searchOptions__box}>
 					<h3>어떤 선거후보를 찾으세요?</h3>
 					<div className={variables.searchOptions__radioGroup}>
@@ -94,12 +144,11 @@ export default function HomePage() {
 				<button
 					type="button"
 					className={variables.mainButton}
-					onClick={() => {
-						router.push('/list')
-					}}>
+					onClick={handleButtonClick}>
 					후보 조회하기
 				</button>
 			</div>
+
 			<Footer />
 		</div>
 	)
