@@ -4,16 +4,15 @@ import axios, {
 	InternalAxiosRequestConfig,
 } from 'axios'
 
-const { API_ENTRY } = process.env
-
 const request = axios.create({
-	baseURL: API_ENTRY,
+	baseURL: process.env.API_ENTRY,
 })
 
 const onRequest = (
 	config: InternalAxiosRequestConfig
 ): InternalAxiosRequestConfig => {
 	const { method, url } = config
+
 	console.log(`🛫 [API - REQUEST] ${method?.toUpperCase()} ${url}`)
 
 	return config
