@@ -35,7 +35,7 @@ $BLACK_03: #373a44;
 .header {
 	@include justifyPosition(space-between);
 
-	// padding: 1rem 0.75rem;
+	// padding: 16px 12px;
 	padding: 16px 0;
 
 	img {
@@ -47,6 +47,15 @@ $BLACK_03: #373a44;
 /* MainPage start */
 .my-s {
 	margin: 16px auto;
+}
+
+.profileBorderCss {
+	@include justifyPosition(center);
+
+	flex-grow: 10%;
+
+	border: 5px solid red;
+	border-radius: 50%;
 }
 
 .justifCenter {
@@ -63,7 +72,7 @@ $BLACK_03: #373a44;
 	@include justifyPosition(space-between);
 
 	h1 {
-		@include fontTheme(33.6px, 700, 24px);
+		@include fontTheme(34px, 700, 24px);
 	}
 
 	img {
@@ -75,7 +84,7 @@ $BLACK_03: #373a44;
 	@extend .my-s;
 	@include justifyPosition(flex-start);
 
-	@include EKCard(16px, 20px, 16px, 20px, 8px, $WHITE_04);
+	@include CardStyle(16px, 20px, 16px, 20px, 8px, $WHITE_04);
 
 	p {
 		@include fontTheme(14px, 600, 12px);
@@ -89,7 +98,6 @@ $BLACK_03: #373a44;
 		height: 52px;
 		width: 0.5px;
 
-		// margin: auto 10px;
 		margin: auto 16px auto 10px;
 
 		border: none;
@@ -112,7 +120,7 @@ $BLACK_03: #373a44;
 }
 
 .searchOptions {
-	@include EKCard(24px, 20px, 24px, 20px, 8px, $WHITE_04);
+	@include CardStyle(24px, 20px, 24px, 20px, 8px, $WHITE_04);
 
 	display: flex;
 	flex-direction: column;
@@ -126,7 +134,7 @@ $BLACK_03: #373a44;
 		@include fontTheme(18px, 600, 15px);
 	}
 	&__box {
-		margin-top: 18px;
+		margin-top: 16px;
 		label {
 			@include fontTheme(17px, 600, 14px);
 		}
@@ -144,7 +152,7 @@ $BLACK_03: #373a44;
 }
 
 .mainButton {
-	@include EKCard(13px, auto, 13px, auto, 4px, #3284fc);
+	@include CardStyle(13px, auto, 13px, auto, 4px, #3284fc);
 	@include fontTheme(17px, 500, 15px, $WHITE_01);
 
 	width: 100%;
@@ -178,7 +186,7 @@ $BLACK_03: #373a44;
 
 .candidateCard {
 	@include justifyPosition(flex-start);
-	@include EKCard(16px, 16px, 16px, 16px, 8px, $WHITE_04);
+	@include CardStyle(16px, 16px, 16px, 16px, 8px, $WHITE_04);
 
 	gap: 16px;
 
@@ -338,10 +346,11 @@ $BLACK_03: #373a44;
 }
 /* common dropdown start */
 
-.defaultItemCss {
-	display: flex;
-	width: 100%;
-	align-items: center;
-	padding: 10px 12px;
-	z-index: 30;
+.noData {
+	height: 600px;
+	background-color: #f3f4f6;
+
+	border-radius: 6px;
+	@include justifyPosition(center);
+	@include fontTheme(17px, 600, 14px, $GRAY_08);
 }

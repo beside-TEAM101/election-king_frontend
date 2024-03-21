@@ -9,6 +9,9 @@ const nextConfig = {
 	env: {
 		API_ENTRY: process.env.API_ENTRY,
 	},
+	images: {
+		domains: ['info.nec.go.kr'],
+	},
 }
 
 module.exports = nextConfig

@@ -25,8 +25,6 @@ const Dropdown: React.FC<IProps> = ({
 	isOutline = false,
 }) => (
 	<Menu as="div" className={variables.dropdown}>
-		{/* <Menu.Button className={variables.dropdown__btn} outline={outline}> */}
-
 		<Menu.Button
 			className={classNames(
 				isOutline
@@ -45,7 +43,7 @@ const Dropdown: React.FC<IProps> = ({
 
 		<Menu.Items className={variables.dropdown__content}>
 			<div>
-				{options.map((option, _index) => (
+				{options.map((option) => (
 					<Menu.Item key={option}>
 						{({ active }) => (
 							<button
