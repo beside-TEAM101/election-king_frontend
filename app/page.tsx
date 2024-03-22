@@ -16,20 +16,17 @@ export default function HomePage() {
 	const { sido, sigugun } = hangjun
 
 	const radioItems: { value: string; label: string }[] = [
-		{ value: '국회의원 선거', label: '국회의원 선거' },
-		{ value: '지자체장 선거', label: '지자체장 선거' },
+		{ value: 'CONGRESS', label: '국회의원 선거' },
+		{ value: 'MAYOR', label: '지자체장 선거' },
 	]
 
-	const [value, setValue] = useState<string | null>('국회의원 선거')
+	const [value, setValue] = useState<string | null>('CONGRESS')
 
 	const router = useRouter()
 
 	const handleButtonClick = () => {
-		// const apiUrl = `/candidates?pageIndex=${pageIndex}&pageSize=${pageSize}&city=${city}&district=${district}`
-		// 여기서 apiUrl을 이용하여 API를 호출하는 코드를 작성해야 합니다.
-
-		// 순서 2: 페이지 이동
-		router.push('/list')
+		const queryParams = `?pageIndex=0&pageSize=10&type=${value}&city=${city}&district=${district}`
+		router.push(`/list${queryParams}`)
 	}
 
 	const today = new Date()
@@ -44,8 +41,6 @@ export default function HomePage() {
 	return (
 		<div className={home.container}>
 			<HeadLine />
-			{/* <p>{`${city}-${district}`}</p> */}
-
 			<div className={variables.dayWrap}>
 				<div className={variables.dayBox}>
 					<p>사전 투표</p>
@@ -133,7 +128,7 @@ export default function HomePage() {
 										checked={value === item.value}
 										onChange={(e) => setValue(e.target.value)}
 									/>
-									<label htmlFor={item.value}>{item.value}</label>
+									<label htmlFor={item.value}>{item.label}</label>
 									<span />
 								</div>
 							</div>

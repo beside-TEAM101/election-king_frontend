@@ -5,12 +5,13 @@ import request from '@/service/request'
 import { TListResponse } from '@/types/list'
 import { notFound } from 'next/navigation'
 import variables from '@/styles/variables.module.scss'
-import Dropdown from '@/components/common/Dropdown'
 import Image from 'next/image'
 import Link from 'next/link'
 import sampleImage from '@/public/assets/images/profile.png'
 import { hangjun } from '@/constants/hangjun'
 import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
+import { Suspense } from 'react'
+import Loading from './loading'
 
 export default function List({
 	params,
@@ -19,6 +20,7 @@ export default function List({
 		pageIndex?: number
 		pageSize?: number
 		city?: string
+		type?: any
 		district?: string
 		party?: string
 	}
@@ -28,74 +30,60 @@ export default function List({
 	const { sido, sigugun } = hangjun
 
 	const [candidates, setCandidates] = useState([])
-	const [field, setField] = useState('')
-	const fieldOptions = [
-		'서울특별시',
-		'부산광역시',
-		'대구광역시',
-		'인천광역시',
-		'광주광역시',
-		'대전광역시',
-		'울산광역시',
-		'세종특별자치시',
-		'경기도',
-		'강원도',
-		'충청북도',
-		'충청남도',
-		'전라북도',
-		'전라남도',
-		'경상북도',
-		'경상남도',
-		'제주특별자치도',
-	]
 
 	const {
 		pageIndex = 0,
 		pageSize = 10,
-		// city = '서울특별시',
-		// district = '종로구',
+		type = 'CONGRESS' || 'MAYOR',
+		city = '',
+		district = '',
 	} = params
 
-	useEffect(() => {
-		async function fetchCandidates() {
-			try {
-				const { data } = await request.get<TListResponse>(
-					`/candidates?pageIndex=${pageIndex}&pageSize=${pageSize}&city=${city}&district=${district}`
-				)
-				setCandidates(data)
-			} catch (err) {
-				console.error('Error fetching candidates:', err)
-				notFound()
-			}
-		}
+	// useEffect(() => {
+	// 	async function fetchCandidates() {
+	// 		try {
+	// 			const { data } = await request.get<TListResponse>(
+	// 				`/candidates?pageIndex=${pageIndex}&pageSize=${pageSize}&type=${type}&city=${city}&district=${district}`
+	// 			)
+	// 			setCandidates(data.result) // 후보자 데이터 설정
+	// 		} catch (err) {
+	// 			console.error('오류 발생:', err)
+	// 			notFound()
+	// 		}
+	// 	}
 
-		fetchCandidates()
-	}, [pageIndex, pageSize, city, district])
+	// 	fetchCandidates()
+	// }, [pageIndex, pageSize, city, district])
+
+	useEffect(() => {
+		fetchData(city, district)
+	}, [city, district, pageIndex, pageSize, type])
+
+	async function fetchData(city: string, district: string) {
+		try {
+			const { data } = await request.get<TListResponse>(
+				`/candidates?pageIndex=${pageIndex}&pageSize=${pageSize}&type=${type}&city=${city}&district=${district}`
+			)
+			setCandidates(data.result)
+		} catch (err) {
+			console.error('오류 발생:', err)
+			notFound()
+		}
+	}
 
 	return (
 		<div className={variables.candidateWrap}>
-			{/* <div className={variables.justifCenter}>
-				<Dropdown
-					placeholder="서울시"
-					currentOption={field}
-					onSelect={(selected) => {
-						setField(selected)
-					}}
-					options={fieldOptions}
-				/>
-				<Dropdown
-					placeholder="종로구"
-					currentOption={field}
-					onSelect={(selected) => {
-						setField(selected)
-					}}
-					options={fieldOptions}
-				/>
-			</div> */}
-
 			<div className={variables.justifCenter}>
-				<div className="selectBox">
-					<select className="select" onChange={(e) => setCity(e.target.value)}>
+				<div className="noOutline">
+					<select
+						className="select"
+						onChange={(e) => {
+							const selectedCity = e.target.value
+							setCity(selectedCity)
+						}}>
+						<option className="selectOption" value="">
+							{city}
+						</option>
 						{sido.map((el) => (
 							<option key={el.sido} value={el.sido}>
 								{el.codeNm}
@@ -112,12 +100,15 @@ export default function List({
 					</span>
 				</div>
 
-				<div className="selectBox">
+				<div className="noOutline">
 					<select
 						className="select"
-						onChange={(e) => setDistrict(e.target.value)}>
+						onChange={(e) => {
+							const selectedDistrict = e.target.value
+							setDistrict(selectedDistrict)
+						}}>
 						<option className="selectOption" value="">
-							종로구
+							{district}
 						</option>
 						{sigugun
 							.filter((el) => el.sido === city)
@@ -138,42 +129,71 @@ export default function List({
 				</div>
 			</div>
 			<h1>후보자를 확인해보세요.</h1>
-			{candidates.length === 0 ? (
-				<div className={variables.noData}>
-					<p>후보자 정보가 없습니다</p>
-				</div>
-			) : (
-				<ul>
-					{candidates.map((candidate) => (
-						<li key={candidate.id}>
-							<Link href={`/detail/${candidate.id}`} key={candidate.name}>
-								<div className={variables.candidateCard} key={candidate.name}>
-									<article>
-										<Image
-											className={variables.candidateCard__img}
-											src={sampleImage}
-											alt={candidate.name}
-											width={38}
-											height={38}
-										/>
-									</article>
-									<div className={variables.candidateCard__info}>
-										<label htmlFor="name">{candidate.name}</label>
-										<div className={variables.candidateCard__items}>
-											<span>{candidate.party}</span>
-											<span>∙&nbsp;{candidate.age}</span>
-											<span>∙&nbsp;{candidate.job}</span>
-											{candidate.imgUrl && (
-												<Image src={candidate.imgUrl} alt={candidate.name} />
-											)}
+
+			<section>
+				<Suspense fallback={<Loading />}>
+					{candidates.length === 0 ? (
+						<div className={variables.noData}>
+							<p>후보자 정보가 없습니다</p>
+						</div>
+					) : (
+						<ul>
+							{candidates.map((candidate) => (
+								<li key={candidate.id}>
+									<Link href={`/detail/${candidate.id}`} key={candidate.name}>
+										<div
+											className={variables.candidateCard}
+											key={candidate.name}>
+											<article>
+												{candidate.imgUrl !== null ? (
+													<Image
+														priority
+														width={38}
+														height={38}
+														className={
+															candidate.party === '더불어민주당'
+																? `${variables.candidateCard__type1}`
+																: candidate.party === '국민의당'
+																	? `${variables.candidateCard__type2}`
+																	: candidate.party === '개혁신당'
+																		? `${variables.candidateCard__type3}`
+																		: candidate.party === '녹색정의당'
+																			? `${variables.candidateCard__type4}`
+																			: candidate.party === '새로운미래'
+																				? `${variables.candidateCard__type5}`
+																				: candidate.party === '조국신당'
+																					? `${variables.candidateCard__type6}`
+																					: `${variables.candidateCard__type7}`
+														}
+														src={candidate.imgUrl}
+														alt={candidate.name}
+													/>
+												) : (
+													<Image
+														src={sampleImage}
+														width={46}
+														height={46}
+														alt="sample image"
+													/>
+												)}
+											</article>
+
+											<div className={variables.candidateCard__info}>
+												<label htmlFor="name">{candidate.name}</label>
+												<div className={variables.candidateCard__items}>
+													<span>{candidate.party}</span>
+													<span>∙&nbsp;{candidate.age}</span>
+													<span>∙&nbsp;{candidate.job}</span>
+												</div>
+											</div>
 										</div>
-									</div>
-								</div>
-							</Link>
-						</li>
-					))}
-				</ul>
-			)}
+									</Link>
+								</li>
+							))}
+						</ul>
+					)}
+				</Suspense>
+			</section>
 		</div>
 	)
 }

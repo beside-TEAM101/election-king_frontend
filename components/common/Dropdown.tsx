@@ -11,15 +11,15 @@ interface IProps {
 	defaultOption?: string
 	currentOption?: string
 
-	options: string[]
-	onSelect: (options: string) => void
+	sido: string[]
+	onSelect: (sido: string) => void
 	placeholder?: string
 	isOutline?: boolean
 }
 
 const Dropdown: React.FC<IProps> = ({
 	currentOption,
-	options,
+	sido,
 	onSelect,
 	placeholder,
 	isOutline = false,
@@ -43,8 +43,8 @@ const Dropdown: React.FC<IProps> = ({
 
 		<Menu.Items className={variables.dropdown__content}>
 			<div>
-				{options.map((option) => (
-					<Menu.Item key={option}>
+				{sido.map((el) => (
+					<Menu.Item key={el.sido}>
 						{({ active }) => (
 							<button
 								type="button"
@@ -52,8 +52,8 @@ const Dropdown: React.FC<IProps> = ({
 									active ? variables.dropdown__focusItem : '',
 									variables.dropdown__item
 								)}
-								onClick={() => onSelect(option)}>
-								{option}
+								onClick={() => onSelect(sido)}>
+								{sido}
 							</button>
 						)}
 					</Menu.Item>

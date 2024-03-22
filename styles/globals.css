@@ -208,7 +208,10 @@ label {
 	justify-content: space-between;
 	align-items: center;
 
+	font-size: 14px;
+	font-weight: 600;
 	appearance: none;
+	color: #41444f;
 
 	/* width: inherit;
 	height: inherit; */
@@ -225,14 +228,6 @@ label {
 	/* margin: 10px 12px; */
 	width: 98%;
 	overflow: hidden;
-}
-.selectBox .select option {
-	/* background-color: $WHITE_01; */
-	/* background-color: #ffffff; */
-
-	/* color: #41444f;
-	padding: 10px;
-	cursor: pointer; */
 }
 
 .selectBox .select option {
@@ -262,5 +257,68 @@ label {
 }
 
 .selectBox .select:focus + .icoArrow img {
+	transform: rotate(180deg);
+}
+
+/* select::-ms-expand {
+	display: none;
+}
+.select {
+	-o-appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	padding: 5px 30px 5px 10px;
+} */
+
+.noOutline {
+	position: relative;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	text-align: left;
+}
+
+.noOutline .select {
+	font-weight: 600;
+	font-size: 20px;
+	border: none;
+	appearance: none;
+	color: #444141;
+	padding: 5px 36px 5px 5px;
+	cursor: pointer;
+	outline: none;
+}
+
+.noOutline .select option {
+	font-weight: 400;
+	font-size: 14px;
+	color: #444141;
+	border: non;
+	padding: 0 6px;
+}
+
+.noOutline .icoArrow {
+	cursor: pointer;
+	position: absolute;
+	padding-top: 3px;
+	top: 0;
+	right: 0;
+	z-index: 1;
+	height: inherit;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.noOutline .icoArrow img {
+	transition: 0.3s;
+	margin: 6px 12px;
+	padding-right: 4px;
+}
+
+.noOutline .select:focus + .icoArrow img {
 	transform: rotate(180deg);
 }
