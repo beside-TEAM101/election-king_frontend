@@ -21,12 +21,6 @@ $BLACK_01: #000000;
 $BLACK_02: #111111;
 $BLACK_03: #373a44;
 
-@include mobile() {
-	.title {
-		color: red;
-	}
-}
-
 .container {
 	height: 100%;
 }
@@ -185,9 +179,21 @@ $BLACK_03: #373a44;
 		@include fontTheme(27px, 600, 20px);
 	}
 
+	// CSS 정리 필요
 	ul {
-		max-height: 700px; /* 임시 최대 높이 설정 */
-		overflow-y: auto; /* 세로 스크롤 표시 */
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 16px;
+		li {
+			height: 100%;
+			a {
+				display: block;
+				height: 100%;
+				> div {
+					height: 100%;
+				}
+			}
+		}
 	}
 }
 
@@ -211,8 +217,6 @@ $BLACK_03: #373a44;
 	@include CardStyle(16px, 16px, 16px, 16px, 8px, $WHITE_04);
 
 	gap: 16px;
-
-	margin-top: 16px;
 
 	&:hover {
 		opacity: 0.9;
@@ -320,23 +324,23 @@ $BLACK_03: #373a44;
 	}
 
 	&__items {
-		@include justifyPosition(center);
+		@include justifyPosition(flex-start);
 		@include fontTheme(20px, 400, 14px, $GRAY_06);
-
+		flex-wrap: wrap;
 		gap: 4px;
-
 		margin-top: 2px;
 
-		span:nth-child(3) {
-			width: 132px;
-
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-
-			word-break: break-all;
-			// border: 1px solid red;
+		span {
+			flex-shrink: 0;
 		}
+		// span:nth-child(3) {
+		// 	overflow: hidden;
+		// 	text-overflow: ellipsis;
+		// 	white-space: nowrap;
+
+		// 	word-break: break-all;
+		// 	// border: 1px solid red;
+		// }
 	}
 }
 /* candidateList end */
@@ -460,3 +464,11 @@ $BLACK_03: #373a44;
 }
 
 // 후보자리스트 select
+
+@include mobile() {
+	.candidateWrap {
+		ul {
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+}

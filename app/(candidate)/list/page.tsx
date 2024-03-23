@@ -1,76 +1,71 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { Suspense, useState, useEffect } from 'react'
 import request from '@/service/request'
 import { TListResponse } from '@/types/list'
-import { notFound } from 'next/navigation'
+import {
+	usePathname,
+	useRouter,
+	notFound,
+	useSearchParams,
+} from 'next/navigation'
 import variables from '@/styles/variables.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import sampleImage from '@/public/assets/images/profile.png'
 import { hangjun } from '@/constants/hangjun'
 import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
-import { Suspense } from 'react'
+import { objectToQueryString } from '@/utils/string'
 import Loading from './loading'
-// import { useRouter } from 'next/router'
-import { usePathname, useRouter } from 'next/navigation'
 
-export default function List({
-	params,
-}: {
-	params: {
-		pageIndex?: number
-		pageSize?: number
-		city?: string
-		type?: string
-		district?: string
-		party?: string
-	}
-}) {
-	// const router = useRouter()
-	const router = usePathname()
-	const [city, setCity] = useState(params.city || '서울특별시')
-	const [district, setDistrict] = useState(params.district || '강남구')
+export default function List() {
+	const router = useRouter()
+	const pathname = usePathname()
+	const queries = Object.fromEntries(useSearchParams().entries())
+	const { city, district, type, pageIndex, pageSize } = queries
+	const [selectedCity, setSelectedCity] = useState(city || '서울특별시')
+	const [selectedDistrict, setSelectedDistrict] = useState(district || '강남구')
 	const { sido, sigugun } = hangjun
 
 	const [candidates, setCandidates] = useState([])
 
-	const { pageIndex = 0, pageSize = 10, type = 'CONGRESS' || 'MAYOR' } = params
-
-	useEffect(() => {
-		fetchData(city, district, pageIndex, pageSize, type)
-	}, [city, district, pageIndex, pageSize, type])
-
-	async function fetchData(
-		city: string,
-		district: string,
-		pageIndex: number,
-		pageSize: number,
-		type: string
-	) {
+	async function fetchData(newQueries: string) {
 		try {
-			const { data } = await request.get<TListResponse>(
-				`/candidates?pageIndex=${pageIndex}&pageSize=${pageSize}&type=${type}&city=${city}&district=${district}`
+			const response = await request.get<TListResponse>(
+				`/candidates${newQueries}`
 			)
-			setCandidates(data.result)
+
+			setCandidates(response.data.result)
 		} catch (err) {
 			console.error('오류 발생:', err)
 			notFound()
 		}
 	}
 
-	const handleCityButtonClick = (selectedCity: string) => {
-		router.push({
-			pathname: router.pathname,
-			query: { ...router.query, city: selectedCity },
+	useEffect(() => {
+		const newQueries = objectToQueryString({
+			city,
+			district,
+			pageIndex,
+			pageSize,
+			type,
 		})
+		fetchData(newQueries)
+	}, [city, district, pageIndex, pageSize, type])
+
+	const handleCityButtonClick = (newCity: string) => {
+		const newQueries = objectToQueryString({ ...queries, city: newCity })
+		router.push(`${pathname}${newQueries}`)
+		setSelectedCity(newCity)
 	}
 
-	const handleDistrictButtonClick = (selectedDistrict: string) => {
-		router.push({
-			pathname: router.pathname,
-			query: { ...router.query, district: selectedDistrict },
+	const handleDistrictButtonClick = (newDistrict: string) => {
+		const newQueries = objectToQueryString({
+			...queries,
+			district: newDistrict,
 		})
+		router.push(`${pathname}${newQueries}`)
+		setSelectedDistrict(newDistrict)
 	}
 
 	return (
@@ -79,14 +74,12 @@ export default function List({
 				<div className="noOutline">
 					<select
 						className="select"
-						value={city}
+						value={selectedCity}
 						onChange={(e) => {
-							const selectedCity = e.target.value
-							setCity(selectedCity)
-							handleCityButtonClick(city)
+							handleCityButtonClick(e.target.value)
 						}}>
 						<option className="selectOption" value="">
-							{city}
+							{selectedCity}
 						</option>
 						{sido.map((el) => (
 							<option key={el.sido} value={el.sido}>
@@ -107,14 +100,12 @@ export default function List({
 				<div className="noOutline">
 					<select
 						className="select"
-						value={district}
+						value={selectedDistrict}
 						onChange={(e) => {
-							const selectedDistrict = e.target.value
-							setDistrict(selectedDistrict)
-							handleDistrictButtonClick(district)
+							handleDistrictButtonClick(e.target.value)
 						}}>
 						<option className="selectOption" value="">
-							{district}
+							{selectedDistrict}
 						</option>
 						{sigugun
 							.filter((el) => el.sido === city)

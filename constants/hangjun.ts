@@ -1,4 +1,6 @@
-export var hangjun = {
+/* eslint-disable import/prefer-default-export */
+
+export const hangjun = {
 	sido: [
 		{ sido: '서울특별시', codeNm: '서울특별시' },
 		{ sido: '부산광역시', codeNm: '부산광역시' },

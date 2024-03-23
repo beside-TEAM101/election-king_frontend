@@ -84,7 +84,7 @@ dd {
 main {
 	max-width: 600px;
 	width: 100%;
-	min-height: 100%;
+	min-height: 100vh;
 	box-sizing: border-box;
 	flex-grow: 1;
 	padding-inline: 20px;
