@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import PreFont from 'next/font/local'
-import './globals.css'
+import '@/styles/globals.css'
+import variables from '@/styles/variables.module.scss'
 
 const pretendard = PreFont({
-	src: '../public/fonts/Pretendard-Regular.woff2',
+	src: '../public/assets/fonts/Pretendard-Regular.woff2',
 	display: 'swap',
 })
 
@@ -19,7 +20,12 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="ko">
-			<body className={pretendard.className}>{children}</body>
+			<body>
+				<div className={`${variables.container} ${pretendard.className}`}>
+					{/* <Header /> */}
+					<main>{children}</main>
+				</div>
+			</body>
 		</html>
 	)
 }
