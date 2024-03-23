@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import HeadLine from '@/components/common/HeadLine'
 import Footer from '@/components/common/Footer'
 import React, { useState } from 'react'
-import { hangjun } from '@/app/constants/hangjun'
+import { hangjun } from '@/constants/hangjun'
 import Image from 'next/image'
 import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
 

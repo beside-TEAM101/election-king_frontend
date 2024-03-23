@@ -21,6 +21,13 @@ $BLACK_01: #000000;
 $BLACK_02: #111111;
 $BLACK_03: #373a44;
 
+.notfound {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: calc(100vh - 60px);
+}
+
 .preview {
 	display: flex;
 	justify-content: center;
@@ -76,6 +83,10 @@ $BLACK_03: #373a44;
 }
 
 .menu {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	background: $WHITE_01;
 	overflow-x: auto;
 	overflow-y: hidden;
 	white-space: nowrap;
@@ -89,7 +100,6 @@ $BLACK_03: #373a44;
 		justify-content: center;
 		align-items: center;
 		width: 75px;
-		padding: 12px 0;
 		&:after {
 			position: absolute;
 			content: '';
@@ -104,6 +114,9 @@ $BLACK_03: #373a44;
 			transition: all 0.3s;
 		}
 		button {
+			display: block;
+			width: 100%;
+			padding: 12px 0;
 			@include fontTheme(20px, 700, 14px, $GRAY_08);
 		}
 		&:hover {
@@ -116,7 +129,7 @@ $BLACK_03: #373a44;
 			}
 		}
 	}
-	&__active {
+	&hover {
 		&:after {
 			position: absolute;
 			content: '';
@@ -140,6 +153,7 @@ $BLACK_03: #373a44;
 
 .detail {
 	margin: 20px 0 0;
+	scroll-padding-top: 100px;
 }
 
 .profile {
@@ -224,11 +238,21 @@ $BLACK_03: #373a44;
 
 .voting {
 	li {
+		display: flex;
+		justify-content: space-between;
+		gap: 10px;
+		align-items: center;
 		position: relative;
 		&:not(:first-child) {
 			margin-top: 16px;
 			padding-top: 16px;
 			border-top: 1px solid #e0e0e2;
+		}
+		a {
+			display: flex;
+			align-items: center;
+			flex-shrink: 0;
+			padding: 10px;
 		}
 	}
 	&__name {
@@ -256,6 +280,76 @@ $BLACK_03: #373a44;
 	&__abstain {
 		color: #b79210;
 		background: #fcf4d9;
+	}
+	&__more {
+		display: flex;
+		justify-content: center;
+		margin: 12px 0 0;
+		padding: 12px 0 0;
+		border-top: 1px solid #e0e0e2;
+		&__button {
+			padding: 0 10px;
+			@include fontTheme(16px, 400, 12px, $GRAY_08);
+		}
+	}
+}
+.voting_empty {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	height: 53px;
+	strong {
+		@include fontTheme(16px, 700, 14px, $GRAY_08);
+	}
+	p {
+		margin: 6px 0 0;
+		@include fontTheme(14px, 500, 12px, $GRAY_08);
+	}
+}
+
+.participationRate {
+	&__chartbox {
+		display: flex;
+		justify-content: center;
+		align-items: flex-end;
+		gap: 24px;
+	}
+	&__chart {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		&_rank {
+			padding: 8px 10px 14px;
+			margin: 0 0 8px;
+			background: url('/assets/detail/rank_label.png') -10px -10px no-repeat;
+			background-size: 106px;
+			width: 86px;
+			@include fontTheme(14px, 700, 12px, $BLACK_02);
+		}
+		p {
+			@include fontTheme(20px, 400, 14px, $BLACK_03);
+		}
+		strong {
+			margin: 0 0 4px;
+		}
+		&__bar {
+			width: 46px;
+			border-radius: 6px;
+			margin: 0 0 11px;
+		}
+		&_average {
+			@include fontTheme(14px, 700, 12px, #aaaeb7);
+			&_bar {
+				background: #aaaeb7;
+			}
+		}
+		&_candidate {
+			@include fontTheme(14px, 700, 12px, $BLUE_02);
+			&_bar {
+				background: $BLUE_02;
+			}
+		}
 	}
 }
 

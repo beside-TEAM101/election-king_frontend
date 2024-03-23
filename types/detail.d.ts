@@ -8,14 +8,18 @@ export type TDetailResponse = {
 	convictionDetailUrl: string
 	imgUrl: string // 후보자 이미지 링크
 	party: string // 정당 명
-	billVotingResults: {
-		votingList: TVotingList[]
-	}
-	billVotingResultsCount: number // 의안 투표 결과의 총 갯수
 	congressActivity: {
 		averageTurnout: number // 의안 투표 참여율
 		turnoutTopPercentile: number // 의안 투표 참여 상위 백분위 수
+		individualAverageTurnout: number // 개인 의안 투표 참여율
 	}
+}
+
+interface TBillVotingResultResponse {
+	totalCount: number
+	pageIndex: number
+	pageSize: number
+	result: TVotingList[]
 }
 
 export type TVotingList = {

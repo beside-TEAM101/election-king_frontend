@@ -31,8 +31,6 @@ const onResponse = (res: AxiosResponse): AxiosResponse => {
 		)
 	}
 
-	console.log(22222222, process.env.API_ENTRY)
-
 	return res
 }
 

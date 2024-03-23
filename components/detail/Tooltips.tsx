@@ -4,7 +4,6 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { Tooltip } from 'react-tooltip'
-import utilStyle from '@/styles/utils.module.scss'
 
 export default function Tooltips({ id, text }: { id: string; text: string }) {
 	return (
@@ -15,7 +14,13 @@ export default function Tooltips({ id, text }: { id: string; text: string }) {
 			<Tooltip
 				id={id}
 				content={text}
-				className={utilStyle.tooltip}
+				style={{
+					boxShadow: '0px 0px 10px 0px rgba(0, 0, 0, 0.15)',
+					padding: '15px 16px',
+					backgroundColor: 'rgb(255, 255, 255)',
+					borderRadius: '8px',
+					color: '#222',
+				}}
 				openOnClick
 			/>
 		</>

@@ -9,7 +9,7 @@ import Dropdown from '@/components/common/Dropdown'
 import Image from 'next/image'
 import Link from 'next/link'
 import sampleImage from '@/public/assets/images/profile.png'
-import { hangjun } from '@/app/constants/hangjun'
+import { hangjun } from '@/constants/hangjun'
 import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
 
 export default function List({
