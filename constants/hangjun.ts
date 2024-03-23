@@ -1,6 +1,9 @@
-/* eslint-disable import/prefer-default-export */
+interface KoreanLocation {
+	sido: { sido: string; codeNm: string }[]
+	sigugun: { sido: string; sigugun: string; codeNm: string }[]
+}
 
-export const hangjun = {
+const hangjun: KoreanLocation = {
 	sido: [
 		{ sido: '서울특별시', codeNm: '서울특별시' },
 		{ sido: '부산광역시', codeNm: '부산광역시' },
@@ -21,6 +24,7 @@ export const hangjun = {
 		{ sido: '제주특별자치도', codeNm: '제주특별자치도' },
 	],
 	sigugun: [
+		/* 서울 */
 		{ sido: '서울특별시', sigugun: '종로구', codeNm: '종로구' },
 		{ sido: '서울특별시', sigugun: '중구', codeNm: '중구' },
 		{ sido: '서울특별시', sigugun: '용산구', codeNm: '용산구' },
@@ -46,6 +50,8 @@ export const hangjun = {
 		{ sido: '서울특별시', sigugun: '강남구', codeNm: '강남구' },
 		{ sido: '서울특별시', sigugun: '송파구', codeNm: '송파구' },
 		{ sido: '서울특별시', sigugun: '강동구', codeNm: '강동구' },
+
+		/* 부산 */
 		{ sido: '부산광역시', sigugun: '중구', codeNm: '중구' },
 		{ sido: '부산광역시', sigugun: '서구', codeNm: '서구' },
 		{ sido: '부산광역시', sigugun: '동구', codeNm: '동구' },
@@ -62,6 +68,8 @@ export const hangjun = {
 		{ sido: '부산광역시', sigugun: '수영구', codeNm: '수영구' },
 		{ sido: '부산광역시', sigugun: '사상구', codeNm: '사상구' },
 		{ sido: '부산광역시', sigugun: '기장군', codeNm: '기장군' },
+
+		/* 대구 */
 		{ sido: '대구광역시', sigugun: '중구', codeNm: '중구' },
 		{ sido: '대구광역시', sigugun: '동구', codeNm: '동구' },
 		{ sido: '대구광역시', sigugun: '서구', codeNm: '서구' },
@@ -70,85 +78,72 @@ export const hangjun = {
 		{ sido: '대구광역시', sigugun: '수성구', codeNm: '수성구' },
 		{ sido: '대구광역시', sigugun: '달서구', codeNm: '달서구' },
 		{ sido: '대구광역시', sigugun: '달성군', codeNm: '달성군' },
+
+		/* 인천 */
 		{ sido: '인천광역시', sigugun: '중구', codeNm: '중구' },
-		{ sido: '인천광역시', sigugun: '중구영종출장소', codeNm: '중구영종출장소' },
-		{ sido: '인천광역시', sigugun: '중구용유출장소', codeNm: '중구용유출장소' },
 		{ sido: '인천광역시', sigugun: '동구', codeNm: '동구' },
-		{ sido: '인천광역시', sigugun: '미추홀구', codeNm: '미추홀구' },
 		{ sido: '인천광역시', sigugun: '연수구', codeNm: '연수구' },
 		{ sido: '인천광역시', sigugun: '남동구', codeNm: '남동구' },
 		{ sido: '인천광역시', sigugun: '부평구', codeNm: '부평구' },
 		{ sido: '인천광역시', sigugun: '계양구', codeNm: '계양구' },
 		{ sido: '인천광역시', sigugun: '서구', codeNm: '서구' },
-		{ sido: '인천광역시', sigugun: '서구검단출장', codeNm: '서구검단출장' },
+		{ sido: '인천광역시', sigugun: '미추홀구', codeNm: '미추홀구' },
 		{ sido: '인천광역시', sigugun: '강화군', codeNm: '강화군' },
 		{ sido: '인천광역시', sigugun: '옹진군', codeNm: '옹진군' },
+
+		/* 광주 */
 		{ sido: '광주광역시', sigugun: '동구', codeNm: '동구' },
 		{ sido: '광주광역시', sigugun: '서구', codeNm: '서구' },
 		{ sido: '광주광역시', sigugun: '남구', codeNm: '남구' },
 		{ sido: '광주광역시', sigugun: '북구', codeNm: '북구' },
 		{ sido: '광주광역시', sigugun: '광산구', codeNm: '광산구' },
+
+		/* 대전 */
 		{ sido: '대전광역시', sigugun: '동구', codeNm: '동구' },
 		{ sido: '대전광역시', sigugun: '중구', codeNm: '중구' },
 		{ sido: '대전광역시', sigugun: '서구', codeNm: '서구' },
 		{ sido: '대전광역시', sigugun: '유성구', codeNm: '유성구' },
 		{ sido: '대전광역시', sigugun: '대덕구', codeNm: '대덕구' },
+
+		/* 울산 */
 		{ sido: '울산광역시', sigugun: '중구', codeNm: '중구' },
 		{ sido: '울산광역시', sigugun: '남구', codeNm: '남구' },
 		{ sido: '울산광역시', sigugun: '동구', codeNm: '동구' },
 		{ sido: '울산광역시', sigugun: '북구', codeNm: '북구' },
 		{ sido: '울산광역시', sigugun: '울주군', codeNm: '울주군' },
+
+		/* 세종특별자치 */
 		{
 			sido: '세종특별자치시',
 			sigugun: '세종특별자치시',
 			codeNm: '세종특별자치시',
 		},
+
+		/* 경기도 */
 		{ sido: '경기도', sigugun: '수원시', codeNm: '수원시' },
-		{ sido: '경기도', sigugun: '수원시 장안구', codeNm: '수원시 장안구' },
-		{ sido: '경기도', sigugun: '수원시 권선구', codeNm: '수원시 권선구' },
-		{ sido: '경기도', sigugun: '수원시 팔달구', codeNm: '수원시 팔달구' },
-		{ sido: '경기도', sigugun: '수원시 영통구', codeNm: '수원시 영통구' },
 		{ sido: '경기도', sigugun: '성남시', codeNm: '성남시' },
-		{ sido: '경기도', sigugun: '성남시 수정구', codeNm: '성남시 수정구' },
-		{ sido: '경기도', sigugun: '성남시 중원구', codeNm: '성남시 중원구' },
-		{ sido: '경기도', sigugun: '성남시 분당구', codeNm: '성남시 분당구' },
 		{ sido: '경기도', sigugun: '의정부시', codeNm: '의정부시' },
 		{ sido: '경기도', sigugun: '안양시', codeNm: '안양시' },
-		{ sido: '경기도', sigugun: '안양시 만안구', codeNm: '안양시 만안구' },
-		{ sido: '경기도', sigugun: '안양시 동안구', codeNm: '안양시 동안구' },
 		{ sido: '경기도', sigugun: '부천시', codeNm: '부천시' },
 		{ sido: '경기도', sigugun: '광명시', codeNm: '광명시' },
 		{ sido: '경기도', sigugun: '평택시', codeNm: '평택시' },
-		{ sido: '경기도', sigugun: '송탄출장소', codeNm: '송탄출장소' },
-		{ sido: '경기도', sigugun: '안중출장소', codeNm: '안중출장소' },
 		{ sido: '경기도', sigugun: '동두천시', codeNm: '동두천시' },
 		{ sido: '경기도', sigugun: '안산시', codeNm: '안산시' },
-		{ sido: '경기도', sigugun: '안산시 상록구', codeNm: '안산시 상록구' },
-		{ sido: '경기도', sigugun: '안산시 단원구', codeNm: '안산시 단원구' },
 		{ sido: '경기도', sigugun: '고양시', codeNm: '고양시' },
-		{ sido: '경기도', sigugun: '고양시 덕양구', codeNm: '고양시 덕양구' },
-		{ sido: '경기도', sigugun: '고양시 일산동구', codeNm: '고양시 일산동구' },
-		{ sido: '경기도', sigugun: '고양시 일산서구', codeNm: '고양시 일산서구' },
 		{ sido: '경기도', sigugun: '과천시', codeNm: '과천시' },
 		{ sido: '경기도', sigugun: '구리시', codeNm: '구리시' },
 		{ sido: '경기도', sigugun: '남양주시', codeNm: '남양주시' },
-		{ sido: '경기도', sigugun: '풍양출장소', codeNm: '풍양출장소' },
 		{ sido: '경기도', sigugun: '오산시', codeNm: '오산시' },
 		{ sido: '경기도', sigugun: '시흥시', codeNm: '시흥시' },
 		{ sido: '경기도', sigugun: '군포시', codeNm: '군포시' },
 		{ sido: '경기도', sigugun: '의왕시', codeNm: '의왕시' },
 		{ sido: '경기도', sigugun: '하남시', codeNm: '하남시' },
 		{ sido: '경기도', sigugun: '용인시', codeNm: '용인시' },
-		{ sido: '경기도', sigugun: '용인시 처인구', codeNm: '용인시 처인구' },
-		{ sido: '경기도', sigugun: '용인시 기흥구', codeNm: '용인시 기흥구' },
-		{ sido: '경기도', sigugun: '용인시 수지구', codeNm: '용인시 수지구' },
 		{ sido: '경기도', sigugun: '파주시', codeNm: '파주시' },
 		{ sido: '경기도', sigugun: '이천시', codeNm: '이천시' },
 		{ sido: '경기도', sigugun: '안성시', codeNm: '안성시' },
 		{ sido: '경기도', sigugun: '김포시', codeNm: '김포시' },
 		{ sido: '경기도', sigugun: '화성시', codeNm: '화성시' },
-		{ sido: '경기도', sigugun: '화성시동부출장소', codeNm: '화성시동부출장소' },
-		{ sido: '경기도', sigugun: '화성시동탄출장소', codeNm: '화성시동탄출장소' },
 		{ sido: '경기도', sigugun: '광주시', codeNm: '광주시' },
 		{ sido: '경기도', sigugun: '양주시', codeNm: '양주시' },
 		{ sido: '경기도', sigugun: '포천시', codeNm: '포천시' },
@@ -156,6 +151,8 @@ export const hangjun = {
 		{ sido: '경기도', sigugun: '연천군', codeNm: '연천군' },
 		{ sido: '경기도', sigugun: '가평군', codeNm: '가평군' },
 		{ sido: '경기도', sigugun: '양평군', codeNm: '양평군' },
+
+		/* 강원도 */
 		{ sido: '강원도', sigugun: '춘천시', codeNm: '춘천시' },
 		{ sido: '강원도', sigugun: '원주시', codeNm: '원주시' },
 		{ sido: '강원도', sigugun: '강릉시', codeNm: '강릉시' },
@@ -173,12 +170,10 @@ export const hangjun = {
 		{ sido: '강원도', sigugun: '양구군', codeNm: '양구군' },
 		{ sido: '강원도', sigugun: '인제군', codeNm: '인제군' },
 		{ sido: '강원도', sigugun: '고성군', codeNm: '고성군' },
-		{ sido: '강원도', sigugun: '8대전광역시', codeNm: '양양군' },
-		{ sido: '충청북도', sigugun: '서울특별시0', codeNm: '청주시' },
-		{ sido: '충청북도', sigugun: '청주시 상당구', codeNm: '청주시 상당구' },
-		{ sido: '충청북도', sigugun: '청주시 서원구', codeNm: '청주시 서원구' },
-		{ sido: '충청북도', sigugun: '청주시 흥덕구', codeNm: '청주시 흥덕구' },
-		{ sido: '충청북도', sigugun: '청주시 청원구', codeNm: '청주시 청원구' },
+		{ sido: '강원도', sigugun: '양양군', codeNm: '양양군' },
+
+		/* 충북 */
+		{ sido: '충청북도', sigugun: '청주시', codeNm: '청주시' },
 		{ sido: '충청북도', sigugun: '충주시', codeNm: '충주시' },
 		{ sido: '충청북도', sigugun: '제천시', codeNm: '제천시' },
 		{ sido: '충청북도', sigugun: '보은군', codeNm: '보은군' },
@@ -189,9 +184,9 @@ export const hangjun = {
 		{ sido: '충청북도', sigugun: '괴산군', codeNm: '괴산군' },
 		{ sido: '충청북도', sigugun: '음성군', codeNm: '음성군' },
 		{ sido: '충청북도', sigugun: '단양군', codeNm: '단양군' },
+
+		/* 충남 */
 		{ sido: '충청남도', sigugun: '천안시', codeNm: '천안시' },
-		{ sido: '충청남도', sigugun: '천안시 동남구', codeNm: '천안시 동남구' },
-		{ sido: '충청남도', sigugun: '천안시 서북구', codeNm: '천안시 서북구' },
 		{ sido: '충청남도', sigugun: '공주시', codeNm: '공주시' },
 		{ sido: '충청남도', sigugun: '보령시', codeNm: '보령시' },
 		{ sido: '충청남도', sigugun: '아산시', codeNm: '아산시' },
@@ -206,13 +201,11 @@ export const hangjun = {
 		{ sido: '충청남도', sigugun: '홍성군', codeNm: '홍성군' },
 		{ sido: '충청남도', sigugun: '예산군', codeNm: '예산군' },
 		{ sido: '충청남도', sigugun: '태안군', codeNm: '태안군' },
+
+		/* 전북 */
 		{ sido: '전라북도', sigugun: '전주시', codeNm: '전주시' },
-		{ sido: '전라북도', sigugun: '전주시 완산구', codeNm: '전주시 완산구' },
-		{ sido: '전라북도', sigugun: '전주시 덕진구', codeNm: '전주시 덕진구' },
-		{ sido: '전라북도', sigugun: '전주시효자출', codeNm: '전주시효자출' },
 		{ sido: '전라북도', sigugun: '군산시', codeNm: '군산시' },
 		{ sido: '전라북도', sigugun: '익산시', codeNm: '익산시' },
-		{ sido: '전라북도', sigugun: '익산시함열출', codeNm: '익산시함열출' },
 		{ sido: '전라북도', sigugun: '정읍시', codeNm: '정읍시' },
 		{ sido: '전라북도', sigugun: '남원시', codeNm: '남원시' },
 		{ sido: '전라북도', sigugun: '김제시', codeNm: '김제시' },
@@ -224,6 +217,8 @@ export const hangjun = {
 		{ sido: '전라북도', sigugun: '순창군', codeNm: '순창군' },
 		{ sido: '전라북도', sigugun: '고창군', codeNm: '고창군' },
 		{ sido: '전라북도', sigugun: '부안군', codeNm: '부안군' },
+
+		/* 전남 */
 		{ sido: '전라남도', sigugun: '목포시', codeNm: '목포시' },
 		{ sido: '전라남도', sigugun: '여수시', codeNm: '여수시' },
 		{ sido: '전라남도', sigugun: '순천시', codeNm: '순천시' },
@@ -246,9 +241,9 @@ export const hangjun = {
 		{ sido: '전라남도', sigugun: '완도군', codeNm: '완도군' },
 		{ sido: '전라남도', sigugun: '진도군', codeNm: '진도군' },
 		{ sido: '전라남도', sigugun: '신안군', codeNm: '신안군' },
+
+		/* 경북 */
 		{ sido: '경상북도', sigugun: '포항시', codeNm: '포항시' },
-		{ sido: '경상북도', sigugun: '포항시 남구', codeNm: '포항시 남구' },
-		{ sido: '경상북도', sigugun: '포항시 북구', codeNm: '포항시 북구' },
 		{ sido: '경상북도', sigugun: '경주시', codeNm: '경주시' },
 		{ sido: '경상북도', sigugun: '김천시', codeNm: '김천시' },
 		{ sido: '경상북도', sigugun: '안동시', codeNm: '안동시' },
@@ -271,34 +266,16 @@ export const hangjun = {
 		{ sido: '경상북도', sigugun: '봉화군', codeNm: '봉화군' },
 		{ sido: '경상북도', sigugun: '울진군', codeNm: '울진군' },
 		{ sido: '경상북도', sigugun: '울릉군', codeNm: '울릉군' },
+
+		/* 경남 */
 		{ sido: '경상남도', sigugun: '창원시', codeNm: '창원시' },
-		{ sido: '경상남도', sigugun: '창원시 의창구', codeNm: '창원시 의창구' },
-		{ sido: '경상남도', sigugun: '창원시 성산구', codeNm: '창원시 성산구' },
-		{
-			sido: '경상남도',
-			sigugun: '창원시 마산합포구',
-			codeNm: '창원시 마산합포구',
-		},
-		{
-			sido: '경상남도',
-			sigugun: '창원시 마산회원구',
-			codeNm: '창원시 마산회원구',
-		},
-		{ sido: '경상남도', sigugun: '창원시 진해구', codeNm: '창원시 진해구' },
 		{ sido: '경상남도', sigugun: '진주시', codeNm: '진주시' },
 		{ sido: '경상남도', sigugun: '통영시', codeNm: '통영시' },
 		{ sido: '경상남도', sigugun: '사천시', codeNm: '사천시' },
-		{ sido: '경상남도', sigugun: '사천남양출장', codeNm: '사천남양출장' },
 		{ sido: '경상남도', sigugun: '김해시', codeNm: '김해시' },
-		{ sido: '경상남도', sigugun: '장유출장소', codeNm: '장유출장소' },
 		{ sido: '경상남도', sigugun: '밀양시', codeNm: '밀양시' },
 		{ sido: '경상남도', sigugun: '거제시', codeNm: '거제시' },
 		{ sido: '경상남도', sigugun: '양산시', codeNm: '양산시' },
-		{
-			sido: '경상남도',
-			sigugun: '양산시웅상출장소',
-			codeNm: '양산시웅상출장소',
-		},
 		{ sido: '경상남도', sigugun: '의령군', codeNm: '의령군' },
 		{ sido: '경상남도', sigugun: '함안군', codeNm: '함안군' },
 		{ sido: '경상남도', sigugun: '창녕군', codeNm: '창녕군' },
@@ -309,7 +286,10 @@ export const hangjun = {
 		{ sido: '경상남도', sigugun: '함양군', codeNm: '함양군' },
 		{ sido: '경상남도', sigugun: '거창군', codeNm: '거창군' },
 		{ sido: '경상남도', sigugun: '합천군', codeNm: '합천군' },
+
+		/* 제주 */
 		{ sido: '제주특별자치도', sigugun: '제주시', codeNm: '제주시' },
 		{ sido: '제주특별자치도', sigugun: '서귀포시', codeNm: '서귀포시' },
 	],
 }
+export default hangjun

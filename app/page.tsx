@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import HeadLine from '@/components/common/HeadLine'
 import Footer from '@/components/common/Footer'
 import React, { useState } from 'react'
-import { hangjun } from '@/constants/hangjun'
+import hangjun from '@/constants/hangjun'
 import Image from 'next/image'
 import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
 
@@ -70,9 +70,6 @@ export default function HomePage() {
 							<select
 								className="select"
 								onChange={(e) => setCity(e.target.value)}>
-								<option className="selectOption" value="">
-									{city}
-								</option>
 								{sido.map((el) => (
 									<option key={el.sido} value={el.sido}>
 										{el.codeNm}
@@ -93,9 +90,6 @@ export default function HomePage() {
 							<select
 								className="select"
 								onChange={(e) => setDistrict(e.target.value)}>
-								<option className="selectOption" value="">
-									{district}
-								</option>
 								{sigugun
 									.filter((el) => el.sido === city)
 									.map((el) => (

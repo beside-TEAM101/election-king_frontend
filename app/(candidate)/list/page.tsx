@@ -13,9 +13,9 @@ import variables from '@/styles/variables.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import sampleImage from '@/public/assets/images/profile.png'
-import { hangjun } from '@/constants/hangjun'
 import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
 import { objectToQueryString } from '@/utils/string'
+import hangjun from '@/constants/hangjun'
 import Loading from './loading'
 
 export default function List() {
@@ -78,9 +78,6 @@ export default function List() {
 						onChange={(e) => {
 							handleCityButtonClick(e.target.value)
 						}}>
-						<option className="selectOption" value="">
-							{selectedCity}
-						</option>
 						{sido.map((el) => (
 							<option key={el.sido} value={el.sido}>
 								{el.codeNm}
@@ -104,9 +101,6 @@ export default function List() {
 						onChange={(e) => {
 							handleDistrictButtonClick(e.target.value)
 						}}>
-						<option className="selectOption" value="">
-							{selectedDistrict}
-						</option>
 						{sigugun
 							.filter((el) => el.sido === city)
 							.map((el) => (
