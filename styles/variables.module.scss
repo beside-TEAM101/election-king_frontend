@@ -73,6 +73,8 @@ $BLACK_03: #373a44;
 
 	h1 {
 		@include fontTheme(34px, 700, 24px);
+
+		margin-top: 80px;
 	}
 
 	img {
@@ -89,6 +91,8 @@ $BLACK_03: #373a44;
 	p {
 		@include fontTheme(14px, 600, 12px);
 	}
+
+	margin-top: 30px;
 
 	.dayBox {
 		flex-grow: 1;
@@ -180,8 +184,11 @@ $BLACK_03: #373a44;
 	h1 {
 		@include fontTheme(27px, 600, 20px);
 	}
-	max-height: 700px; /* 임시 최대 높이 설정 */
-	overflow-y: auto; /* 세로 스크롤 표시 */
+
+	ul {
+		max-height: 700px; /* 임시 최대 높이 설정 */
+		overflow-y: auto; /* 세로 스크롤 표시 */
+	}
 }
 
 .borderWrap {

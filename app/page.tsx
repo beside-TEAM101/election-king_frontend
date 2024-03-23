@@ -70,6 +70,9 @@ export default function HomePage() {
 							<select
 								className="select"
 								onChange={(e) => setCity(e.target.value)}>
+								<option className="selectOption" value="">
+									서울특별시
+								</option>
 								{sido.map((el) => (
 									<option key={el.sido} value={el.sido}>
 										{el.codeNm}

@@ -25,19 +25,13 @@ export default function List({
 		party?: string
 	}
 }) {
-	const [city, setCity] = useState('')
-	const [district, setDistrict] = useState('')
+	const [city, setCity] = useState('서울특별시')
+	const [district, setDistrict] = useState('강남구')
 	const { sido, sigugun } = hangjun
 
 	const [candidates, setCandidates] = useState([])
 
-	const {
-		pageIndex = 0,
-		pageSize = 10,
-		type = 'CONGRESS' || 'MAYOR',
-		city = '',
-		district = '',
-	} = params
+	const { pageIndex = 0, pageSize = 10, type = 'CONGRESS' || 'MAYOR' } = params
 
 	// useEffect(() => {
 	// 	async function fetchCandidates() {
