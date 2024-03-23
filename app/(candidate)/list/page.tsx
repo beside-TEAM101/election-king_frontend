@@ -12,6 +12,8 @@ import { hangjun } from '@/constants/hangjun'
 import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
 import { Suspense } from 'react'
 import Loading from './loading'
+// import { useRouter } from 'next/router'
+import { usePathname, useRouter } from 'next/navigation'
 
 export default function List({
 	params,
@@ -20,40 +22,32 @@ export default function List({
 		pageIndex?: number
 		pageSize?: number
 		city?: string
-		type?: any
+		type?: string
 		district?: string
 		party?: string
 	}
 }) {
-	const [city, setCity] = useState('서울특별시')
-	const [district, setDistrict] = useState('강남구')
+	// const router = useRouter()
+	const router = usePathname()
+	const [city, setCity] = useState(params.city || '서울특별시')
+	const [district, setDistrict] = useState(params.district || '강남구')
 	const { sido, sigugun } = hangjun
 
 	const [candidates, setCandidates] = useState([])
 
 	const { pageIndex = 0, pageSize = 10, type = 'CONGRESS' || 'MAYOR' } = params
 
-	// useEffect(() => {
-	// 	async function fetchCandidates() {
-	// 		try {
-	// 			const { data } = await request.get<TListResponse>(
-	// 				`/candidates?pageIndex=${pageIndex}&pageSize=${pageSize}&type=${type}&city=${city}&district=${district}`
-	// 			)
-	// 			setCandidates(data.result) // 후보자 데이터 설정
-	// 		} catch (err) {
-	// 			console.error('오류 발생:', err)
-	// 			notFound()
-	// 		}
-	// 	}
-
-	// 	fetchCandidates()
-	// }, [pageIndex, pageSize, city, district])
-
 	useEffect(() => {
-		fetchData(city, district)
+		fetchData(city, district, pageIndex, pageSize, type)
 	}, [city, district, pageIndex, pageSize, type])
 
-	async function fetchData(city: string, district: string) {
+	async function fetchData(
+		city: string,
+		district: string,
+		pageIndex: number,
+		pageSize: number,
+		type: string
+	) {
 		try {
 			const { data } = await request.get<TListResponse>(
 				`/candidates?pageIndex=${pageIndex}&pageSize=${pageSize}&type=${type}&city=${city}&district=${district}`
@@ -65,15 +59,31 @@ export default function List({
 		}
 	}
 
+	const handleCityButtonClick = (selectedCity: string) => {
+		router.push({
+			pathname: router.pathname,
+			query: { ...router.query, city: selectedCity },
+		})
+	}
+
+	const handleDistrictButtonClick = (selectedDistrict: string) => {
+		router.push({
+			pathname: router.pathname,
+			query: { ...router.query, district: selectedDistrict },
+		})
+	}
+
 	return (
 		<div className={variables.candidateWrap}>
 			<div className={variables.justifCenter}>
 				<div className="noOutline">
 					<select
 						className="select"
+						value={city}
 						onChange={(e) => {
 							const selectedCity = e.target.value
 							setCity(selectedCity)
+							handleCityButtonClick(city)
 						}}>
 						<option className="selectOption" value="">
 							{city}
@@ -97,9 +107,11 @@ export default function List({
 				<div className="noOutline">
 					<select
 						className="select"
+						value={district}
 						onChange={(e) => {
 							const selectedDistrict = e.target.value
 							setDistrict(selectedDistrict)
+							handleDistrictButtonClick(district)
 						}}>
 						<option className="selectOption" value="">
 							{district}

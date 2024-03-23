@@ -11,8 +11,8 @@ import Image from 'next/image'
 import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
 
 export default function HomePage() {
-	const [city, setCity] = useState('')
-	const [district, setDistrict] = useState('')
+	const [city, setCity] = useState('서울특별시')
+	const [district, setDistrict] = useState('강남구')
 	const { sido, sigugun } = hangjun
 
 	const radioItems: { value: string; label: string }[] = [
@@ -25,7 +25,7 @@ export default function HomePage() {
 	const router = useRouter()
 
 	const handleButtonClick = () => {
-		const queryParams = `?pageIndex=0&pageSize=10&type=${value}&city=${city}&district=${district}`
+		const queryParams = `?candidate&pageIndex=0&pageSize=10&type=${value}&city=${city}&district=${district}`
 		router.push(`/list${queryParams}`)
 	}
 
@@ -71,7 +71,7 @@ export default function HomePage() {
 								className="select"
 								onChange={(e) => setCity(e.target.value)}>
 								<option className="selectOption" value="">
-									서울특별시
+									{city}
 								</option>
 								{sido.map((el) => (
 									<option key={el.sido} value={el.sido}>
@@ -94,7 +94,7 @@ export default function HomePage() {
 								className="select"
 								onChange={(e) => setDistrict(e.target.value)}>
 								<option className="selectOption" value="">
-									종로구
+									{district}
 								</option>
 								{sigugun
 									.filter((el) => el.sido === city)
