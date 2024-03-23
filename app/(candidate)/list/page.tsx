@@ -3,12 +3,6 @@
 import React, { Suspense, useState, useEffect } from 'react'
 import request from '@/service/request'
 import { TListResponse } from '@/types/list'
-import {
-	usePathname,
-	useRouter,
-	notFound,
-	useSearchParams,
-} from 'next/navigation'
 import variables from '@/styles/variables.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -16,13 +10,17 @@ import sampleImage from '@/public/assets/images/profile.png'
 import { hangjun } from '@/constants/hangjun'
 import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
 import { objectToQueryString } from '@/utils/string'
+import useRoute from '@/hooks/useRoute'
 import Loading from './loading'
 
 export default function List() {
-	const router = useRouter()
-	const pathname = usePathname()
-	const queries = Object.fromEntries(useSearchParams().entries())
-	const { city, district, type, pageIndex, pageSize } = queries
+	const {
+		router,
+		pathname,
+		queries: { query },
+		notFound,
+	} = useRoute()
+	const { city, district, type, pageIndex, pageSize } = query
 	const [selectedCity, setSelectedCity] = useState(city || '서울특별시')
 	const [selectedDistrict, setSelectedDistrict] = useState(district || '강남구')
 	const { sido, sigugun } = hangjun
@@ -54,14 +52,14 @@ export default function List() {
 	}, [city, district, pageIndex, pageSize, type])
 
 	const handleCityButtonClick = (newCity: string) => {
-		const newQueries = objectToQueryString({ ...queries, city: newCity })
+		const newQueries = objectToQueryString({ ...query, city: newCity })
 		router.push(`${pathname}${newQueries}`)
 		setSelectedCity(newCity)
 	}
 
 	const handleDistrictButtonClick = (newDistrict: string) => {
 		const newQueries = objectToQueryString({
-			...queries,
+			...query,
 			district: newDistrict,
 		})
 		router.push(`${pathname}${newQueries}`)

@@ -332,6 +332,8 @@ $BLACK_03: #373a44;
 
 		span {
 			flex-shrink: 0;
+			max-width: 100%;
+			word-break: break-all;
 		}
 		// span:nth-child(3) {
 		// 	overflow: hidden;
