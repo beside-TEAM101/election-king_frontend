@@ -12,7 +12,7 @@ import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
 
 export default function HomePage() {
 	const [city, setCity] = useState('서울특별시')
-	const [district, setDistrict] = useState('강남구')
+	const [district, setDistrict] = useState('종로구')
 	const { sido, sigugun } = hangjun
 
 	const radioItems: { value: string; label: string }[] = [
@@ -25,7 +25,7 @@ export default function HomePage() {
 	const router = useRouter()
 
 	const handleButtonClick = () => {
-		const queryParams = `?candidate&pageIndex=0&pageSize=10&type=${value}&city=${city}&district=${district}`
+		const queryParams = `?candidate&pageIndex=0&pageSize=50&type=${value}&city=${city}&district=${district}`
 		router.push(`/list${queryParams}`)
 	}
 
