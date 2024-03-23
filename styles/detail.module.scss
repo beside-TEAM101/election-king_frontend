@@ -223,6 +223,11 @@ $BLACK_03: #373a44;
 	&__text {
 		@include fontTheme(20px, 400, 14px, $BLACK_02);
 	}
+	&__empty {
+		padding: 20px 0;
+		@include fontTheme(14px, 500, 12px, $GRAY_08);
+		text-align: center;
+	}
 	&__more {
 		display: flex;
 		justify-content: center;
@@ -337,6 +342,7 @@ $BLACK_03: #373a44;
 			width: 46px;
 			border-radius: 6px;
 			margin: 0 0 11px;
+			font-size: 0;
 		}
 		&_average {
 			@include fontTheme(14px, 700, 12px, #aaaeb7);
