@@ -87,41 +87,33 @@ export default async function Detail({ params }: { params: { id: string } }) {
 					<p className={detailStyle.info__title}>공약</p>
 					<div className={detailStyle.info__content}>
 						<ul className={detailStyle.pledge}>
-							<li>
-								<span>1</span>
-								<p className={detailStyle.pledge__title}>
-									노동 ∙ 일자리를 책임지는 대한민국
+							{detail.promises.length > 0 ? (
+								detail.promises.map((promise) => (
+									<li>
+										<span>{promise.order}</span>
+										<p className={detailStyle.pledge__title}>
+											{promise.category} ∙ {promise.title}
+										</p>
+										<p className={detailStyle.pledge__text}>
+											{promise.content}
+										</p>
+									</li>
+								))
+							) : (
+								<p className={detailStyle.pledge__empty}>
+									공약이 존재하지 않습니다.
 								</p>
-								<p className={detailStyle.pledge__text}>
-									일자리 확대, 국민께 드리는 최고의 선물입니다
-								</p>
-							</li>
-							<li>
-								<span>2</span>
-								<p className={detailStyle.pledge__title}>
-									환경 ∙ 안전하고 건강한 대한민국
-								</p>
-								<p className={detailStyle.pledge__text}>
-									일자리 확대, 국민께 드리는 최고의 선물입니다
-								</p>
-							</li>
-							<li>
-								<span>3</span>
-								<p className={detailStyle.pledge__title}>
-									노동 ∙ 일자리를 책임지는 대한민국
-								</p>
-								<p className={detailStyle.pledge__text}>
-									일자리 확대, 국민께 드리는 최고의 선물입니다
-								</p>
-							</li>
+							)}
 						</ul>
-						<div className={detailStyle.pledge__more}>
-							<button
-								type="button"
-								className={detailStyle.pledge__more__button}>
-								더보기
-							</button>
-						</div>
+						{detail.promises.length > 0 && (
+							<div className={detailStyle.pledge__more}>
+								<button
+									type="button"
+									className={detailStyle.pledge__more__button}>
+									더보기
+								</button>
+							</div>
+						)}
 					</div>
 					<p className={detailStyle.origin}>출처 : 중앙선거관리위원회</p>
 				</section>
@@ -162,12 +154,15 @@ export default async function Detail({ params }: { params: { id: string } }) {
 								<div
 									className={`${detailStyle.participationRate__chart} ${detailStyle.participationRate__chart_average}`}>
 									<strong>
-										{Math.floor(detail.congressActivity.totalAverageTurnout)}%
+										{Math.floor(
+											detail.congressActivity?.totalAverageTurnout ?? 0
+										)}
+										%
 									</strong>
 									<span
 										style={{
 											height: Math.floor(
-												detail.congressActivity.totalAverageTurnout
+												detail.congressActivity?.totalAverageTurnout ?? 0
 											),
 										}}
 										className={`${detailStyle.participationRate__chart__bar} ${detailStyle.participationRate__chart_average_bar}`}>
@@ -179,18 +174,21 @@ export default async function Detail({ params }: { params: { id: string } }) {
 									className={`${detailStyle.participationRate__chart} ${detailStyle.participationRate__chart_candidate}`}>
 									<span className={detailStyle.participationRate__chart_rank}>
 										👑 상위{' '}
-										{Math.floor(detail.congressActivity.turnoutTopPercentile)}%
+										{Math.floor(
+											detail.congressActivity?.turnoutTopPercentile ?? 0
+										)}
+										%
 									</span>
 									<strong>
 										{Math.floor(
-											detail.congressActivity.individualAverageTurnout
+											detail.congressActivity?.individualAverageTurnout ?? 0
 										)}
 										%
 									</strong>
 									<span
 										style={{
 											height: Math.floor(
-												detail.congressActivity.individualAverageTurnout
+												detail.congressActivity?.individualAverageTurnout ?? 0
 											),
 										}}
 										className={`${detailStyle.participationRate__chart__bar} ${detailStyle.participationRate__chart_candidate_bar}`}>

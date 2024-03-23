@@ -19,10 +19,13 @@ import hangjun from '@/constants/hangjun'
 import Loading from './loading'
 
 export default function List() {
-	const router = useRouter()
-	const pathname = usePathname()
-	const queries = Object.fromEntries(useSearchParams().entries())
-	const { city, district, type, pageIndex, pageSize } = queries
+	const {
+		router,
+		pathname,
+		queries: { query },
+		notFound,
+	} = useRoute()
+	const { city, district, type, pageIndex, pageSize } = query
 	const [selectedCity, setSelectedCity] = useState(city || '서울특별시')
 	const [selectedDistrict, setSelectedDistrict] = useState(district || '강남구')
 	const { sido, sigugun } = hangjun
@@ -54,14 +57,14 @@ export default function List() {
 	}, [city, district, pageIndex, pageSize, type])
 
 	const handleCityButtonClick = (newCity: string) => {
-		const newQueries = objectToQueryString({ ...queries, city: newCity })
+		const newQueries = objectToQueryString({ ...query, city: newCity })
 		router.push(`${pathname}${newQueries}`)
 		setSelectedCity(newCity)
 	}
 
 	const handleDistrictButtonClick = (newDistrict: string) => {
 		const newQueries = objectToQueryString({
-			...queries,
+			...query,
 			district: newDistrict,
 		})
 		router.push(`${pathname}${newQueries}`)
