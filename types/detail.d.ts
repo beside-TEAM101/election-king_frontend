@@ -9,10 +9,11 @@ export type TDetailResponse = {
 	imgUrl: string // 후보자 이미지 링크
 	party: string // 정당 명
 	congressActivity: {
-		averageTurnout: number // 의안 투표 참여율
+		totalAverageTurnout: number // 의안 투표 참여율
 		turnoutTopPercentile: number // 의안 투표 참여 상위 백분위 수
 		individualAverageTurnout: number // 개인 의안 투표 참여율
 	}
+	promises: TPledge[]
 }
 
 interface TBillVotingResultResponse {
@@ -29,4 +30,11 @@ export type TVotingList = {
 	billResult: string // 의안 투표 결과(최종) e.g. 원안가결, 수정가결, 폐기 등
 	billUrl: string // 의안정보시스템 의안별 상세 URL
 	vote: '불참' | '반대' | '찬성' | '기권' // e.g. 반대, 찬성, 기권, 불참
+}
+
+type TPledge = {
+	order: number // 공약 순번, 최대 10까지
+	category: string // 공약 분야
+	title: string
+	content: string
 }
