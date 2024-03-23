@@ -16,6 +16,7 @@ import sampleImage from '@/public/assets/images/profile.png'
 import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
 import { objectToQueryString } from '@/utils/string'
 import hangjun from '@/constants/hangjun'
+import useRoute from '@/hooks/useRoute'
 import Loading from './loading'
 
 export default function List() {
