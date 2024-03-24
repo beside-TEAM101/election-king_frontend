@@ -6,6 +6,7 @@ import Tooltips from '@/components/detail/Tooltips'
 import TabMenu from '@/components/detail/TabMenu'
 import { getBillVotingResults, getDetail } from '@/service/detail'
 import BillVotingList from '@/components/detail/BillVotingList'
+import Image from 'next/image'
 
 export default async function Detail({ params }: { params: { id: string } }) {
 	const [{ value: detail }, { value: billVoteList }] =
@@ -26,7 +27,7 @@ export default async function Detail({ params }: { params: { id: string } }) {
 			<div className={detailStyle.preview}>
 				<div className={detailStyle.preview__layer}>
 					<span className={detailStyle.preview__img}>
-						<img src={detail.imgUrl} alt="" />
+						<Image src={detail.imgUrl} alt="" width={64} height={64} />
 					</span>
 				</div>
 				<p className={detailStyle.preview__name}>{detail.name}</p>
