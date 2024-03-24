@@ -25,7 +25,7 @@ export default function HomePage() {
 	const router = useRouter()
 
 	const handleButtonClick = () => {
-		const queryParams = `?candidate&pageIndex=0&pageSize=50&type=${value}&city=${city}&district=${district}`
+		const queryParams = `?candidates&pageIndex=0&pageSize=50&type=${value}&city=${city}&district=${district}`
 		router.push(`/list${queryParams}`)
 	}
 
