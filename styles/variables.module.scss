@@ -170,6 +170,7 @@ $BLACK_03: #373a44;
 	width: 600px;
 	transform: translateX(-50%);
 
+	z-index: 4;
 	// margin-top: 52px;
 }
 
@@ -216,6 +217,7 @@ $BLACK_03: #373a44;
 	@include justifyPosition(flex-start);
 	@include CardStyle(16px, 16px, 16px, 16px, 8px, $WHITE_04);
 
+	min-width: 272px;
 	gap: 16px;
 
 	&:hover {
@@ -232,8 +234,6 @@ $BLACK_03: #373a44;
 	&__type1 {
 		@extend .borderWrap;
 
-		// border: 5px solid #0a2da6;
-
 		border-width: 5px;
 		border-style: solid;
 		background: linear-gradient(to top, #0a54a6, #0a2da6) border-box;
@@ -245,11 +245,9 @@ $BLACK_03: #373a44;
 	/* 2. 국민의당 */
 	&__type2 {
 		@extend .borderWrap;
-		// border: 5px solid #e60303;
 		border-width: 5px;
 		border-style: solid;
 		background: linear-gradient(to top, #fc3939, #e60303);
-		// border-image: linear-gradient(to top, #fc3939, #e60303) border-box;
 		border-image: url('/public/assets/images/profile.png');
 	}
 
@@ -262,7 +260,6 @@ $BLACK_03: #373a44;
 		border-style: solid;
 		background: linear-gradient(to top, #ffac66, #ff8319);
 
-		// border-image: linear-gradient(to top, #ffac66, #ff8319) border-box;
 		border-image: url('/public/assets/images/profile.png');
 	}
 
@@ -274,7 +271,6 @@ $BLACK_03: #373a44;
 		border-width: 5px;
 		border-style: solid;
 		background: linear-gradient(to top, #fcd271, #fabb26);
-		// border-image: linear-gradient(to top, #fcd271, #fabb26) border-box;
 
 		border-image: url('/public/assets/images/profile.png');
 	}
@@ -287,7 +283,6 @@ $BLACK_03: #373a44;
 		border-width: 5px;
 		border-style: solid;
 		background: linear-gradient(to top, #e5f6f6, #84d3d8);
-		// border-image: linear-gradient(to top, #e5f6f6, #84d3d8) border-box;
 	}
 
 	/* 6. 조국신당 */
@@ -298,19 +293,16 @@ $BLACK_03: #373a44;
 		border-width: 5px;
 		border-style: solid;
 		background: linear-gradient(to top, #e5f6f6, #0080d5);
-		// border-image: linear-gradient(to top, #e5f6f6, #0080d5) border-box;
 	}
 
 	/* 무소속 */
 	&__type7 {
 		@extend .borderWrap;
-		// border: 5px solid #65666c;
 
 		border-width: 5px;
 		border-style: solid;
 
 		background: linear-gradient(to top, #ccccd5, #65666c) border-box;
-		// border-image: linear-gradient(#ccccd5, #65666c) border-box;
 	}
 
 	&__info {
@@ -462,7 +454,7 @@ $BLACK_03: #373a44;
 
 	border-radius: 6px;
 	@include justifyPosition(center);
-	@include fontTheme(17px, 600, 14px, $GRAY_08);
+	@include fontTheme(17px, 600, 20px, $GRAY_08);
 }
 
 // 후보자리스트 select
