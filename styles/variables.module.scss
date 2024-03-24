@@ -203,13 +203,7 @@ $BLACK_03: #373a44;
 
 	flex-grow: 10%;
 
-	// test
-	width: 38px;
-	height: 38px;
-
-	// border: 5px solid red;
 	border-radius: 50%;
-
 	border-image: url('/public/assets/images/profile.png');
 }
 
@@ -227,7 +221,7 @@ $BLACK_03: #373a44;
 	&__img {
 		@extend .borderWrap;
 
-		border: 5px solid red;
+		width: fit-content;
 	}
 
 	/* 1. 더불어민주당 */
