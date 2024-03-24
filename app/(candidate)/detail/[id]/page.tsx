@@ -81,8 +81,7 @@ export default async function Detail({ params }: { params: { id: string } }) {
 								<Link
 									href={detail.convictionDetailUrl}
 									target="_blank"
-									className={detailStyle.conviction__downloadLink}
-									download>
+									className={detailStyle.conviction__downloadLink}>
 									전과기록 증명서 보기
 								</Link>
 							)}

@@ -9,7 +9,6 @@ import useRoute from '@/hooks/useRoute'
 
 function Header() {
 	const { router, pathname } = useRoute()
-	console.log('pathname', pathname)
 	const goBack = () => {
 		if (pathname === '/list') {
 			router.push('/')
@@ -20,10 +19,7 @@ function Header() {
 	}
 	return (
 		<div className={variables.header}>
-			<button
-				type="button"
-				onClick={goBack}
-				href={`${pathname === '/list' ? '/' : '/list'}`}>
+			<button type="button" onClick={goBack}>
 				<Image src={goBackBtn} alt="뒤로가기 아이콘" width={24} height={24} />
 			</button>
 			<Link href="/">
