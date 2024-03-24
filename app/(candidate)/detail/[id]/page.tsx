@@ -27,7 +27,13 @@ export default async function Detail({ params }: { params: { id: string } }) {
 			<div className={detailStyle.preview}>
 				<div className={detailStyle.preview__layer}>
 					<span className={detailStyle.preview__img}>
-						<Image src={detail.imgUrl} alt="" width={64} height={64} />
+						<Image
+							src={detail.imgUrl}
+							alt=""
+							width={64}
+							height={64}
+							loading="eager"
+						/>
 					</span>
 				</div>
 				<p className={detailStyle.preview__name}>{detail.name}</p>

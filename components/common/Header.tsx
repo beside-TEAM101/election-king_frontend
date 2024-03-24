@@ -5,13 +5,27 @@ import goBackBtn from '@/public/assets/icons/back-arrow.svg'
 import goMainBtn from '@/public/assets/icons/home.svg'
 import variables from '@/styles/variables.module.scss'
 import Link from 'next/link'
+import useRoute from '@/hooks/useRoute'
 
 function Header() {
+	const { router, pathname } = useRoute()
+	console.log('pathname', pathname)
+	const goBack = () => {
+		if (pathname === '/list') {
+			router.push('/')
+			return
+		}
+
+		router.back()
+	}
 	return (
 		<div className={variables.header}>
-			<Link href="/">
+			<button
+				type="button"
+				onClick={goBack}
+				href={`${pathname === '/list' ? '/' : '/list'}`}>
 				<Image src={goBackBtn} alt="뒤로가기 아이콘" width={24} height={24} />
-			</Link>
+			</button>
 			<Link href="/">
 				<Image
 					src={goMainBtn}
