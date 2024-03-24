@@ -150,7 +150,7 @@ $BLACK_03: #373a44;
 }
 
 .mainButton {
-	@include CardStyle(13px, auto, 13px, auto, 4px, #3284fc);
+	@include CardStyle(13px, 0, 13px, 0, 4px, #3284fc);
 	@include fontTheme(17px, 500, 15px, $WHITE_01);
 
 	width: 100%;
