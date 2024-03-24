@@ -1,14 +1,10 @@
 'use client'
 
+/* eslint-disable no-nested-ternary */
+
 import React, { Suspense, useState, useEffect } from 'react'
 import request from '@/service/request'
 import { TListResponse } from '@/types/list'
-import {
-	usePathname,
-	useRouter,
-	notFound,
-	useSearchParams,
-} from 'next/navigation'
 import variables from '@/styles/variables.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
