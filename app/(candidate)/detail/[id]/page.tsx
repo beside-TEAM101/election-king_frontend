@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-import { TDetailResponse } from '@/types/detail'
+import { TBillVotingResultResponse } from '@/types/detail'
 import detailStyle from '@/styles/detail.module.scss'
 import Link from 'next/link'
 import Tooltips from '@/components/detail/Tooltips'
@@ -9,17 +9,19 @@ import BillVotingList from '@/components/detail/BillVotingList'
 import Image from 'next/image'
 
 export default async function Detail({ params }: { params: { id: string } }) {
-	const [{ value: detail }, { value: billVoteList }] =
-		(await Promise.allSettled<TDetailResponse>([
-			getDetail(params.id),
-			getBillVotingResults({
-				pageIndex: 0,
-				pageSize: 10,
-			}),
-		])) as any
+	let billVoteList: TBillVotingResultResponse
+	const detail = await getDetail(params.id)
 
 	if (!detail) {
 		return <div className={detailStyle.notfound}>후보자 정보가 없습니다.</div>
+	}
+
+	if (detail.monaCode) {
+		billVoteList = await getBillVotingResults({
+			pageIndex: 0,
+			pageSize: 10,
+			monaCode: detail.monaCode,
+		})
 	}
 
 	return (
@@ -28,7 +30,7 @@ export default async function Detail({ params }: { params: { id: string } }) {
 				<div className={detailStyle.preview__layer}>
 					<span className={detailStyle.preview__img}>
 						<Image
-							src={detail.imgUrl}
+							src={detail?.imgUrl}
 							alt=""
 							width={64}
 							height={64}
@@ -36,16 +38,16 @@ export default async function Detail({ params }: { params: { id: string } }) {
 						/>
 					</span>
 				</div>
-				<p className={detailStyle.preview__name}>{detail.name}</p>
+				<p className={detailStyle.preview__name}>{detail?.name}</p>
 				<div className={detailStyle.info}>
 					<p className={detailStyle.info__title}>한줄요약</p>
 					<div className={detailStyle.info__content}>
 						<p className={detailStyle.summary}>
-							전과 기록이 <strong>{detail.conviction ?? 0}건</strong> 있어요
-							{/* 전과 기록이 <strong>{detail.conviction}건</strong> 있고, 회의
+							전과 기록이 <strong>{detail?.conviction ?? 0}건</strong> 있어요
+							{/* 전과 기록이 <strong>{detail?.conviction}건</strong> 있고, 회의
 							출석률이{' '}
 							<strong>
-								{Math.ceil(detail.congressActivity.averageTurnout ?? 0)}%
+								{Math.ceil(detail?.congressActivity.averageTurnout ?? 0)}%
 							</strong>
 							에요. */}
 						</p>
@@ -60,12 +62,12 @@ export default async function Detail({ params }: { params: { id: string } }) {
 						<div className={detailStyle.profile}>
 							<p className={detailStyle.profile__title}>기본 정보</p>
 							<p className={detailStyle.profile__text}>
-								{detail.party} ∙ {detail.age}세 ∙ {detail.job}
+								{detail?.party} ∙ {detail?.age}세 ∙ {detail?.job}
 							</p>
 						</div>
 						<div className={detailStyle.profile}>
 							<p className={detailStyle.profile__title}>학력</p>
-							<p className={detailStyle.profile__text}>{detail.education}</p>
+							<p className={detailStyle.profile__text}>{detail?.education}</p>
 						</div>
 					</div>
 					<p className={detailStyle.origin}>출처 : 중앙선거관리위원회</p>
@@ -75,11 +77,11 @@ export default async function Detail({ params }: { params: { id: string } }) {
 					<div className={detailStyle.info__content}>
 						<div className={detailStyle.conviction}>
 							<p className={detailStyle.conviction__text}>
-								전과 기록이 <strong>{detail.conviction ?? 0}건</strong> 있어요
+								전과 기록이 <strong>{detail?.conviction ?? 0}건</strong> 있어요
 							</p>
-							{detail.convictionDetailUrl && (
+							{detail?.convictionDetailUrl && (
 								<Link
-									href={detail.convictionDetailUrl}
+									href={detail?.convictionDetailUrl}
 									target="_blank"
 									className={detailStyle.conviction__downloadLink}>
 									전과기록 증명서 보기
@@ -93,8 +95,8 @@ export default async function Detail({ params }: { params: { id: string } }) {
 					<p className={detailStyle.info__title}>공약</p>
 					<div className={detailStyle.info__content}>
 						<ul className={detailStyle.pledge}>
-							{detail.promises.length > 0 ? (
-								detail.promises.map((promise) => (
+							{detail?.promises.length > 0 ? (
+								detail?.promises.map((promise) => (
 									<li>
 										<span>{promise.order}</span>
 										<p className={detailStyle.pledge__title}>
@@ -111,7 +113,7 @@ export default async function Detail({ params }: { params: { id: string } }) {
 								</p>
 							)}
 						</ul>
-						{detail.promises.length > 0 && (
+						{detail?.promises.length > 0 && (
 							<div className={detailStyle.pledge__more}>
 								<button
 									type="button"
@@ -132,9 +134,9 @@ export default async function Detail({ params }: { params: { id: string } }) {
 						/>
 					</p>
 					<div className={detailStyle.info__content}>
-						{billVoteList.totalCount > 0 ? (
+						{billVoteList?.totalCount > 0 ? (
 							<BillVotingList
-								candidateName={detail.name}
+								candidateName={detail?.name}
 								billVoteList={billVoteList}
 							/>
 						) : (
@@ -161,14 +163,14 @@ export default async function Detail({ params }: { params: { id: string } }) {
 									className={`${detailStyle.participationRate__chart} ${detailStyle.participationRate__chart_average}`}>
 									<strong>
 										{Math.floor(
-											detail.congressActivity?.totalAverageTurnout ?? 0
+											detail?.congressActivity?.totalAverageTurnout ?? 0
 										)}
 										%
 									</strong>
 									<span
 										style={{
 											height: Math.floor(
-												detail.congressActivity?.totalAverageTurnout ?? 0
+												detail?.congressActivity?.totalAverageTurnout ?? 0
 											),
 										}}
 										className={`${detailStyle.participationRate__chart__bar} ${detailStyle.participationRate__chart_average_bar}`}>
@@ -181,20 +183,20 @@ export default async function Detail({ params }: { params: { id: string } }) {
 									<span className={detailStyle.participationRate__chart_rank}>
 										👑 상위{' '}
 										{Math.floor(
-											detail.congressActivity?.turnoutTopPercentile ?? 0
+											detail?.congressActivity?.turnoutTopPercentile ?? 0
 										)}
 										%
 									</span>
 									<strong>
 										{Math.floor(
-											detail.congressActivity?.individualAverageTurnout ?? 0
+											detail?.congressActivity?.individualAverageTurnout ?? 0
 										)}
 										%
 									</strong>
 									<span
 										style={{
 											height: Math.floor(
-												detail.congressActivity?.individualAverageTurnout ?? 0
+												detail?.congressActivity?.individualAverageTurnout ?? 0
 											),
 										}}
 										className={`${detailStyle.participationRate__chart__bar} ${detailStyle.participationRate__chart_candidate_bar}`}>

@@ -201,10 +201,9 @@ $BLACK_03: #373a44;
 .borderWrap {
 	@include justifyPosition(center);
 
-	flex-grow: 10%;
-
 	border-radius: 50%;
 	border-image: url('/public/assets/images/profile.png');
+	object-fit: cover;
 }
 
 .candidateCard {
@@ -220,8 +219,6 @@ $BLACK_03: #373a44;
 
 	&__img {
 		@extend .borderWrap;
-
-		width: fit-content;
 	}
 
 	/* 1. 더불어민주당 */

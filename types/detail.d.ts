@@ -14,6 +14,7 @@ export type TDetailResponse = {
 		individualAverageTurnout: number // 개인 의안 투표 참여율
 	}
 	promises: TPledge[]
+	monaCode: string
 }
 
 interface TBillVotingResultResponse {

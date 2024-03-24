@@ -1,11 +1,32 @@
 import type { Metadata } from 'next'
-import PreFont from 'next/font/local'
+import localFont from 'next/font/local'
 import '@/styles/globals.css'
 import variables from '@/styles/variables.module.scss'
+import { Suspense } from 'react'
 
-const pretendard = PreFont({
-	src: '../public/assets/fonts/Pretendard-Regular.woff2',
-	display: 'swap',
+const pretendard = localFont({
+	src: [
+		{
+			path: '../public/assets/fonts/Pretendard-Regular.woff2',
+			weight: '400',
+			style: 'normal',
+		},
+		{
+			path: '../public/assets/fonts/Pretendard-Medium.woff2',
+			weight: '500',
+			style: 'normal',
+		},
+		{
+			path: '../public/assets/fonts/Pretendard-SemiBold.woff2',
+			weight: '600',
+			style: 'normal',
+		},
+		{
+			path: '../public/assets/fonts/Pretendard-Bold.woff2',
+			weight: '700',
+			style: 'normal',
+		},
+	],
 })
 
 export const metadata: Metadata = {
@@ -21,9 +42,10 @@ export default function RootLayout({
 	return (
 		<html lang="ko">
 			<body>
-				<div className={`${variables.container} ${pretendard.className}`}>
-					{/* <Header /> */}
-					<main>{children}</main>
+				<div className={`${pretendard.className} ${variables.container}`}>
+					<main>
+						<Suspense>{children}</Suspense>
+					</main>
 				</div>
 			</body>
 		</html>

@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 import { objectToQueryString } from '@/utils/string'
-import { TDetailResponse } from '@/types/detail'
+import { TBillVotingResultResponse, TDetailResponse } from '@/types/detail'
 import { notFound } from 'next/navigation'
 import request from './request'
 
@@ -8,7 +8,7 @@ export const getBillVotingResults = async (quries: {
 	[key: string | number]: any
 }) => {
 	try {
-		const { data } = await request.get(
+		const { data } = await request.get<TBillVotingResultResponse>(
 			`/billvotes${objectToQueryString(quries)}`
 		)
 		return data

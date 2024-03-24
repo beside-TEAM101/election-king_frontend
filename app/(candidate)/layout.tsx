@@ -1,4 +1,6 @@
 import Header from '@/components/common/Header'
+import Loading from '@/components/common/loading'
+import { Suspense } from 'react'
 
 export default function CandidateLayout({
 	children,
@@ -8,7 +10,7 @@ export default function CandidateLayout({
 	return (
 		<>
 			<Header />
-			{children}
+			<Suspense fallback={<Loading />}>{children}</Suspense>
 		</>
 	)
 }
