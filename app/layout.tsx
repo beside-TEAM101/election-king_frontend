@@ -9,7 +9,7 @@ const pretendard = PreFont({
 })
 
 export const metadata: Metadata = {
-	title: '선거왕',
+	title: '뽑기왕',
 	description: '유권자들이 후보자들의 정보를 간편 조회할 수 있는 서비스',
 }
 
