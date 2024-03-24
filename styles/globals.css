@@ -112,68 +112,6 @@ button:hover {
 	opacity: 0.8 !important;
 }
 
-[type='radio'],
-label {
-	cursor: pointer;
-}
-
-.radio {
-	display: inline-block;
-	vertical-align: middle;
-	position: relative;
-	padding-left: 32px;
-	padding-top: 9px;
-}
-
-.radio + .radio {
-	margin-left: 20px;
-}
-
-.radio input[type='radio'] {
-	display: none;
-	align-items: center;
-}
-
-.radio span {
-	position: absolute;
-	top: 7px;
-	left: 0;
-	height: 24px;
-	width: 24px;
-
-	display: block;
-
-	border-radius: 50%;
-	border: 2.8px solid #b1bcd0;
-}
-
-.radio span:after {
-	content: '';
-
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	height: 12px;
-	width: 12px;
-
-	display: block;
-
-	transform: translate(-50%, -50%) scale(0);
-	transition: 200ms ease-in-out 0s;
-
-	border-radius: 50%;
-
-	background-color: #3284fc;
-}
-
-.radio input[type='radio']:checked ~ span:after {
-	transform: translate(-50%, -50%) scale(1);
-}
-
-.radio input[type='radio']:checked ~ span {
-	border: 2.8px solid #3284fc;
-}
-
 ::-webkit-scrollbar {
 	width: 0;
 	height: 0;

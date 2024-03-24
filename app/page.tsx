@@ -15,17 +15,10 @@ export default function HomePage() {
 	const [district, setDistrict] = useState('종로구')
 	const { sido, sigugun } = hangjun
 
-	const radioItems: { value: string; label: string }[] = [
-		{ value: 'CONGRESS', label: '국회의원 선거' },
-		{ value: 'MAYOR', label: '지자체장 선거' },
-	]
-
-	const [value, setValue] = useState<string | null>('CONGRESS')
-
 	const router = useRouter()
 
 	const handleButtonClick = () => {
-		const queryParams = `?candidates&pageIndex=0&pageSize=50&type=${value}&city=${city}&district=${district}`
+		const queryParams = `?candidates&pageIndex=0&pageSize=50&type=CONGRESS&city=${city}&district=${district}`
 		router.push(`/list${queryParams}`)
 	}
 
@@ -109,30 +102,6 @@ export default function HomePage() {
 						</div>
 					</div>
 				</div>
-				<div className={variables.searchOptions__box}>
-					<h3>어떤 선거후보를 찾으세요?</h3>
-					<div className={variables.searchOptions__radioGroup}>
-						{radioItems.map((item) => (
-							<div
-								key={item.value}
-								className={variables.searchOptions__radioGroup}>
-								<div className="radio">
-									<input
-										name="test1"
-										type="radio"
-										value={item.value}
-										id={item.value}
-										checked={value === item.value}
-										onChange={(e) => setValue(e.target.value)}
-									/>
-									<label htmlFor={item.value}>{item.label}</label>
-									<span />
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
-
 				<button
 					type="button"
 					className={variables.mainButton}
