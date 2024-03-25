@@ -144,7 +144,7 @@ export default function List() {
 														className={
 															candidate.party === '더불어민주당'
 																? `${variables.candidateCard__type1}`
-																: candidate.party === '국민의당'
+																: candidate.party === '국민의힘'
 																	? `${variables.candidateCard__type2}`
 																	: candidate.party === '개혁신당'
 																		? `${variables.candidateCard__type3}`
