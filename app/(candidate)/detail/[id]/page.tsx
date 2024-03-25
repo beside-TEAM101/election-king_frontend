@@ -158,53 +158,60 @@ export default async function Detail({ params }: { params: { id: string } }) {
 					</p>
 					<div className={detailStyle.info__content}>
 						<div className={detailStyle.participationRate}>
-							<div className={detailStyle.participationRate__chartbox}>
-								<div
-									className={`${detailStyle.participationRate__chart} ${detailStyle.participationRate__chart_average}`}>
-									<strong>
-										{Math.floor(
-											detail?.congressActivity?.totalAverageTurnout ?? 0
-										)}
-										%
-									</strong>
-									<span
-										style={{
-											height: Math.floor(
-												detail?.congressActivity?.totalAverageTurnout ?? 0
-											),
-										}}
-										className={`${detailStyle.participationRate__chart__bar} ${detailStyle.participationRate__chart_average_bar}`}>
-										bar
-									</span>
-									<p>평균 투표율</p>
+							{detail && detail.congressActivity ? (
+								<div className={detailStyle.participationRate__chartbox}>
+									<div
+										className={`${detailStyle.participationRate__chart} ${detailStyle.participationRate__chart_average}`}>
+										<strong>
+											{Math.floor(
+												detail.congressActivity.totalAverageTurnout ?? 0
+											)}
+											%
+										</strong>
+										<span
+											style={{
+												height: Math.floor(
+													detail.congressActivity.totalAverageTurnout ?? 0
+												),
+											}}
+											className={`${detailStyle.participationRate__chart__bar} ${detailStyle.participationRate__chart_average_bar}`}>
+											bar
+										</span>
+										<p>평균 투표율</p>
+									</div>
+									<div
+										className={`${detailStyle.participationRate__chart} ${detailStyle.participationRate__chart_candidate}`}>
+										<span className={detailStyle.participationRate__chart_rank}>
+											👑 상위{' '}
+											{Math.floor(
+												detail.congressActivity.turnoutTopPercentile ?? 0
+											)}
+											%
+										</span>
+										<strong>
+											{Math.floor(
+												detail.congressActivity.individualAverageTurnout ?? 0
+											)}
+											%
+										</strong>
+										<span
+											style={{
+												height: Math.floor(
+													detail.congressActivity?.individualAverageTurnout ?? 0
+												),
+											}}
+											className={`${detailStyle.participationRate__chart__bar} ${detailStyle.participationRate__chart_candidate_bar}`}>
+											bar
+										</span>
+										<p>이 후보의 투표율</p>
+									</div>
 								</div>
-								<div
-									className={`${detailStyle.participationRate__chart} ${detailStyle.participationRate__chart_candidate}`}>
-									<span className={detailStyle.participationRate__chart_rank}>
-										👑 상위{' '}
-										{Math.floor(
-											detail?.congressActivity?.turnoutTopPercentile ?? 0
-										)}
-										%
-									</span>
-									<strong>
-										{Math.floor(
-											detail?.congressActivity?.individualAverageTurnout ?? 0
-										)}
-										%
-									</strong>
-									<span
-										style={{
-											height: Math.floor(
-												detail?.congressActivity?.individualAverageTurnout ?? 0
-											),
-										}}
-										className={`${detailStyle.participationRate__chart__bar} ${detailStyle.participationRate__chart_candidate_bar}`}>
-										bar
-									</span>
-									<p>이 후보의 투표율</p>
+							) : (
+								<div className={detailStyle.participationRate_empty}>
+									<strong>투표율 정보가 없습니다</strong>
+									<p>*21대 투표율만 제공합니다.</p>
 								</div>
-							</div>
+							)}
 						</div>
 					</div>
 					<p className={detailStyle.origin}>출처 : 열려라국회, 열린국회정보</p>
