@@ -450,6 +450,9 @@ $BLACK_03: #373a44;
 	@include fontTheme(17px, 600, 20px, $GRAY_08);
 }
 
+.loadingWrap {
+	min-height: 100vh;
+}
 // 후보자리스트 select
 
 @include mobile() {
