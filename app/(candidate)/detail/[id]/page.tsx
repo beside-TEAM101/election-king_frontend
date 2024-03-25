@@ -207,7 +207,7 @@ export default async function Detail({ params }: { params: { id: string } }) {
 							</div>
 						</div>
 					</div>
-					<p className={detailStyle.origin}>출처 : 열려라국회</p>
+					<p className={detailStyle.origin}>출처 : 열려라국회, 열린국회정보</p>
 				</section>
 			</div>
 		</>
