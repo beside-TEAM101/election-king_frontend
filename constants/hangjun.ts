@@ -301,6 +301,7 @@ const hangjun: KoreanLocation = {
 
 		{ no: 9, sido: '경기도', sigugun: '안산시갑', codeNm: '안산시갑' },
 		{ no: 9, sido: '경기도', sigugun: '안산시을', codeNm: '안산시을' },
+		{ no: 9, sido: '경기도', sigugun: '안산시병', codeNm: '안산시병' },
 
 		{ no: 10, sido: '경기도', sigugun: '고양시갑', codeNm: '고양시갑' },
 		{ no: 10, sido: '경기도', sigugun: '고양시을', codeNm: '고양시을' },
