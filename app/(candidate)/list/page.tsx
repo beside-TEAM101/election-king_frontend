@@ -70,7 +70,7 @@ export default function List() {
 
 	return (
 		<div className={variables.candidateWrap}>
-			<div className={variables.justifCenter}>
+			<div className={variables.candidateOptions}>
 				<div className="noOutline">
 					<select
 						className="select"

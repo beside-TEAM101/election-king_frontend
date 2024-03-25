@@ -25,7 +25,7 @@ export default async function Detail({ params }: { params: { id: string } }) {
 	}
 
 	return (
-		<>
+		<div className={detailStyle.container}>
 			<div className={detailStyle.preview}>
 				<div className={detailStyle.preview__layer}>
 					<span className={detailStyle.preview__img}>
@@ -217,6 +217,6 @@ export default async function Detail({ params }: { params: { id: string } }) {
 					<p className={detailStyle.origin}>출처 : 열려라국회, 열린국회정보</p>
 				</section>
 			</div>
-		</>
+		</div>
 	)
 }

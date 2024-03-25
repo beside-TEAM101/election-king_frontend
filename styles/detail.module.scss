@@ -28,6 +28,10 @@ $BLACK_03: #373a44;
 	height: calc(100vh - 60px);
 }
 
+.container {
+	padding: 0 0 50px;
+}
+
 .preview {
 	display: flex;
 	justify-content: center;
@@ -326,7 +330,8 @@ $BLACK_03: #373a44;
 		flex-direction: column;
 		align-items: center;
 		&_rank {
-			padding: 8px 10px 14px;
+			padding: 8px 0 14px;
+			text-align: center;
 			margin: 0 0 8px;
 			background: url('/assets/detail/rank_label.png') -10px -10px no-repeat;
 			background-size: 106px;
