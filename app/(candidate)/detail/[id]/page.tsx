@@ -138,6 +138,7 @@ export default async function Detail({ params }: { params: { id: string } }) {
 							<BillVotingList
 								candidateName={detail?.name}
 								billVoteList={billVoteList}
+								monaCode={detail?.monaCode}
 							/>
 						) : (
 							<div className={detailStyle.voting_empty}>
