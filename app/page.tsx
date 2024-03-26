@@ -1,14 +1,13 @@
 'use client'
 
-import variables from '@/styles/variables.module.scss'
-import home from '@/styles/home.module.scss'
-import { useRouter } from 'next/navigation'
 import HeadLine from '@/components/common/HeadLine'
-import Footer from '@/components/common/Footer'
-import React, { useState } from 'react'
 import hangjun from '@/constants/hangjun'
-import Image from 'next/image'
 import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
+import home from '@/styles/home.module.scss'
+import variables from '@/styles/variables.module.scss'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
 export default function HomePage() {
 	const [city, setCity] = useState('서울특별시')
@@ -109,8 +108,6 @@ export default function HomePage() {
 					후보 조회하기
 				</button>
 			</div>
-
-			<Footer />
 		</div>
 	)
 }

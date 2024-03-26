@@ -1,11 +1,10 @@
 /* eslint-disable consistent-return */
-import { TBillVotingResultResponse } from '@/types/detail'
-import detailStyle from '@/styles/detail.module.scss'
-import Link from 'next/link'
-import Tooltips from '@/components/detail/Tooltips'
-import TabMenu from '@/components/detail/TabMenu'
-import { getBillVotingResults, getDetail } from '@/service/detail'
 import BillVotingList from '@/components/detail/BillVotingList'
+import TabMenu from '@/components/detail/TabMenu'
+import Tooltips from '@/components/detail/Tooltips'
+import { getBillVotingResults, getDetail } from '@/service/detail'
+import detailStyle from '@/styles/detail.module.scss'
+import { TBillVotingResultResponse } from '@/types/detail'
 import Image from 'next/image'
 
 export default async function Detail({ params }: { params: { id: string } }) {

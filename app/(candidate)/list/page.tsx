@@ -2,18 +2,18 @@
 
 /* eslint-disable no-nested-ternary */
 
-import React, { Suspense, useState, useEffect } from 'react'
-import request from '@/service/request'
-import { TListResponse } from '@/types/list'
-import variables from '@/styles/variables.module.scss'
-import Image from 'next/image'
-import Link from 'next/link'
-import sampleImage from '@/public/assets/images/profile.png'
-import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
-import { objectToQueryString } from '@/utils/string'
+import Loading from '@/components/common/loading'
 import hangjun from '@/constants/hangjun'
 import useRoute from '@/hooks/useRoute'
-import Loading from '@/components/common/loading'
+import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
+import sampleImage from '@/public/assets/images/profile.png'
+import request from '@/service/request'
+import variables from '@/styles/variables.module.scss'
+import { TListResponse } from '@/types/list'
+import { objectToQueryString } from '@/utils/string'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Suspense, useEffect, useState } from 'react'
 
 export default function List() {
 	const {

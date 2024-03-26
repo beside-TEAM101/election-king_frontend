@@ -212,7 +212,7 @@ $BLACK_03: #373a44;
 	@include justifyPosition(center);
 
 	border-radius: 50%;
-	border-image: url('/public/assets/images/profile.png');
+	border-image: url('/assets/images/profile.png');
 	object-fit: cover;
 }
 
@@ -240,7 +240,7 @@ $BLACK_03: #373a44;
 		background: linear-gradient(to top, #0a54a6, #0a2da6) border-box;
 		// border-image: linear-gradient(#0a54a6, #0a2da6) border-box;
 
-		border-image: url('/public/assets/images/profile.png');
+		border-image: url('/assets/images/profile.png');
 	}
 
 	/* 2. 국민의힘 */
@@ -249,7 +249,7 @@ $BLACK_03: #373a44;
 		border-width: 5px;
 		border-style: solid;
 		background: linear-gradient(to top, #fc3939, #e60303);
-		border-image: url('/public/assets/images/profile.png');
+		border-image: url('/assets/images/profile.png');
 	}
 
 	/* 3. 개혁신당 */
@@ -261,7 +261,7 @@ $BLACK_03: #373a44;
 		border-style: solid;
 		background: linear-gradient(to top, #ffac66, #ff8319);
 
-		border-image: url('/public/assets/images/profile.png');
+		border-image: url('/assets/images/profile.png');
 	}
 
 	// /* 4. 녹색정의당 */
@@ -273,7 +273,7 @@ $BLACK_03: #373a44;
 		border-style: solid;
 		background: linear-gradient(to top, #fcd271, #fabb26);
 
-		border-image: url('/public/assets/images/profile.png');
+		border-image: url('/assets/images/profile.png');
 	}
 
 	/* 5. 새로운미래 */

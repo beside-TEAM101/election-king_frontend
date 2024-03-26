@@ -6,5 +6,7 @@
 .container {
 	min-height: 100vh;
 	position: relative;
-	padding: 28px 0 100px;
+	padding: 28px 20px 100px;
+	margin: 0 -20px;
+	background: url(/assets/images/footer-character.svg) -10px bottom no-repeat;
 }
