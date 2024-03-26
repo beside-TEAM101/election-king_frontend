@@ -133,6 +133,15 @@ $BLACK_03: #373a44;
 				color: $BLACK_02;
 			}
 		}
+		&__active {
+			&:after {
+				transform: scaleX(1);
+				opacity: 1;
+			}
+			button {
+				color: $BLACK_02;
+			}
+		}
 	}
 	&hover {
 		&:after {
