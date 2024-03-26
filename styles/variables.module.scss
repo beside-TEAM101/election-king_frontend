@@ -241,77 +241,37 @@ $BLACK_03: #373a44;
 
 	/* 1. 더불어민주당 */
 	&__type1 {
-		@extend .borderWrap;
-
-		border-width: 5px;
-		border-style: solid;
-		background: linear-gradient(to top, #0a54a6, #0a2da6) border-box;
-		// border-image: linear-gradient(#0a54a6, #0a2da6) border-box;
-
-		border-image: url('/assets/images/profile.png');
+		@include imageBorder(#5b6ca3, #0a2da6);
 	}
 
 	/* 2. 국민의힘 */
 	&__type2 {
-		@extend .borderWrap;
-		border-width: 5px;
-		border-style: solid;
-		background: linear-gradient(to top, #fc3939, #e60303);
-		border-image: url('/assets/images/profile.png');
+		@include imageBorder(#db6060, #e60303);
 	}
 
 	/* 3. 개혁신당 */
 	&__type3 {
-		@extend .borderWrap;
-		border: 5px solid #ff8319;
-
-		border-width: 5px;
-		border-style: solid;
-		background: linear-gradient(to top, #ffac66, #ff8319);
-
-		border-image: url('/assets/images/profile.png');
+		@include imageBorder(#fcaf6d, #ff8319);
 	}
 
-	// /* 4. 녹색정의당 */
+	/* 4. 녹색정의당 */
 	&__type4 {
-		@extend .borderWrap;
-		border: 5px solid #fabb26;
-
-		border-width: 5px;
-		border-style: solid;
-		background: linear-gradient(to top, #fcd271, #fabb26);
-
-		border-image: url('/assets/images/profile.png');
+		@include imageBorder(#fcd271, #fabb26);
 	}
 
 	/* 5. 새로운미래 */
 	&__type5 {
-		@extend .borderWrap;
-		border: 5px solid #84d3d8;
-
-		border-width: 5px;
-		border-style: solid;
-		background: linear-gradient(to top, #e5f6f6, #84d3d8);
+		@include imageBorder(#e5f6f6, #84d3d8);
 	}
 
 	/* 6. 조국신당 */
 	&__type6 {
-		@extend .borderWrap;
-		border: 5px solid #0080d5;
-
-		border-width: 5px;
-		border-style: solid;
-		background: linear-gradient(to top, #e5f6f6, #0080d5);
+		@include imageBorder(#0a54a6, #0a2da6);
 	}
 
 	/* 무소속 */
 	&__type7 {
-		@extend .borderWrap;
-
-		border-width: 5px;
-		border-style: solid;
-
-		background: linear-gradient(to top, #ccccd5, #65666c) border-box;
+		@include imageBorder(#ccccd5, #65666c);
 	}
 
 	&__info {
