@@ -232,8 +232,11 @@ $BLACK_03: #373a44;
 		opacity: 0.9;
 	}
 
-	&__img {
+	&_thumbnail {
 		@extend .borderWrap;
+		display: inline-block;
+		border-radius: 100%;
+		overflow: hidden;
 	}
 
 	/* 1. 더불어민주당 */

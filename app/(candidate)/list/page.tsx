@@ -137,28 +137,30 @@ export default function List() {
 											key={candidate.name}>
 											<article>
 												{candidate.imgUrl !== null ? (
-													<Image
-														priority
-														width={38}
-														height={38}
-														className={
-															candidate.party === '더불어민주당'
-																? `${variables.candidateCard__type1}`
-																: candidate.party === '국민의힘'
-																	? `${variables.candidateCard__type2}`
-																	: candidate.party === '개혁신당'
-																		? `${variables.candidateCard__type3}`
-																		: candidate.party === '녹색정의당'
-																			? `${variables.candidateCard__type4}`
-																			: candidate.party === '새로운미래'
-																				? `${variables.candidateCard__type5}`
-																				: candidate.party === '조국신당'
-																					? `${variables.candidateCard__type6}`
-																					: `${variables.candidateCard__type7}`
-														}
-														src={candidate.imgUrl}
-														alt={candidate.name}
-													/>
+													<span className={variables.candidateCard_thumbnail}>
+														<Image
+															priority
+															width={38}
+															height={38}
+															className={
+																candidate.party === '더불어민주당'
+																	? `${variables.candidateCard__type1}`
+																	: candidate.party === '국민의힘'
+																		? `${variables.candidateCard__type2}`
+																		: candidate.party === '개혁신당'
+																			? `${variables.candidateCard__type3}`
+																			: candidate.party === '녹색정의당'
+																				? `${variables.candidateCard__type4}`
+																				: candidate.party === '새로운미래'
+																					? `${variables.candidateCard__type5}`
+																					: candidate.party === '조국신당'
+																						? `${variables.candidateCard__type6}`
+																						: `${variables.candidateCard__type7}`
+															}
+															src={candidate.imgUrl}
+															alt={candidate.name}
+														/>
+													</span>
 												) : (
 													<Image
 														src={sampleImage}
