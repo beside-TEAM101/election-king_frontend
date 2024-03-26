@@ -1,11 +1,10 @@
 /* eslint-disable consistent-return */
-import { TBillVotingResultResponse } from '@/types/detail'
-import detailStyle from '@/styles/detail.module.scss'
-import Link from 'next/link'
-import Tooltips from '@/components/detail/Tooltips'
-import TabMenu from '@/components/detail/TabMenu'
-import { getBillVotingResults, getDetail } from '@/service/detail'
 import BillVotingList from '@/components/detail/BillVotingList'
+import TabMenu from '@/components/detail/TabMenu'
+import Tooltips from '@/components/detail/Tooltips'
+import { getBillVotingResults, getDetail } from '@/service/detail'
+import detailStyle from '@/styles/detail.module.scss'
+import { TBillVotingResultResponse } from '@/types/detail'
 import Image from 'next/image'
 
 export default async function Detail({ params }: { params: { id: string } }) {
@@ -25,7 +24,7 @@ export default async function Detail({ params }: { params: { id: string } }) {
 	}
 
 	return (
-		<>
+		<div className={detailStyle.container}>
 			<div className={detailStyle.preview}>
 				<div className={detailStyle.preview__layer}>
 					<span className={detailStyle.preview__img}>
@@ -80,12 +79,13 @@ export default async function Detail({ params }: { params: { id: string } }) {
 								전과 기록이 <strong>{detail?.conviction ?? 0}건</strong> 있어요
 							</p>
 							{detail?.convictionDetailUrl && (
-								<Link
+								<a
 									href={detail?.convictionDetailUrl}
 									target="_blank"
-									className={detailStyle.conviction__downloadLink}>
+									className={detailStyle.conviction__downloadLink}
+									rel="noreferrer">
 									전과기록 증명서 보기
-								</Link>
+								</a>
 							)}
 						</div>
 					</div>
@@ -138,6 +138,7 @@ export default async function Detail({ params }: { params: { id: string } }) {
 							<BillVotingList
 								candidateName={detail?.name}
 								billVoteList={billVoteList}
+								monaCode={detail?.monaCode}
 							/>
 						) : (
 							<div className={detailStyle.voting_empty}>
@@ -158,58 +159,65 @@ export default async function Detail({ params }: { params: { id: string } }) {
 					</p>
 					<div className={detailStyle.info__content}>
 						<div className={detailStyle.participationRate}>
-							<div className={detailStyle.participationRate__chartbox}>
-								<div
-									className={`${detailStyle.participationRate__chart} ${detailStyle.participationRate__chart_average}`}>
-									<strong>
-										{Math.floor(
-											detail?.congressActivity?.totalAverageTurnout ?? 0
-										)}
-										%
-									</strong>
-									<span
-										style={{
-											height: Math.floor(
-												detail?.congressActivity?.totalAverageTurnout ?? 0
-											),
-										}}
-										className={`${detailStyle.participationRate__chart__bar} ${detailStyle.participationRate__chart_average_bar}`}>
-										bar
-									</span>
-									<p>평균 투표율</p>
+							{detail && detail.congressActivity ? (
+								<div className={detailStyle.participationRate__chartbox}>
+									<div
+										className={`${detailStyle.participationRate__chart} ${detailStyle.participationRate__chart_average}`}>
+										<strong>
+											{Math.floor(
+												detail.congressActivity.totalAverageTurnout ?? 0
+											)}
+											%
+										</strong>
+										<span
+											style={{
+												height: Math.floor(
+													detail.congressActivity.totalAverageTurnout ?? 0
+												),
+											}}
+											className={`${detailStyle.participationRate__chart__bar} ${detailStyle.participationRate__chart_average_bar}`}>
+											bar
+										</span>
+										<p>평균 투표율</p>
+									</div>
+									<div
+										className={`${detailStyle.participationRate__chart} ${detailStyle.participationRate__chart_candidate}`}>
+										<span className={detailStyle.participationRate__chart_rank}>
+											👑 상위{' '}
+											{Math.floor(
+												detail.congressActivity.turnoutTopPercentile ?? 0
+											)}
+											%
+										</span>
+										<strong>
+											{Math.floor(
+												detail.congressActivity.individualAverageTurnout ?? 0
+											)}
+											%
+										</strong>
+										<span
+											style={{
+												height: Math.floor(
+													detail.congressActivity?.individualAverageTurnout ?? 0
+												),
+											}}
+											className={`${detailStyle.participationRate__chart__bar} ${detailStyle.participationRate__chart_candidate_bar}`}>
+											bar
+										</span>
+										<p>이 후보의 투표율</p>
+									</div>
 								</div>
-								<div
-									className={`${detailStyle.participationRate__chart} ${detailStyle.participationRate__chart_candidate}`}>
-									<span className={detailStyle.participationRate__chart_rank}>
-										👑 상위{' '}
-										{Math.floor(
-											detail?.congressActivity?.turnoutTopPercentile ?? 0
-										)}
-										%
-									</span>
-									<strong>
-										{Math.floor(
-											detail?.congressActivity?.individualAverageTurnout ?? 0
-										)}
-										%
-									</strong>
-									<span
-										style={{
-											height: Math.floor(
-												detail?.congressActivity?.individualAverageTurnout ?? 0
-											),
-										}}
-										className={`${detailStyle.participationRate__chart__bar} ${detailStyle.participationRate__chart_candidate_bar}`}>
-										bar
-									</span>
-									<p>이 후보의 투표율</p>
+							) : (
+								<div className={detailStyle.participationRate_empty}>
+									<strong>투표율 정보가 없습니다</strong>
+									<p>*21대 투표율만 제공합니다.</p>
 								</div>
-							</div>
+							)}
 						</div>
 					</div>
-					<p className={detailStyle.origin}>출처 : 열려라국회</p>
+					<p className={detailStyle.origin}>출처 : 열려라국회, 열린국회정보</p>
 				</section>
 			</div>
-		</>
+		</div>
 	)
 }

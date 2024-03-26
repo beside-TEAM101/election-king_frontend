@@ -16,7 +16,9 @@ const VOTE_CLASSES = {
 export default function BillVotingList({
 	candidateName,
 	billVoteList,
+	monaCode,
 }: {
+	monaCode?: string
 	candidateName: string
 	billVoteList: TBillVotingResultResponse
 }) {
@@ -31,6 +33,7 @@ export default function BillVotingList({
 			const response = await getBillVotingResults({
 				pageIndex: nextIndex,
 				pageSize: 10,
+				monaCode: monaCode ?? undefined,
 			})
 
 			setList([...list, ...response.result])

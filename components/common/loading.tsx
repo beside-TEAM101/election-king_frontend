@@ -1,3 +1,9 @@
+import variables from '@/styles/variables.module.scss'
+
 export default function Loading() {
-	return <p>Loading...</p>
+	return (
+		<div className={variables.loadingWrap}>
+			<p>Loading...</p>
+		</div>
+	)
 }

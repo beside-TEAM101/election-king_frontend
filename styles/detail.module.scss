@@ -28,6 +28,10 @@ $BLACK_03: #373a44;
 	height: calc(100vh - 60px);
 }
 
+.container {
+	padding: 0 0 50px;
+}
+
 .preview {
 	display: flex;
 	justify-content: center;
@@ -121,6 +125,15 @@ $BLACK_03: #373a44;
 			@include fontTheme(20px, 700, 14px, $GRAY_08);
 		}
 		&:hover {
+			&:after {
+				transform: scaleX(1);
+				opacity: 1;
+			}
+			button {
+				color: $BLACK_02;
+			}
+		}
+		&__active {
 			&:after {
 				transform: scaleX(1);
 				opacity: 1;
@@ -306,7 +319,7 @@ $BLACK_03: #373a44;
 	align-items: center;
 	height: 53px;
 	strong {
-		@include fontTheme(16px, 700, 14px, $GRAY_08);
+		@include fontTheme(16px, 600, 14px, $GRAY_08);
 	}
 	p {
 		margin: 6px 0 0;
@@ -326,7 +339,8 @@ $BLACK_03: #373a44;
 		flex-direction: column;
 		align-items: center;
 		&_rank {
-			padding: 8px 10px 14px;
+			padding: 8px 0 14px;
+			text-align: center;
 			margin: 0 0 8px;
 			background: url('/assets/detail/rank_label.png') -10px -10px no-repeat;
 			background-size: 106px;
@@ -359,6 +373,20 @@ $BLACK_03: #373a44;
 		}
 	}
 }
+.participationRate_empty {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	height: 213px;
+	strong {
+		@include fontTheme(16px, 600, 14px, $GRAY_08);
+	}
+	p {
+		margin: 6px 0 0;
+		@include fontTheme(14px, 500, 12px, $GRAY_08);
+	}
+}
 
 .result {
 	display: inline-block;
@@ -385,11 +413,10 @@ $BLACK_03: #373a44;
 		padding: 0 14px;
 		text-align: left;
 		li {
-			padding: 12px;
 			width: auto;
 		}
 		li + li {
-			margin-left: 0;
+			margin-left: 24px;
 		}
 	}
 }

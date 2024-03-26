@@ -4,9 +4,9 @@
 }
 
 .container {
+	min-height: 100vh;
 	position: relative;
-	height: 100%;
-	padding-bottom: 100px;
-	overflow-y: auto;
-	overflow-x: hidden;
+	padding: 28px 20px 100px;
+	margin: 0 -20px;
+	background: url(/assets/images/footer-character.svg) -10px bottom no-repeat;
 }

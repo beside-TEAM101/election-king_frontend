@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import headLineImage from '@/public/assets/images/headlLine-character.png'
+import headLineImage from '@/public/assets/images/headlLine-character.svg'
 import variables from '@/styles/variables.module.scss'
 
 export default function HeadLine() {
