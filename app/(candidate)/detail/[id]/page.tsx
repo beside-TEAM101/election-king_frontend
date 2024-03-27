@@ -1,20 +1,14 @@
-/* eslint-disable consistent-return */
 import BillVotingList from '@/components/detail/BillVotingList'
+import ProfileImage from '@/components/detail/ProfileImage'
 import TabMenu from '@/components/detail/TabMenu'
 import Tooltips from '@/components/detail/Tooltips'
-import { PARTY_BORDER_COLOR } from '@/constants/party'
 import { getBillVotingResults, getDetail } from '@/service/detail'
 import detailStyle from '@/styles/detail.module.scss'
-import homeStyle from '@/styles/home.module.scss'
-
 import { TBillVotingResultResponse } from '@/types/detail'
-import Image from 'next/image'
 
 export default async function Detail({ params }: { params: { id: string } }) {
 	let billVoteList: TBillVotingResultResponse
 	const detail = await getDetail(params.id)
-
-	let profileBorderColor = ''
 
 	if (!detail) {
 		return <div className={detailStyle.notfound}>후보자 정보가 없습니다.</div>
@@ -31,18 +25,11 @@ export default async function Detail({ params }: { params: { id: string } }) {
 	return (
 		<div className={detailStyle.container}>
 			<div className={detailStyle.preview}>
-				<div className={detailStyle.preview__layer}>
-					<span className={detailStyle.preview__img}>
-						<Image
-							src={detail?.imgUrl}
-							alt={detail.name}
-							width={64}
-							height={64}
-							loading="eager"
-							className={`${PARTY_BORDER_COLOR[detail.party] || PARTY_BORDER_COLOR['무소속']}`}
-						/>
-					</span>
-				</div>
+				<ProfileImage
+					src={detail.imgUrl}
+					alt={detail.name}
+					party={detail.party}
+				/>
 				<p className={detailStyle.preview__name}>{detail?.name}</p>
 				<div className={detailStyle.info}>
 					<p className={detailStyle.info__title}>한줄요약</p>

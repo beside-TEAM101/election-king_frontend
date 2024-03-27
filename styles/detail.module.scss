@@ -41,8 +41,16 @@ $BLACK_03: #373a44;
 		justify-content: center;
 		width: 96px;
 		padding: 48px 0 12px;
-		background: url('/assets/detail/pickup.svg') 0 0 no-repeat;
+		position: relative;
 	}
+	&__handleLayer {
+		display: inline-block;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	// &__handle {
+	// }
 	&__img {
 		display: inline-block;
 		width: 80px;
