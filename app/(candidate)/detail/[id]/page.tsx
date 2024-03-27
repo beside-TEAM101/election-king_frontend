@@ -2,9 +2,10 @@
 import BillVotingList from '@/components/detail/BillVotingList'
 import TabMenu from '@/components/detail/TabMenu'
 import Tooltips from '@/components/detail/Tooltips'
+import { PARTY_BORDER_COLOR } from '@/constants/party'
 import { getBillVotingResults, getDetail } from '@/service/detail'
 import detailStyle from '@/styles/detail.module.scss'
-import commonStyle from '@/styles/home.module.scss'
+import homeStyle from '@/styles/home.module.scss'
 
 import { TBillVotingResultResponse } from '@/types/detail'
 import Image from 'next/image'
@@ -27,22 +28,6 @@ export default async function Detail({ params }: { params: { id: string } }) {
 		})
 	}
 
-	if (detail.party === '더불어민주당') {
-		profileBorderColor = `${commonStyle.type1}`
-	} else if (detail.party === '국민의힘') {
-		profileBorderColor = `${commonStyle.type2}`
-	} else if (detail.party === '개혁신당') {
-		profileBorderColor = `${commonStyle.type3}`
-	} else if (detail.party === '녹색정의당') {
-		profileBorderColor = `${commonStyle.type4}`
-	} else if (detail.party === '새로운미래') {
-		profileBorderColor = `${commonStyle.type5}`
-	} else if (detail.party === '조국신당') {
-		profileBorderColor = `${commonStyle.type6}`
-	} else {
-		profileBorderColor = `${commonStyle.type7}`
-	}
-
 	return (
 		<div className={detailStyle.container}>
 			<div className={detailStyle.preview}>
@@ -54,7 +39,7 @@ export default async function Detail({ params }: { params: { id: string } }) {
 							width={64}
 							height={64}
 							loading="eager"
-							className={`${profileBorderColor}`}
+							className={`${PARTY_BORDER_COLOR[detail.party] || PARTY_BORDER_COLOR['무소속']}`}
 						/>
 					</span>
 				</div>

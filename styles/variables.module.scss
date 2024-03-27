@@ -239,9 +239,6 @@ $BLACK_03: #373a44;
 		overflow: hidden;
 
 		padding-top: 6px;
-
-		img {
-		}
 	}
 
 	&__info {
@@ -265,6 +262,7 @@ $BLACK_03: #373a44;
 			flex-shrink: 0;
 			max-width: 100%;
 			word-break: break-all;
+			color: $BLACK_02;
 		}
 		// span:nth-child(3) {
 		// 	overflow: hidden;

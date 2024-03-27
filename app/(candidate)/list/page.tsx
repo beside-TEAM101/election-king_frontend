@@ -14,7 +14,8 @@ import { objectToQueryString } from '@/utils/string'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Suspense, useEffect, useState } from 'react'
-import commonStyle from '@/styles/home.module.scss'
+import homeStyle from '@/styles/home.module.scss'
+import { PARTY_BORDER_COLOR } from '@/constants/party'
 
 export default function List() {
 	const {
@@ -143,21 +144,7 @@ export default function List() {
 															priority
 															width={38}
 															height={38}
-															className={
-																candidate.party === '더불어민주당'
-																	? `${commonStyle.type1}`
-																	: candidate.party === '국민의힘'
-																		? `${commonStyle.type2}`
-																		: candidate.party === '개혁신당'
-																			? `${commonStyle.type3}`
-																			: candidate.party === '녹색정의당'
-																				? `${commonStyle.type4}`
-																				: candidate.party === '새로운미래'
-																					? `${commonStyle.type5}`
-																					: candidate.party === '조국신당'
-																						? `${commonStyle.type6}`
-																						: `${commonStyle.type7}`
-															}
+															className={`${PARTY_BORDER_COLOR[candidate.party] ?? PARTY_BORDER_COLOR['무소속']}`}
 															src={candidate.imgUrl}
 															alt={candidate.name}
 														/>
