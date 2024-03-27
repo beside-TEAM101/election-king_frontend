@@ -14,6 +14,7 @@ import { objectToQueryString } from '@/utils/string'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Suspense, useEffect, useState } from 'react'
+import commonStyle from '@/styles/home.module.scss'
 
 export default function List() {
 	const {
@@ -144,18 +145,18 @@ export default function List() {
 															height={38}
 															className={
 																candidate.party === '더불어민주당'
-																	? `${variables.candidateCard__type1}`
+																	? `${commonStyle.type1}`
 																	: candidate.party === '국민의힘'
-																		? `${variables.candidateCard__type2}`
+																		? `${commonStyle.type2}`
 																		: candidate.party === '개혁신당'
-																			? `${variables.candidateCard__type3}`
+																			? `${commonStyle.type3}`
 																			: candidate.party === '녹색정의당'
-																				? `${variables.candidateCard__type4}`
+																				? `${commonStyle.type4}`
 																				: candidate.party === '새로운미래'
-																					? `${variables.candidateCard__type5}`
+																					? `${commonStyle.type5}`
 																					: candidate.party === '조국신당'
-																						? `${variables.candidateCard__type6}`
-																						: `${variables.candidateCard__type7}`
+																						? `${commonStyle.type6}`
+																						: `${commonStyle.type7}`
 															}
 															src={candidate.imgUrl}
 															alt={candidate.name}

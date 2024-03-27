@@ -237,41 +237,11 @@ $BLACK_03: #373a44;
 		display: inline-block;
 		border-radius: 100%;
 		overflow: hidden;
-	}
 
-	/* 1. 더불어민주당 */
-	&__type1 {
-		@include imageBorder(#5b6ca3, #0a2da6);
-	}
+		padding-top: 6px;
 
-	/* 2. 국민의힘 */
-	&__type2 {
-		@include imageBorder(#db6060, #e60303);
-	}
-
-	/* 3. 개혁신당 */
-	&__type3 {
-		@include imageBorder(#fcaf6d, #ff8319);
-	}
-
-	/* 4. 녹색정의당 */
-	&__type4 {
-		@include imageBorder(#fcd271, #fabb26);
-	}
-
-	/* 5. 새로운미래 */
-	&__type5 {
-		@include imageBorder(#e5f6f6, #84d3d8);
-	}
-
-	/* 6. 조국신당 */
-	&__type6 {
-		@include imageBorder(#0a54a6, #0a2da6);
-	}
-
-	/* 무소속 */
-	&__type7 {
-		@include imageBorder(#ccccd5, #65666c);
+		img {
+		}
 	}
 
 	&__info {

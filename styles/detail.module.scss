@@ -22,9 +22,8 @@ $BLACK_02: #111111;
 $BLACK_03: #373a44;
 
 .notfound {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	@include justifyPosition(center);
+
 	height: calc(100vh - 60px);
 }
 
@@ -33,24 +32,25 @@ $BLACK_03: #373a44;
 }
 
 .preview {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	@include justifyPosition(center);
+
 	flex-direction: column;
+
 	&__layer {
 		display: flex;
 		justify-content: center;
 		width: 96px;
-		padding: 54px 10px 10px;
-		background: url('/assets/detail/profile_layer.svg') 0 0 no-repeat;
+		padding: 54px 16px 12px 0;
+		background: url('/assets/detail/pickup.svg') 0 0 no-repeat;
 	}
 	&__img {
 		display: inline-block;
-		overflow: hidden;
 		width: 64px;
 		height: 64px;
 		border-radius: 100%;
+
 		img {
+			border-width: 8px;
 			object-fit: cover;
 			width: 100%;
 		}
