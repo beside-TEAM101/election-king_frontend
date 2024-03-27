@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { animated, useSpring } from '@react-spring/web'
 import { PARTY_BORDER_COLOR } from '@/constants/party'
 import detailStyle from '@/styles/detail.module.scss'
-import { pickUpSpring } from '@/utils/spring'
 import { useEffect, useState } from 'react'
 
 export default function ProfileImage({

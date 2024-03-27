@@ -14,7 +14,6 @@ import { objectToQueryString } from '@/utils/string'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Suspense, useEffect, useState } from 'react'
-import homeStyle from '@/styles/home.module.scss'
 import { PARTY_BORDER_COLOR } from '@/constants/party'
 
 export default function List() {
