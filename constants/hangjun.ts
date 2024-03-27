@@ -40,7 +40,6 @@ const hangjun: KoreanLocation = {
 		},
 
 		{ no: 3, sido: '서울특별시', sigugun: '용산구', codeNm: '용산구' },
-		{ no: 4, sido: '서울특별시', sigugun: '성동구', codeNm: '성동구' },
 		{ no: 5, sido: '서울특별시', sigugun: '광진구갑', codeNm: '광진구갑' },
 		{ no: 5, sido: '서울특별시', sigugun: '광진구을', codeNm: '광진구을' },
 		{ no: 6, sido: '서울특별시', sigugun: '동대문구갑', codeNm: '동대문구갑' },
@@ -75,6 +74,7 @@ const hangjun: KoreanLocation = {
 
 		{ no: 16, sido: '서울특별시', sigugun: '강서구갑', codeNm: '강서구갑' },
 		{ no: 16, sido: '서울특별시', sigugun: '강서구을', codeNm: '강서구을' },
+		{ no: 16, sido: '서울특별시', sigugun: '강서구병', codeNm: '강서구병' },
 
 		{ no: 17, sido: '서울특별시', sigugun: '구로구갑', codeNm: '구로구갑' },
 		{ no: 17, sido: '서울특별시', sigugun: '구로구을', codeNm: '구로구을' },
@@ -99,7 +99,7 @@ const hangjun: KoreanLocation = {
 
 		{ no: 24, sido: '서울특별시', sigugun: '송파구갑', codeNm: '송파구갑' },
 		{ no: 24, sido: '서울특별시', sigugun: '송파구을', codeNm: '송파구을' },
-		{ no: 24, sido: '서울특별시', sigugun: '송파구을', codeNm: '송파구병' },
+		{ no: 24, sido: '서울특별시', sigugun: '송파구병', codeNm: '송파구병' },
 
 		{ no: 25, sido: '서울특별시', sigugun: '강동구갑', codeNm: '강동구갑' },
 		{ no: 25, sido: '서울특별시', sigugun: '강동구을', codeNm: '강동구을' },
