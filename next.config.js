@@ -12,6 +12,10 @@ const nextConfig = {
 	images: {
 		domains: ['info.nec.go.kr'],
 	},
+	compiler: {
+		removeConsole:
+			process.env.NODE_ENV === 'production' ? { exclude: ['error'] } : false,
+	},
 }
 
 module.exports = nextConfig
