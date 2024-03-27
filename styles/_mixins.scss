@@ -57,14 +57,11 @@
 	}
 }
 
-@mixin imageBorder($color1, $color2) {
+@mixin imageBorder($color) {
 	@include justifyPosition(center);
 
 	object-fit: cover;
 
 	border-radius: 50%;
-	border-width: 5px;
-	border-style: solid;
-
-	background: linear-gradient(to top, $color1, $color2) border-box;
+	border: 5px solid $color;
 }
