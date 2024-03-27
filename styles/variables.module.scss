@@ -86,10 +86,10 @@ $BLACK_03: #373a44;
 		word-break: keep-all;
 	}
 
-	img {
+	&__imgLayer {
 		position: absolute;
-		top: -28px;
-		right: -20px;
+		top: 0;
+		right: 0;
 	}
 }
 

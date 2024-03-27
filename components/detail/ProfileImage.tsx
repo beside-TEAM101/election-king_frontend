@@ -33,6 +33,7 @@ export default function ProfileImage({
 		config: { duration: 500 },
 		delay: 1000,
 	})
+
 	useEffect(() => {
 		setTimeout(() => {
 			setIsReady(true)
