@@ -32,6 +32,15 @@ const pretendard = localFont({
 export const metadata: Metadata = {
 	title: '뽑기왕',
 	description: '유권자들이 후보자들의 정보를 간편 조회할 수 있는 서비스',
+	openGraph: {
+		type: 'website',
+		title: '뽑기왕',
+		description: '유권자들이 후보자들의 정보를 간편 조회할 수 있는 서비스',
+		images: '/og-image.jpg',
+	},
+	icons: {
+		icon: ['/favicon.ico'],
+	},
 }
 
 export default function RootLayout({
