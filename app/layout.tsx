@@ -1,7 +1,7 @@
-import type { Metadata } from 'next'
-import localFont from 'next/font/local'
 import '@/styles/globals.css'
 import variables from '@/styles/variables.module.scss'
+import type { Metadata } from 'next'
+import localFont from 'next/font/local'
 import { Suspense } from 'react'
 
 const pretendard = localFont({
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 		type: 'website',
 		title: '뽑기왕',
 		description: '유권자들이 후보자들의 정보를 간편 조회할 수 있는 서비스',
-		images: '/og-image.jpg',
+		images: 'https://election-king.team-101.com/og-image.jpg',
 	},
 	icons: {
 		icon: ['/favicon.ico'],
