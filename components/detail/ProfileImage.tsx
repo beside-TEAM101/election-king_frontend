@@ -28,7 +28,7 @@ export default function ProfileImage({
 	const tongs = useSpring({
 		from: { x: 0, y: 0, opacity: 1 },
 		to: async (next) => {
-			await next({ x: 0, y: -60, opacity: 1 })
+			await next({ x: 0, y: -50, opacity: 1 })
 		},
 		config: { duration: 500 },
 		delay: 1000,
