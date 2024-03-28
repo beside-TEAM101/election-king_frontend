@@ -1,9 +1,9 @@
 'use client'
 
-import Image from 'next/image'
-import { animated, useSpring } from '@react-spring/web'
 import { PARTY_BORDER_COLOR } from '@/constants/party'
 import detailStyle from '@/styles/detail.module.scss'
+import { animated, useSpring } from '@react-spring/web'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 export default function ProfileImage({
@@ -43,7 +43,7 @@ export default function ProfileImage({
 	return (
 		<animated.div style={pickUpAll} className={detailStyle.preview__layer}>
 			<animated.span style={tongs} className={detailStyle.preview__handleLayer}>
-				<Image src="/assets/detail/pickup.svg" width={96} height={80} alt="" />
+				<Image src="/assets/detail/pickup.svg" width={96} height={127} alt="" />
 			</animated.span>
 			<span className={detailStyle.preview__img}>
 				<Image
