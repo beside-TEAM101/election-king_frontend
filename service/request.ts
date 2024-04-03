@@ -3,10 +3,19 @@ import axios, {
 	AxiosResponse,
 	InternalAxiosRequestConfig,
 } from 'axios'
+import https from 'https'
 
-const request = axios.create({
+const requestConfig: Record<string, any> = {
 	baseURL: process.env.API_ENTRY,
-})
+}
+
+if (process.env.NODE_ENV !== 'production') {
+	requestConfig.httpsAgent = new https.Agent({
+		rejectUnauthorized: false,
+	})
+}
+
+const request = axios.create(requestConfig)
 
 const onRequest = (
 	config: InternalAxiosRequestConfig

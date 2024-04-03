@@ -6,6 +6,10 @@ const nextConfig = {
 	sassOptions: {
 		includePaths: [path.join(__dirname, 'styles')],
 	},
+	webpack: (config) => {
+		config.resolve.alias.canvas = false
+		return config
+	},
 	env: {
 		API_ENTRY: process.env.API_ENTRY,
 	},

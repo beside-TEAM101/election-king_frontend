@@ -15,6 +15,12 @@ export type TDetailResponse = {
 	}
 	promises: TPledge[]
 	monaCode: string
+	property: number
+	military:
+		| '군복무를 마친사람'
+		| '해당없음(비대상)'
+		| '군복무를 마치지 아니한 사람'
+		| '병적기록이 없는 사람'
 }
 
 interface TBillVotingResultResponse {
