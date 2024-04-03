@@ -5,6 +5,15 @@ import Tooltips from '@/components/detail/Tooltips'
 import { getBillVotingResults, getDetail } from '@/service/detail'
 import detailStyle from '@/styles/detail.module.scss'
 import { TBillVotingResultResponse } from '@/types/detail'
+import { divideNumberToDigits } from '@/utils/number'
+import Link from 'next/link'
+
+const MILITARY = {
+	'군복무를 마친사람': '미필',
+	'해당없음(비대상)': '해당 없음',
+	'군복무를 마치지 아니한 사람': '면제',
+	'병적기록이 없는 사람': '병적 기록 없음',
+}
 
 export default async function Detail({ params }: { params: { id: string } }) {
 	let billVoteList: TBillVotingResultResponse
@@ -21,6 +30,8 @@ export default async function Detail({ params }: { params: { id: string } }) {
 			monaCode: detail.monaCode,
 		})
 	}
+
+	console.log('detail', detail)
 
 	return (
 		<div className={detailStyle.container}>
@@ -65,21 +76,40 @@ export default async function Detail({ params }: { params: { id: string } }) {
 					<p className={detailStyle.origin}>출처 : 중앙선거관리위원회</p>
 				</section>
 				<section id="conviction" className={detailStyle.info}>
-					<p className={detailStyle.info__title}>전과 정보</p>
+					<p className={detailStyle.info__title}>전과·병역 정보</p>
 					<div className={detailStyle.info__content}>
 						<div className={detailStyle.conviction}>
 							<p className={detailStyle.conviction__text}>
 								전과 기록이 <strong>{detail?.conviction ?? 0}건</strong> 있어요
 							</p>
 							{detail?.convictionDetailUrl && (
-								<a
-									href={detail?.convictionDetailUrl}
+								<Link
+									href="/viewer"
 									target="_blank"
 									className={detailStyle.conviction__downloadLink}
 									rel="noreferrer">
 									전과기록 증명서 보기
-								</a>
+								</Link>
 							)}
+							{/* <PDFViewer /> */}
+						</div>
+					</div>
+					<div className={detailStyle.info__content}>
+						<div className={detailStyle.military}>
+							<p className={detailStyle.military__text}>
+								{MILITARY[detail?.military]}
+							</p>
+						</div>
+					</div>
+					<p className={detailStyle.origin}>출처 : 중앙선거관리위원회</p>
+				</section>
+				<section className={detailStyle.info}>
+					<p className={detailStyle.info__title}>재산 정보</p>
+					<div className={detailStyle.info__content}>
+						<div className={detailStyle.property}>
+							<p className={detailStyle.property__text}>
+								{divideNumberToDigits(detail.property)} (천원)
+							</p>
 						</div>
 					</div>
 					<p className={detailStyle.origin}>출처 : 중앙선거관리위원회</p>

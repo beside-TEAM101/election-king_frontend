@@ -209,6 +209,21 @@ $BLACK_03: #373a44;
 		@include fontTheme(20px, 500, 13px, $WHITE_01);
 	}
 }
+.military,
+.property {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
+	&__text {
+		word-break: keep-all;
+		@include fontTheme(20px, 400, 14px, $BLACK_02);
+		strong {
+			font-weight: 700;
+			color: $BLUE_02;
+		}
+	}
+}
 .pledge {
 	li {
 		position: relative;

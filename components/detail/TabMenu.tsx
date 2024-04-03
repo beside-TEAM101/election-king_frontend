@@ -31,7 +31,7 @@ export default function TabMenu() {
 			<li
 				className={`${detailStyle.menu__item} ${isActive === 'conviction' ? detailStyle.menu__item__active : ''}`}>
 				<button type="button" onClick={() => scrollToSection('conviction')}>
-					전과정보
+					전과·병역·재산 정보
 				</button>
 			</li>
 			<li
