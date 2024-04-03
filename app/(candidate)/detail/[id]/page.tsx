@@ -84,14 +84,19 @@ export default async function Detail({ params }: { params: { id: string } }) {
 							</p>
 							{detail?.convictionDetailUrl && (
 								<Link
+									href={detail?.convictionDetailUrl}
+									target="_blank"
+									className={detailStyle.conviction__downloadLink}>
+									전과기록 증명서 보기
+								</Link>
+							)}
+							{/* <Link
 									href="/viewer/1234"
 									target="_blank"
 									className={detailStyle.conviction__downloadLink}
 									rel="noreferrer">
 									전과기록 증명서 보기
-								</Link>
-							)}
-							{/* <PDFViewer /> */}
+								</Link> */}
 						</div>
 					</div>
 					<div className={detailStyle.info__content}>
