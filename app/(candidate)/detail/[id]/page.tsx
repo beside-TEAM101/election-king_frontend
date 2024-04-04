@@ -9,9 +9,9 @@ import { divideNumberToDigits } from '@/utils/number'
 import Link from 'next/link'
 
 const MILITARY = {
-	'군복무를 마친사람': '미필',
+	'군복무를 마친사람': '군필',
 	'해당없음(비대상)': '해당 없음',
-	'군복무를 마치지 아니한 사람': '면제',
+	'군복무를 마치지 아니한 사람': '미필',
 	'병적기록이 없는 사람': '병적 기록 없음',
 }
 
