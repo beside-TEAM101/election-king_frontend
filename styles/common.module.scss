@@ -1,8 +1,5 @@
 @import '../styles/mixins';
 
-@include mobile() {
-}
-
 .container {
 	min-height: 100vh;
 	position: relative;

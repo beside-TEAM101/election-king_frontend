@@ -8,7 +8,8 @@ import useRoute from '@/hooks/useRoute'
 import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
 import sampleImage from '@/public/assets/images/profile.png'
 import request from '@/service/request'
-import variables from '@/styles/variables.module.scss'
+import listStyle from '@/styles/list.module.scss'
+
 import { TListResponse } from '@/types/list'
 import { objectToQueryString } from '@/utils/string'
 import Image from 'next/image'
@@ -70,8 +71,8 @@ export default function List() {
 	}
 
 	return (
-		<div className={variables.candidateWrap}>
-			<div className={variables.candidateOptions}>
+		<div className={listStyle.candidateWrap}>
+			<div className={listStyle.candidateOptions}>
 				<div className="noOutline">
 					<select
 						className="select"
@@ -125,7 +126,7 @@ export default function List() {
 			<section>
 				<Suspense fallback={<Loading />}>
 					{candidates.length === 0 ? (
-						<div className={variables.noData}>
+						<div className={listStyle.noData}>
 							<p>후보자 정보가 없습니다</p>
 						</div>
 					) : (
@@ -134,11 +135,11 @@ export default function List() {
 								<li key={candidate.id}>
 									<Link href={`/detail/${candidate.id}`} key={candidate.name}>
 										<div
-											className={variables.candidateCard}
+											className={listStyle.candidateCard}
 											key={candidate.name}>
 											<article>
 												{candidate.imgUrl !== null ? (
-													<span className={variables.candidateCard_thumbnail}>
+													<span className={listStyle.candidateCard_thumbnail}>
 														<Image
 															priority
 															width={38}
@@ -158,9 +159,9 @@ export default function List() {
 												)}
 											</article>
 
-											<div className={variables.candidateCard__info}>
+											<div className={listStyle.candidateCard__info}>
 												<label htmlFor="name">{candidate.name}</label>
-												<div className={variables.candidateCard__items}>
+												<div className={listStyle.candidateCard__items}>
 													<span>{candidate.party}</span>
 													<span>∙&nbsp;{candidate.age}</span>
 													<span>∙&nbsp;{candidate.job}</span>

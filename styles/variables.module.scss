@@ -1,35 +1,10 @@
 @import '../styles/mixins';
-
-$WHITE_01: #ffffff;
-$WHITE_02: #f1f0f8;
-$WHITE_03: #f5f5f9;
-$WHITE_04: #f3f4f6;
-
-$BLUE_01: #3184ff;
-$BLUE_02: #3284fc;
-
-$GRAY_01: #ccccd5;
-$GRAY_02: #868686;
-$GRAY_03: #7f7f7f;
-$GRAY_04: #444141;
-$GRAY_05: #41444f;
-$GRAY_06: #666666;
-$GRAY_07: #b1bcd0;
-$GRAY_08: #8b949b;
-
-$BLACK_01: #000000;
-$BLACK_02: #111111;
-$BLACK_03: #373a44;
-
-.container {
-	height: 100%;
-}
+@import '../styles/theme';
 
 /* Header start */
 .header {
 	@include justifyPosition(space-between);
 
-	// padding: 16px 12px;
 	padding: 16px 0;
 
 	img {
@@ -45,15 +20,6 @@ $BLACK_03: #373a44;
 /* MainPage start */
 .my-s {
 	margin: 16px auto;
-}
-
-.profileBorderCss {
-	@include justifyPosition(center);
-
-	flex-grow: 10%;
-
-	border: 5px solid red;
-	border-radius: 50%;
 }
 
 .justifCenter {
@@ -187,99 +153,6 @@ $BLACK_03: #373a44;
 	margin-top: 45px;
 }
 
-/* candidateList start */
-.candidateWrap {
-	min-height: calc(100vh - 60px);
-	padding: 0 0 20px;
-	h1 {
-		@include fontTheme(27px, 600, 20px);
-	}
-
-	// CSS 정리 필요
-	ul {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 16px;
-		li {
-			height: 100%;
-			a {
-				display: block;
-				height: 100%;
-				> div {
-					height: 100%;
-				}
-			}
-		}
-	}
-}
-.candidateOptions {
-	display: flex;
-	gap: 8px;
-}
-
-.borderWrap {
-	@include justifyPosition(center);
-
-	border-radius: 50%;
-	border-image: url('/assets/images/profile.png');
-	object-fit: cover;
-}
-
-.candidateCard {
-	@include justifyPosition(flex-start);
-	@include CardStyle(16px, 16px, 16px, 16px, 8px, $WHITE_04);
-
-	min-width: 272px;
-	gap: 16px;
-
-	&:hover {
-		opacity: 0.9;
-	}
-
-	&_thumbnail {
-		@extend .borderWrap;
-		display: inline-block;
-		border-radius: 100%;
-		overflow: hidden;
-
-		padding-top: 6px;
-	}
-
-	&__info {
-		label {
-			@include fontTheme(24px, 600, 16px, $BLACK_02);
-		}
-
-		p {
-			@include fontTheme(20px, 400, 14px, $GRAY_06);
-		}
-	}
-
-	&__items {
-		@include justifyPosition(flex-start);
-		@include fontTheme(20px, 400, 14px, $GRAY_06);
-		flex-wrap: wrap;
-		gap: 4px;
-		margin-top: 2px;
-
-		span {
-			flex-shrink: 0;
-			max-width: 100%;
-			word-break: break-all;
-			color: $BLACK_02;
-		}
-		// span:nth-child(3) {
-		// 	overflow: hidden;
-		// 	text-overflow: ellipsis;
-		// 	white-space: nowrap;
-
-		// 	word-break: break-all;
-		// 	// border: 1px solid red;
-		// }
-	}
-}
-/* candidateList end */
-
 /* common dropdown start */
 .dropdown {
 	// flex-grow: 1;
@@ -381,24 +254,6 @@ $BLACK_03: #373a44;
 }
 /* common dropdown start */
 
-.noData {
-	height: 600px;
-	background-color: #f3f4f6;
-
-	border-radius: 6px;
-	@include justifyPosition(center);
-	@include fontTheme(17px, 600, 20px, $GRAY_08);
-}
-
 .loadingWrap {
 	min-height: 100vh;
-}
-// 후보자리스트 select
-
-@include mobile() {
-	.candidateWrap {
-		ul {
-			grid-template-columns: repeat(1, 1fr);
-		}
-	}
 }

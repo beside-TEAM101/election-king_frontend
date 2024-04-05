@@ -6,28 +6,8 @@
 	justify-content: $jc;
 }
 
-// 사용 중이실 것같아 밑에다 변수명 수정놓겠습니다. 밑에껄로 변경부탁드립니다.
-@mixin EKBorder($bl, $br, $bc) {
-	border: 1px solid $bl;
-	border-radius: $br;
-	background-color: $bc;
-}
-
-// 수정✨
 @mixin BorderStyle($bl, $br, $bc) {
 	border: 1px solid $bl;
-	border-radius: $br;
-	background-color: $bc;
-}
-
-@mixin EKCard($pt: 20px, $pl: 16px, $pb: 20px, $pr: 16px, $br, $bc) {
-	padding-top: $pt;
-	padding-left: $pl;
-	padding-bottom: $pb;
-	padding-right: $pr;
-
-	border: none;
-
 	border-radius: $br;
 	background-color: $bc;
 }

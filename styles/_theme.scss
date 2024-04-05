@@ -18,3 +18,32 @@ $GRAY_08: #8b949b;
 $BLACK_01: #000000;
 $BLACK_02: #111111;
 $BLACK_03: #373a44;
+
+//클래스로 만들어 넣을지 고민 중 일단 keep,
+.headLineBold24 {
+	@include fontTheme(24px, 700, 34px);
+}
+
+.textSemibold20 {
+	@include fontTheme(20px, 600, 20px, $GRAY_05);
+}
+
+.textSemibold15 {
+	@include fontTheme(18px, 600, 15px, $GRAY_05);
+}
+
+.textSemibold14 {
+	@include fontTheme(16.8px, 600, 14px, $GRAY_05);
+}
+
+.textSemibold12 {
+	@include fontTheme(24px, 600, 12px, $GRAY_05);
+}
+
+.textBold34 {
+	@include fontTheme(24px, 700, 34px);
+}
+
+.textLight12 {
+	@include fontTheme(24px, 400, 14px, #666666);
+}

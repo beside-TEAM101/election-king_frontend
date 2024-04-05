@@ -3,7 +3,7 @@
 import HeadLine from '@/components/common/HeadLine'
 import hangjun from '@/constants/hangjun'
 import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
-import homeStyle from '@/styles/home.module.scss'
+import commonStyle from '@/styles/common.module.scss'
 import variables from '@/styles/variables.module.scss'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -31,7 +31,7 @@ export default function HomePage() {
 	const voteDday = Math.ceil(gapDay / (1000 * 60 * 60 * 24))
 
 	return (
-		<div className={homeStyle.container}>
+		<div className={commonStyle.container}>
 			<HeadLine />
 			<div className={variables.dayWrap}>
 				<div className={variables.dayBox}>

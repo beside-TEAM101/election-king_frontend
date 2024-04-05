@@ -1,0 +1,112 @@
+@import '../styles/mixins';
+@import '../styles/theme';
+
+/* candidateList start */
+.candidateWrap {
+	min-height: calc(100vh - 60px);
+	padding: 0 0 20px;
+	h1 {
+		@include fontTheme(27px, 600, 20px);
+	}
+
+	// CSS 정리 필요
+	ul {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 16px;
+		li {
+			height: 100%;
+			a {
+				display: block;
+				height: 100%;
+				> div {
+					height: 100%;
+				}
+			}
+		}
+	}
+}
+.candidateOptions {
+	display: flex;
+	gap: 8px;
+}
+
+.borderWrap {
+	@include justifyPosition(center);
+
+	border-radius: 50%;
+	border-image: url('/assets/images/profile.png');
+	object-fit: cover;
+}
+
+.candidateCard {
+	@include justifyPosition(flex-start);
+	@include CardStyle(16px, 16px, 16px, 16px, 8px, $WHITE_04);
+
+	min-width: 272px;
+	gap: 16px;
+
+	&:hover {
+		opacity: 0.9;
+	}
+
+	&_thumbnail {
+		@extend .borderWrap;
+		display: inline-block;
+		border-radius: 100%;
+		overflow: hidden;
+
+		padding-top: 6px;
+	}
+
+	&__info {
+		label {
+			@include fontTheme(24px, 600, 16px, $BLACK_02);
+		}
+
+		p {
+			@include fontTheme(20px, 400, 14px, $GRAY_06);
+		}
+	}
+
+	&__items {
+		@include justifyPosition(flex-start);
+		@include fontTheme(20px, 400, 14px, $GRAY_06);
+		flex-wrap: wrap;
+		gap: 4px;
+		margin-top: 2px;
+
+		span {
+			flex-shrink: 0;
+			max-width: 100%;
+			word-break: break-all;
+			color: $BLACK_02;
+		}
+		// span:nth-child(3) {
+		// 	overflow: hidden;
+		// 	text-overflow: ellipsis;
+		// 	white-space: nowrap;
+
+		// 	word-break: break-all;
+		// 	// border: 1px solid red;
+		// }
+	}
+}
+/* candidateList end */
+
+.noData {
+	height: 600px;
+	background-color: #f3f4f6;
+
+	border-radius: 6px;
+	@include justifyPosition(center);
+	@include fontTheme(17px, 600, 20px, $GRAY_08);
+}
+
+@include mobile() {
+	.candidateWrap {
+		ul {
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+}
