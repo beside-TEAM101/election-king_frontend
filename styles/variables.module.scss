@@ -127,6 +127,17 @@
 			@include fontTheme(17px, 600, 14px, $BLACK_02);
 		}
 	}
+
+	&__dongWrap {
+		margin-top: 16px;
+		span {
+			@include fontTheme(19px, 700, 13px, #565c60);
+		}
+
+		p {
+			@include fontTheme(19px, 500, 12px, #565c60);
+		}
+	}
 }
 
 .mainButton {
@@ -138,7 +149,7 @@
 	display: flex;
 	justify-content: center;
 
-	margin-top: 42px;
+	margin-top: 20px;
 }
 /* Main end */
 

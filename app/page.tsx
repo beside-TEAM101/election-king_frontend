@@ -11,14 +11,32 @@ import { useState } from 'react'
 
 export default function HomePage() {
 	const [city, setCity] = useState('서울특별시')
-	const [district, setDistrict] = useState('종로구')
-	const { sido, sigugun } = hangjun
+	const [district, setDistrict] = useState('구 선택')
+	const [dong, setDong] = useState('')
+
+	const { sido, sigugun, dongList } = hangjun
 
 	const router = useRouter()
 
 	const handleButtonClick = () => {
 		const queryParams = `?candidates&pageIndex=0&pageSize=50&type=CONGRESS&city=${city}&district=${district}`
 		router.push(`/list${queryParams}`)
+	}
+
+	const handleDistrictChange = (selectedDistrict) => {
+		setDistrict(selectedDistrict)
+		if (selectedDistrict === '구 선택') {
+			setDong('')
+		} else {
+			const selectedDong = dongList.find(
+				(item) => item.codeNm === selectedDistrict
+			)
+			if (selectedDong) {
+				setDong(selectedDong.dong)
+			} else {
+				setDong('')
+			}
+		}
 	}
 
 	const today = new Date()
@@ -81,7 +99,8 @@ export default function HomePage() {
 						<div className="selectBox">
 							<select
 								className="select"
-								onChange={(e) => setDistrict(e.target.value)}>
+								onChange={(e) => handleDistrictChange(e.target.value)}>
+								<option value="구 선택">구 선택</option>
 								{sigugun
 									.filter((el) => el.sido === city)
 									.map((el) => (
@@ -101,6 +120,18 @@ export default function HomePage() {
 						</div>
 					</div>
 				</div>
+
+				{district !== '구 선택' && (
+					<div className={variables.searchOptions__dongWrap}>
+						<span>{district}에 해당하는 지역</span>
+						<p>
+							{dongList
+								.filter((el) => el.sigugun === district && el.sido === city)
+								.map((el) => el.codeNm)
+								.join(', ')}
+						</p>
+					</div>
+				)}
 				<button
 					type="button"
 					className={variables.mainButton}
