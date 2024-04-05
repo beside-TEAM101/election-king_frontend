@@ -29,7 +29,7 @@ export default function HomePage() {
 			setDong('')
 		} else {
 			const selectedDong = dongList.find(
-				(item) => item.codeNm === selectedDistrict
+				(item) => item.dong === selectedDistrict
 			)
 			if (selectedDong) {
 				setDong(selectedDong.dong)
