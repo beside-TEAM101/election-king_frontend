@@ -2,6 +2,7 @@ import '@/styles/globals.css'
 import variables from '@/styles/variables.module.scss'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
+import Script from 'next/script'
 import { Suspense } from 'react'
 
 const pretendard = localFont({
@@ -50,6 +51,28 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="ko">
+			{process.env.NODE_ENV !== 'development' && (
+				<>
+					<Script
+						strategy="afterInteractive"
+						src="https://www.googletagmanager.com/gtag/js?id=G-ZB6EGCJR1V"
+					/>
+					<Script
+						id="gtag-init"
+						strategy="afterInteractive"
+						dangerouslySetInnerHTML={{
+							__html: `
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', 'G-ZB6EGCJR1V', {
+							page_path: window.location.pathname,
+					});
+				`,
+						}}
+					/>
+				</>
+			)}
 			<body>
 				<div className={`${pretendard.className} ${variables.container}`}>
 					<main>

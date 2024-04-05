@@ -12,7 +12,7 @@ import { useState } from 'react'
 export default function HomePage() {
 	const [city, setCity] = useState('서울특별시')
 	const [district, setDistrict] = useState('구 선택')
-	const [dong, setDong] = useState('')
+	const [, setDong] = useState('')
 
 	const { sido, sigugun, dongList } = hangjun
 
