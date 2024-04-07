@@ -16,6 +16,7 @@
 	},
 	"rules": {
 		"react/react-in-jsx-scope": "off",
+		"no-alert": "off",
 		"jsx-a11y/label-has-associated-control": [
 			2,
 			{

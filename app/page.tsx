@@ -19,8 +19,12 @@ export default function HomePage() {
 	const router = useRouter()
 
 	const handleButtonClick = () => {
-		const queryParams = `?candidates&pageIndex=0&pageSize=50&type=CONGRESS&city=${city}&district=${district}`
-		router.push(`/list${queryParams}`)
+		if (district === '구 선택') {
+			alert('지역구를 선택해주세요.')
+		} else if (district !== '구 선택') {
+			const queryParams = `?candidates&pageIndex=0&pageSize=50&type=CONGRESS&city=${city}&district=${district}`
+			router.push(`/list${queryParams}`)
+		}
 	}
 
 	const handleDistrictChange = (selectedDistrict) => {
