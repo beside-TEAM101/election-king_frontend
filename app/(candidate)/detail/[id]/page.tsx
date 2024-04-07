@@ -6,7 +6,6 @@ import { getBillVotingResults, getDetail } from '@/service/detail'
 import detailStyle from '@/styles/detail.module.scss'
 import { TBillVotingResultResponse } from '@/types/detail'
 import { divideNumberToDigits } from '@/utils/number'
-import Link from 'next/link'
 
 const MILITARY = {
 	'군복무를 마친사람': '군필',
