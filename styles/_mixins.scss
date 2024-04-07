@@ -37,6 +37,12 @@
 	}
 }
 
+@mixin top10Size {
+	@media (max-width: 500px) {
+		@content;
+	}
+}
+
 @mixin imageBorder($color) {
 	@include justifyPosition(center);
 

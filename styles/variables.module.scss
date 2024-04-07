@@ -140,6 +140,58 @@
 	}
 }
 
+.top10Box {
+	// overflow: hidden;
+	max-width: 560px;
+	overflow-x: auto;
+	margin-top: 16px;
+	@include CardStyle(7px, 20px, 24px, 20px, 8px, $WHITE_04);
+
+	display: flex;
+	flex-direction: column;
+
+	h2 {
+		@include fontTheme(27px, 600, 20px, $BLACK_02);
+	}
+
+	h3 {
+		margin: 12px auto;
+		@include fontTheme(18px, 600, 15px, $BLACK_02);
+	}
+
+	&__icon {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	&__card {
+		// @include justifyPosition(center);
+		// width: 130px;
+
+		display: flex;
+		gap: 14px;
+		ul {
+			flex-grow: 1;
+			li {
+				// width: 130px;
+
+				padding: 16px 12px 12px 16px;
+				background-color: $WHITE_01;
+				border-radius: 8px;
+			}
+		}
+
+		p {
+			@include fontTheme(14px, 600, 12px, $GRAY_08);
+		}
+
+		img {
+			margin-top: 4px;
+			display: flex;
+		}
+	}
+}
+
 .mainButton {
 	@include CardStyle(13px, 0, 13px, 0, 4px, #3284fc);
 	@include fontTheme(17px, 500, 15px, $WHITE_01);
