@@ -136,12 +136,12 @@
 
 		p {
 			@include fontTheme(19px, 500, 12px, #565c60);
+			margin-bottom: -20px;
 		}
 	}
 }
 
 .top10Box {
-	overflow: hidden;
 	// min-width: 560px;
 	// height: 240px;
 	// overflow-x: scroll;
@@ -165,7 +165,7 @@
 		justify-content: flex-end;
 	}
 
-	height: 240px;
+	min-height: 240px;
 	&__card {
 		max-width: 560px;
 		overflow-x: auto;
@@ -210,7 +210,7 @@
 	display: flex;
 	justify-content: center;
 
-	margin-top: 20px;
+	margin-top: 40px;
 }
 /* Main end */
 
