@@ -25,12 +25,16 @@ function Header() {
 	}
 
 	const handleListShare = async () => {
+		const queryParams = `?candidates&pageIndex=0&pageSize=50&type=CONGRESS&city=${city}&district=${district}`
+		const shareUrl = `${window.location.origin}/list${queryParams}`
+		router.push(`/list${queryParams}`)
+
 		if (isShareSupported) {
 			try {
 				await navigator.share({
 					title: '뽑기왕',
-					text: '뽑아라! 22대 총선, 당신의 한 표로 결과가 바뀐다!',
-					url: `http://localhost:3000/list?candidates=&pageIndex=0&pageSize=50&type=CONGRESS&city=${city}&district=${district}`,
+					text: '',
+					url: shareUrl,
 				})
 				console.log('성공')
 			} catch (e) {
