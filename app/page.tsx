@@ -71,11 +71,15 @@ export default function HomePage() {
 	const today = new Date()
 	const EarlyDday = new Date(2024, 3, 5)
 	const Dday = new Date(2024, 3, 10)
-	const gap = EarlyDday.getTime() - today.getTime()
+	// const gap = EarlyDday.getTime() - today.getTime()
 	const gapDay = Dday.getTime() - today.getTime()
 
-	const EarlyVote = Math.ceil(gap / (1000 * 60 * 60 * 24))
+	// const EarlyVote = Math.ceil(gap / (1000 * 60 * 60 * 24))
 	const voteDday = Math.ceil(gapDay / (1000 * 60 * 60 * 24))
+
+	const EarlyVote = Math.ceil(
+		(today.getTime() - EarlyDday.getTime()) / (1000 * 60 * 60 * 24) - 1
+	)
 
 	return (
 		<div className={commonStyle.container}>
@@ -84,9 +88,9 @@ export default function HomePage() {
 				<div className={variables.dayBox}>
 					<p>사전 투표</p>
 					<div className={variables.dayItem}>
-						{/* <p>D-{EarlyVote}</p> */}
-						<p>4월 5 ~ 6일 ({EarlyVote})</p>
-						{/* <span>4월 5 ~ 6일</span> */}
+						<p>D+{EarlyVote}</p>
+						{/* <p>4월 5 ~ 6일 ({EarlyVote})</p> */}
+						<span>4월 5일</span>
 					</div>
 				</div>
 				<hr />
