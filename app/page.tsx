@@ -6,6 +6,7 @@ import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
 import commonStyle from '@/styles/common.module.scss'
 import variables from '@/styles/variables.module.scss'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
@@ -27,6 +28,30 @@ export default function HomePage() {
 		}
 	}
 
+	const cardList = [
+		{
+			tag: '#철컹철컹',
+			title1: '전과가 ',
+			title2: '가장 많은 후보',
+
+			icon: 'card-item1.svg',
+		},
+		{
+			tag: '#부자',
+			title1: '재산이',
+			title2: '가장 많은 후보',
+
+			icon: 'card-item2.svg',
+		},
+		{
+			tag: '#당돌한MZ',
+			title1: '나이가',
+			title2: '가장 어린 후보',
+
+			icon: 'card-item3.svg',
+		},
+	]
+
 	const handleDistrictChange = (selectedDistrict) => {
 		setDistrict(selectedDistrict)
 		if (selectedDistrict === '구 선택') {
@@ -46,11 +71,15 @@ export default function HomePage() {
 	const today = new Date()
 	const EarlyDday = new Date(2024, 3, 5)
 	const Dday = new Date(2024, 3, 10)
-	const gap = EarlyDday.getTime() - today.getTime()
+	// const gap = EarlyDday.getTime() - today.getTime()
 	const gapDay = Dday.getTime() - today.getTime()
 
-	const EarlyVote = Math.ceil(gap / (1000 * 60 * 60 * 24))
+	// const EarlyVote = Math.ceil(gap / (1000 * 60 * 60 * 24))
 	const voteDday = Math.ceil(gapDay / (1000 * 60 * 60 * 24))
+
+	const EarlyVote = Math.ceil(
+		(today.getTime() - EarlyDday.getTime()) / (1000 * 60 * 60 * 24) - 1
+	)
 
 	return (
 		<div className={commonStyle.container}>
@@ -59,8 +88,9 @@ export default function HomePage() {
 				<div className={variables.dayBox}>
 					<p>사전 투표</p>
 					<div className={variables.dayItem}>
-						<p>D-{EarlyVote}</p>
-						<span>4월 5 ~ 6일</span>
+						<p>D+{EarlyVote}</p>
+						{/* <p>4월 5 ~ 6일 ({EarlyVote})</p> */}
+						<span>4월 5일</span>
 					</div>
 				</div>
 				<hr />
@@ -142,6 +172,40 @@ export default function HomePage() {
 					onClick={handleButtonClick}>
 					후보 조회하기
 				</button>
+			</div>
+
+			{/* TOP10 후보 둘러보기 */}
+
+			<div className={variables.top10Box}>
+				<h2>TOP10 후보 둘러보기 </h2>
+				{district !== '구 선택' && (
+					<div className={variables.top10Box__card}>
+						{cardList.map((item) => (
+							<ul key={item.tag}>
+								<li>
+									<Link href="/">
+										<p>{item.tag}</p>
+										<h3>
+											{item.title1}
+											<br />
+											{item.title2}
+										</h3>
+
+										<div className={variables.top10Box__icon}>
+											<Image
+												width={48}
+												height={48}
+												src={`/assets/icons/${item.icon}`}
+												alt={item.tag}
+												priority
+											/>
+										</div>
+									</Link>
+								</li>
+							</ul>
+						))}
+					</div>
+				)}
 			</div>
 		</div>
 	)
