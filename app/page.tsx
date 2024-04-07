@@ -84,8 +84,9 @@ export default function HomePage() {
 				<div className={variables.dayBox}>
 					<p>사전 투표</p>
 					<div className={variables.dayItem}>
-						<p>D-{EarlyVote}</p>
-						<span>4월 5 ~ 6일</span>
+						{/* <p>D-{EarlyVote}</p> */}
+						<p>4월 5 ~ 6일 ({EarlyVote})</p>
+						{/* <span>4월 5 ~ 6일</span> */}
 					</div>
 				</div>
 				<hr />
@@ -173,34 +174,34 @@ export default function HomePage() {
 
 			<div className={variables.top10Box}>
 				<h2>TOP10 후보 둘러보기 </h2>
+				{district !== '구 선택' && (
+					<div className={variables.top10Box__card}>
+						{cardList.map((item) => (
+							<ul key={item.tag}>
+								<li>
+									<Link href="/">
+										<p>{item.tag}</p>
+										<h3>
+											{item.title1}
+											<br />
+											{item.title2}
+										</h3>
 
-				<div className={variables.top10Box__card}>
-					{cardList.map((item) => (
-						<ul>
-							<li key={item.tag}>
-								<Link href="/">
-									<p>{item.tag}</p>
-									<h3>
-										{item.title1}
-
-										<br />
-										{item.title2}
-									</h3>
-
-									<div className={variables.top10Box__icon}>
-										<Image
-											width={48}
-											height={48}
-											src={`/assets/icons/${item.icon}`}
-											alt={item.tag}
-											priority
-										/>
-									</div>
-								</Link>
-							</li>
-						</ul>
-					))}
-				</div>
+										<div className={variables.top10Box__icon}>
+											<Image
+												width={48}
+												height={48}
+												src={`/assets/icons/${item.icon}`}
+												alt={item.tag}
+												priority
+											/>
+										</div>
+									</Link>
+								</li>
+							</ul>
+						))}
+					</div>
+				)}
 			</div>
 		</div>
 	)
