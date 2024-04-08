@@ -30,7 +30,7 @@ export default function HomePage() {
 	const handleClickTop10 = (sort) => {
 		const queryParams = `?candidates&pageIndex=0&pageSize=10&type=CONGRESS&&sort=${sort}&city=${city}`
 
-		router.push(`/list${queryParams}`)
+		router.push(`/list${queryParams}&top10=true`)
 	}
 
 	const cardList = [

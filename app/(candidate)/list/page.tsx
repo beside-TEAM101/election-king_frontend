@@ -157,35 +157,35 @@ export default function List() {
 				<h1>후보자를 확인해보세요.</h1>
 			)}
 
-			<div className={listStyle.info}>
-				<p>
-					후보자 <span>{candidates.length}명</span>
-				</p>
-				<div className="orderSelect">
-					<select
-						className="order"
-						value={ordering}
-						onChange={(e) => {
-							handleOrderingButtonClick(e.target.value)
-						}}>
-						{/* <option value="기호순">기호순</option> */}
-
-						{orderList.map((el) => (
-							<option key={el.no} value={el.sortValue}>
-								{el.order}
-							</option>
-						))}
-					</select>
-					<span className="icoArrow">
-						<Image
-							src={orderingBtnIcon}
-							alt="dropdown ordering button"
-							width={16}
-							height={16}
-						/>
-					</span>
+			{!query.top10 && (
+				<div className={listStyle.info}>
+					<p>
+						후보자 <span>{candidates.length}명</span>
+					</p>
+					<div className="orderSelect">
+						<select
+							className="order"
+							value={ordering}
+							onChange={(e) => {
+								handleOrderingButtonClick(e.target.value)
+							}}>
+							{orderList.map((el) => (
+								<option key={el.no} value={el.sortValue}>
+									{el.order}
+								</option>
+							))}
+						</select>
+						<span className="icoArrow">
+							<Image
+								src={orderingBtnIcon}
+								alt="dropdown ordering button"
+								width={16}
+								height={16}
+							/>
+						</span>
+					</div>
 				</div>
-			</div>
+			)}
 			<section>
 				<Suspense fallback={<Loading />}>
 					{candidates.length === 0 ? (
@@ -198,7 +198,7 @@ export default function List() {
 								<li key={candidate.id}>
 									<Link href={`/detail/${candidate.id}`} key={candidate.name}>
 										<div className={listStyle.top10}>
-											{query.sort && (
+											{query.sort && query.top10 && (
 												<span className={listStyle.top10__no}>{index + 1}</span>
 											)}
 											<div
