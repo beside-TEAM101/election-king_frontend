@@ -126,9 +126,9 @@ export default function List() {
 				</div>
 			</div>
 			{query.sort === 'property' ? (
-				<h1>재산이 가장 많은 후보자를 확인해보세요</h1>
+				<h2>재산이 가장 많은 후보자를 확인해보세요</h2>
 			) : query.sort === 'conviction' ? (
-				<h1>전과가 가장 많은 후보자를 확인해보세요</h1>
+				<h2>전과가 가장 많은 후보자를 확인해보세요</h2>
 			) : !query.sort && query.district ? (
 				<h1>후보자를 확인해보세요.</h1>
 			) : (

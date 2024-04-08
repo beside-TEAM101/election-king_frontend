@@ -15,7 +15,9 @@
 	h1 {
 		@include fontTheme(27px, 600, 20px);
 	}
-
+	h2 {
+		@include fontTheme(24px, 600, 18px);
+	}
 	// CSS 정리 필요
 	ul {
 		display: grid;
