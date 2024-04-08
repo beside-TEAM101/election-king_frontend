@@ -24,9 +24,11 @@ export default function List() {
 		queries: { query },
 		notFound,
 	} = useRoute()
-	const { city, district, type, pageIndex, pageSize } = query
+	const { city, district, type, pageIndex, pageSize, sort } = query
 	const [selectedCity, setSelectedCity] = useState(city || '서울특별시')
-	const [selectedDistrict, setSelectedDistrict] = useState(district || '강남구')
+	const [selectedDistrict, setSelectedDistrict] = useState(
+		district || '구 선택'
+	)
 	const { sido, sigugun } = hangjun
 
 	const [candidates, setCandidates] = useState([])
@@ -51,9 +53,10 @@ export default function List() {
 			pageIndex,
 			pageSize,
 			type,
+			sort,
 		})
 		fetchData(newQueries)
-	}, [city, district, pageIndex, pageSize, type])
+	}, [city, district, pageIndex, pageSize, type, sort])
 
 	const handleCityButtonClick = (newCity: string) => {
 		const newQueries = objectToQueryString({ ...query, city: newCity })
@@ -103,6 +106,7 @@ export default function List() {
 						onChange={(e) => {
 							handleDistrictButtonClick(e.target.value)
 						}}>
+						<option value="구 선택">구 선택</option>
 						{sigugun
 							.filter((el) => el.sido === city)
 							.map((el) => (
@@ -121,8 +125,15 @@ export default function List() {
 					</span>
 				</div>
 			</div>
-			<h1>후보자를 확인해보세요.</h1>
-
+			{query.sort === 'property' ? (
+				<h1>재산이 가장 많은 후보자를 확인해보세요</h1>
+			) : query.sort === 'conviction' ? (
+				<h1>전과가 가장 많은 후보자를 확인해보세요</h1>
+			) : !query.sort && query.district ? (
+				<h1>후보자를 확인해보세요.</h1>
+			) : (
+				<h1>후보자를 확인해보세요.</h1>
+			)}
 			<section>
 				<Suspense fallback={<Loading />}>
 					{candidates.length === 0 ? (
@@ -131,40 +142,44 @@ export default function List() {
 						</div>
 					) : (
 						<ul>
-							{candidates.map((candidate) => (
+							{candidates.map((candidate, index) => (
 								<li key={candidate.id}>
 									<Link href={`/detail/${candidate.id}`} key={candidate.name}>
-										<div
-											className={listStyle.candidateCard}
-											key={candidate.name}>
-											<article>
-												{candidate.imgUrl !== null ? (
-													<span className={listStyle.candidateCard_thumbnail}>
+										<div className={listStyle.top10}>
+											{query.sort && (
+												<span className={listStyle.top10__no}>{index + 1}</span>
+											)}
+											<div
+												className={listStyle.candidateCard}
+												key={candidate.name}>
+												<article>
+													{candidate.imgUrl !== null ? (
+														<span className={listStyle.candidateCard_thumbnail}>
+															<Image
+																priority
+																width={38}
+																height={38}
+																className={`${PARTY_BORDER_COLOR[candidate.party] ?? PARTY_BORDER_COLOR['무소속']}`}
+																src={candidate.imgUrl}
+																alt={candidate.name}
+															/>
+														</span>
+													) : (
 														<Image
-															priority
-															width={38}
-															height={38}
-															className={`${PARTY_BORDER_COLOR[candidate.party] ?? PARTY_BORDER_COLOR['무소속']}`}
-															src={candidate.imgUrl}
-															alt={candidate.name}
+															src={sampleImage}
+															width={46}
+															height={46}
+															alt="sample image"
 														/>
-													</span>
-												) : (
-													<Image
-														src={sampleImage}
-														width={46}
-														height={46}
-														alt="sample image"
-													/>
-												)}
-											</article>
-
-											<div className={listStyle.candidateCard__info}>
-												<label htmlFor="name">{candidate.name}</label>
-												<div className={listStyle.candidateCard__items}>
-													<span>{candidate.party}</span>
-													<span>∙&nbsp;{candidate.age}</span>
-													<span>∙&nbsp;{candidate.job}</span>
+													)}
+												</article>
+												<div className={listStyle.candidateCard__info}>
+													<label htmlFor="name">{candidate.name}</label>
+													<div className={listStyle.candidateCard__items}>
+														<span>{candidate.party}</span>
+														<span>∙&nbsp;{candidate.age}</span>
+														<span>∙&nbsp;{candidate.job}</span>
+													</div>
 												</div>
 											</div>
 										</div>
