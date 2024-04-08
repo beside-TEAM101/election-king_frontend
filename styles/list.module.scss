@@ -6,6 +6,8 @@
 .info {
 	@include justifyPosition(space-between);
 
+	margin: 16px auto;
+
 	p {
 		@include fontTheme(16px, 500, 14px, $BLACK_01);
 	}

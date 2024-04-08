@@ -5,6 +5,7 @@ interface Candidate {
 	age: number
 	party: string
 	job: string
+	registerNumber: number
 	imgUrl: string | null
 }
 
@@ -14,7 +15,8 @@ interface State {
 		pageIndex: number,
 		pageSize: number,
 		city: string,
-		district: string
+		district: string,
+		sort: string
 	) => Promise<void>
 }
 

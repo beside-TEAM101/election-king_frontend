@@ -229,8 +229,13 @@ export default function List() {
 													<label htmlFor="name">{candidate.name}</label>
 													<div className={listStyle.candidateCard__items}>
 														<span>{candidate.party}</span>
-														<span>∙&nbsp;{candidate.age}</span>
+														<span>∙&nbsp;{candidate.age}세</span>
 														<span>∙&nbsp;{candidate.job}</span>
+														{/* {query.sort === 'conviction' && (
+															<span>
+																∙&nbsp; 전과 {candidate.registerNumber} 건
+															</span>
+														)} */}
 													</div>
 												</div>
 											</div>
