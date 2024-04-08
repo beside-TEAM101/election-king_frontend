@@ -216,6 +216,14 @@ button:hover {
 	background-color: transparent;
 }
 
+.orderSelect {
+	display: flex;
+	align-items: center;
+
+	position: relative;
+	background-color: transparent;
+}
+
 .noOutline .select {
 	width: 100%;
 	font-weight: 600;
@@ -232,7 +240,31 @@ button:hover {
 	text-overflow: ellipsis;
 }
 
+.orderSelect .order {
+	width: 100%;
+	font-weight: 500;
+	font-size: 14px;
+	border: none;
+	appearance: none;
+	color: #111111;
+	padding: 5px 18px 5px 5px;
+	cursor: pointer;
+	outline: none;
+	background-color: transparent;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
 .noOutline .select option {
+	font-weight: 400;
+	font-size: 14px;
+	color: #444141;
+	border: non;
+	padding: 0 6px;
+}
+
+.orderSelect .order option {
 	font-weight: 400;
 	font-size: 14px;
 	color: #444141;
@@ -250,7 +282,21 @@ button:hover {
 	transform: translateY(-50%);
 }
 
+.orderSelect .icoArrow {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+}
+
 .noOutline .icoArrow img {
+	transition: 0.3s;
+}
+
+.orderSelect .icoArrow img {
 	transition: 0.3s;
 }
 
@@ -259,5 +305,13 @@ button:hover {
 }
 
 .noOutline .select:not(:focus) + .icoArrow img {
+	transform: rotate(0);
+}
+
+.orderSelect .select:focus + .icoArrow img {
+	transform: rotate(180deg);
+}
+
+.orderSelect .select:not(:focus) + .icoArrow img {
 	transform: rotate(0);
 }

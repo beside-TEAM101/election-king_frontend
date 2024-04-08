@@ -2,6 +2,19 @@
 @import '../styles/theme';
 
 /* candidateList start */
+
+.info {
+	@include justifyPosition(space-between);
+
+	p {
+		@include fontTheme(16px, 500, 14px, $BLACK_01);
+	}
+
+	span {
+		@include fontTheme(16px, 800, 14px, $BLACK_01);
+	}
+}
+
 .top10 {
 	&__no {
 		@include fontTheme(24px, 600, 20px, $BLACK_01);

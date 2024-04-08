@@ -6,6 +6,8 @@ import Loading from '@/components/common/loading'
 import hangjun from '@/constants/hangjun'
 import useRoute from '@/hooks/useRoute'
 import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
+import orderingBtnIcon from '@/public/assets/icons/ordering-btn.svg'
+
 import sampleImage from '@/public/assets/images/profile.png'
 import request from '@/service/request'
 import listStyle from '@/styles/list.module.scss'
@@ -30,6 +32,16 @@ export default function List() {
 		district || '구 선택'
 	)
 	const { sido, sigugun } = hangjun
+
+	const [ordering, setOrdering] = useState('기호순')
+	const orderList = [
+		{ no: 0, order: '기호순', sortValue: null },
+		{ no: 1, order: '전과 많은 순', sortValue: 'conviction' },
+		{ no: 2, order: '재산 많은 순', sortValue: 'property' },
+		// { no: 2, order: '군필', sortValue: '' },
+		// { no: 3, order: '나이 많은 순/ 나이 어린 순', sortValue: '' },
+		// { no: 4, order: '투표율 높은 순', sortValue: '' },
+	]
 
 	const [candidates, setCandidates] = useState([])
 
@@ -71,6 +83,16 @@ export default function List() {
 		})
 		router.push(`${pathname}${newQueries}`)
 		setSelectedDistrict(newDistrict)
+	}
+
+	const handleOrderingButtonClick = (newSort: string | null) => {
+		const sortValue = newSort === '기호순' ? null : newSort
+		const newQueries = objectToQueryString({
+			...query,
+			sort: sortValue,
+		})
+		router.push(`${pathname}${newQueries}`)
+		setOrdering(newSort === null ? '기호순' : newSort)
 	}
 
 	return (
@@ -134,6 +156,36 @@ export default function List() {
 			) : (
 				<h1>후보자를 확인해보세요.</h1>
 			)}
+
+			<div className={listStyle.info}>
+				<p>
+					후보자 <span>{candidates.length}명</span>
+				</p>
+				<div className="orderSelect">
+					<select
+						className="order"
+						value={ordering}
+						onChange={(e) => {
+							handleOrderingButtonClick(e.target.value)
+						}}>
+						{/* <option value="기호순">기호순</option> */}
+
+						{orderList.map((el) => (
+							<option key={el.no} value={el.sortValue}>
+								{el.order}
+							</option>
+						))}
+					</select>
+					<span className="icoArrow">
+						<Image
+							src={orderingBtnIcon}
+							alt="dropdown ordering button"
+							width={16}
+							height={16}
+						/>
+					</span>
+				</div>
+			</div>
 			<section>
 				<Suspense fallback={<Loading />}>
 					{candidates.length === 0 ? (
