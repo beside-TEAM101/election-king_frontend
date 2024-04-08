@@ -193,22 +193,26 @@ export default function HomePage() {
 							type="button"
 							key={item.index}
 							onClick={() => handleClickTop10(item.sort)}>
-							<p>{item.tag}</p>
-							<h3>
-								{item.title1}
-								<br />
-								{item.title2}
-							</h3>
+							<ul>
+								<li>
+									<p>{item.tag}</p>
+									<h3>
+										{item.title1}
+										<br />
+										{item.title2}
+									</h3>
 
-							<div className={variables.top10Box__icon}>
-								<Image
-									width={48}
-									height={48}
-									src={`/assets/icons/${item.icon}`}
-									alt={item.tag}
-									priority
-								/>
-							</div>
+									<div className={variables.top10Box__icon}>
+										<Image
+											width={48}
+											height={48}
+											src={`/assets/icons/${item.icon}`}
+											alt={item.tag}
+											priority
+										/>
+									</div>
+								</li>
+							</ul>
 						</button>
 					))}
 				</div>
