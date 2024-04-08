@@ -2,6 +2,13 @@
 @import '../styles/theme';
 
 /* candidateList start */
+.top10 {
+	&__no {
+		@include fontTheme(24px, 600, 20px, $BLACK_01);
+		margin-right: 10px;
+	}
+}
+
 .candidateWrap {
 	min-height: calc(100vh - 60px);
 	padding: 0 0 20px;
@@ -16,10 +23,13 @@
 		gap: 16px;
 		li {
 			height: 100%;
+
 			a {
 				display: block;
 				height: 100%;
 				> div {
+					display: flex;
+					align-items: center;
 					height: 100%;
 				}
 			}
@@ -45,6 +55,8 @@
 
 	min-width: 272px;
 	gap: 16px;
+
+	flex-grow: 1;
 
 	&:hover {
 		opacity: 0.9;

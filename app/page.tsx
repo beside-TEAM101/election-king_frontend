@@ -6,7 +6,6 @@ import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
 import commonStyle from '@/styles/common.module.scss'
 import variables from '@/styles/variables.module.scss'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
@@ -23,31 +22,40 @@ export default function HomePage() {
 		if (district === '구 선택') {
 			alert('지역구를 선택해주세요.')
 		} else if (district !== '구 선택') {
-			const queryParams = `?candidates&pageIndex=0&pageSize=50&type=CONGRESS&city=${city}&district=${district}`
+			const queryParams = `?candidates&pageIndex=0&pageSize=10&type=CONGRESS&city=${city}&district=${district}`
 			router.push(`/list${queryParams}`)
 		}
 	}
 
+	const handleClickTop10 = (sort) => {
+		const queryParams = `?candidates&pageIndex=0&pageSize=10&type=CONGRESS&&sort=${sort}&city=${city}`
+
+		router.push(`/list${queryParams}`)
+	}
+
 	const cardList = [
 		{
+			index: 0,
 			tag: '#철컹철컹',
 			title1: '전과가 ',
 			title2: '가장 많은 후보',
-
+			sort: 'property',
 			icon: 'card-item1.svg',
 		},
 		{
+			index: 1,
 			tag: '#부자',
 			title1: '재산이',
 			title2: '가장 많은 후보',
-
+			sort: 'conviction',
 			icon: 'card-item2.svg',
 		},
 		{
+			index: 2,
 			tag: '#당돌한MZ',
 			title1: '나이가',
 			title2: '가장 어린 후보',
-
+			sort: null,
 			icon: 'card-item3.svg',
 		},
 	]
@@ -178,34 +186,34 @@ export default function HomePage() {
 
 			<div className={variables.top10Box}>
 				<h2>TOP10 후보 둘러보기 </h2>
-				{district !== '구 선택' && (
-					<div className={variables.top10Box__card}>
-						{cardList.map((item) => (
-							<ul key={item.tag}>
-								<li>
-									<Link href="/">
-										<p>{item.tag}</p>
-										<h3>
-											{item.title1}
-											<br />
-											{item.title2}
-										</h3>
+				{/* {district !== '구 선택' && ( */}
+				<div className={variables.top10Box__card}>
+					{cardList.map((item) => (
+						<ul key={item.index}>
+							<li
+								onClick={() => handleClickTop10(item.sort)}
+								onKeyDown={handleClickTop10}>
+								<p>{item.tag}</p>
+								<h3>
+									{item.title1}
+									<br />
+									{item.title2}
+								</h3>
 
-										<div className={variables.top10Box__icon}>
-											<Image
-												width={48}
-												height={48}
-												src={`/assets/icons/${item.icon}`}
-												alt={item.tag}
-												priority
-											/>
-										</div>
-									</Link>
-								</li>
-							</ul>
-						))}
-					</div>
-				)}
+								<div className={variables.top10Box__icon}>
+									<Image
+										width={48}
+										height={48}
+										src={`/assets/icons/${item.icon}`}
+										alt={item.tag}
+										priority
+									/>
+								</div>
+							</li>
+						</ul>
+					))}
+				</div>
+				{/* )} */}
 			</div>
 		</div>
 	)
