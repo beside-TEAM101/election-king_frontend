@@ -28,7 +28,10 @@ export default function HomePage() {
 	}
 
 	const handleClickTop10 = (sort) => {
-		const queryParams = `?candidates&pageIndex=0&pageSize=10&type=CONGRESS&&sort=${sort}&city=${city}`
+		let queryParams = `?candidates&pageIndex=0&pageSize=10&type=CONGRESS&city=${city}`
+		if (sort) {
+			queryParams += `&sort=${sort}`
+		}
 
 		router.push(`/list${queryParams}&top10=true`)
 	}
@@ -56,6 +59,7 @@ export default function HomePage() {
 			tag: '#당돌한MZ',
 			title1: '나이가',
 			title2: '가장 어린 후보',
+			sort: null,
 			icon: 'card-item3.svg',
 		},
 	]
