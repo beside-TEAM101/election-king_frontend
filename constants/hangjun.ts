@@ -237,8 +237,14 @@ const hangjun: KoreanLocation = {
 		{
 			no: 1,
 			sido: '세종특별자치시',
-			sigugun: '세종특별자치시',
-			codeNm: '세종특별자치시',
+			sigugun: '세종특별자치시을',
+			codeNm: '세종특별자치시을',
+		},
+		{
+			no: 1,
+			sido: '세종특별자치시',
+			sigugun: '세종특별자치시갑',
+			codeNm: '세종특별자치시갑',
 		},
 
 		/* 경기도 */

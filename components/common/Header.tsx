@@ -27,7 +27,7 @@ function Header() {
 	const handleListShare = async () => {
 		const queryParams = `?candidates&pageIndex=0&pageSize=50&type=CONGRESS&city=${city}&district=${district}`
 		const shareUrl = `${window.location.origin}/list${queryParams}`
-		router.push(`/list${queryParams}`)
+		// router.push(`/list${queryParams}`)
 
 		if (isShareSupported) {
 			try {
