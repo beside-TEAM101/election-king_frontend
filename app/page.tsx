@@ -39,7 +39,8 @@ export default function HomePage() {
 			tag: '#철컹철컹',
 			title1: '전과가 ',
 			title2: '가장 많은 후보',
-			sort: 'property',
+			sort: 'conviction',
+
 			icon: 'card-item1.svg',
 		},
 		{
@@ -47,7 +48,7 @@ export default function HomePage() {
 			tag: '#부자',
 			title1: '재산이',
 			title2: '가장 많은 후보',
-			sort: 'conviction',
+			sort: 'property',
 			icon: 'card-item2.svg',
 		},
 		{
@@ -55,7 +56,6 @@ export default function HomePage() {
 			tag: '#당돌한MZ',
 			title1: '나이가',
 			title2: '가장 어린 후보',
-			sort: null,
 			icon: 'card-item3.svg',
 		},
 	]
@@ -189,28 +189,27 @@ export default function HomePage() {
 				{/* {district !== '구 선택' && ( */}
 				<div className={variables.top10Box__card}>
 					{cardList.map((item) => (
-						<ul key={item.index}>
-							<li
-								onClick={() => handleClickTop10(item.sort)}
-								onKeyDown={handleClickTop10}>
-								<p>{item.tag}</p>
-								<h3>
-									{item.title1}
-									<br />
-									{item.title2}
-								</h3>
+						<button
+							type="button"
+							key={item.index}
+							onClick={() => handleClickTop10(item.sort)}>
+							<p>{item.tag}</p>
+							<h3>
+								{item.title1}
+								<br />
+								{item.title2}
+							</h3>
 
-								<div className={variables.top10Box__icon}>
-									<Image
-										width={48}
-										height={48}
-										src={`/assets/icons/${item.icon}`}
-										alt={item.tag}
-										priority
-									/>
-								</div>
-							</li>
-						</ul>
+							<div className={variables.top10Box__icon}>
+								<Image
+									width={48}
+									height={48}
+									src={`/assets/icons/${item.icon}`}
+									alt={item.tag}
+									priority
+								/>
+							</div>
+						</button>
 					))}
 				</div>
 				{/* )} */}
