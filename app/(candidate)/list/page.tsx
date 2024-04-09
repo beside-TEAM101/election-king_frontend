@@ -18,6 +18,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Suspense, useEffect, useState } from 'react'
 import { PARTY_BORDER_COLOR } from '@/constants/party'
+import { divideNumberToDigits } from '@/utils/number'
 
 export default function List() {
 	const {
@@ -231,11 +232,22 @@ export default function List() {
 														<span>{candidate.party}</span>
 														<span>∙&nbsp;{candidate.age}세</span>
 														<span>∙&nbsp;{candidate.job}</span>
-														{/* {query.sort === 'conviction' && (
+														{(query.sort === 'conviction' ||
+															query.sort === null) && (
 															<span>
-																∙&nbsp; 전과 {candidate.registerNumber} 건
+																∙&nbsp; 전과 {candidate.conviction || 0} 건
 															</span>
-														)} */}
+														)}
+
+														{(query.sort === 'property' ||
+															query.sort === null) && (
+															<span>
+																∙&nbsp; 재산&nbsp;{' '}
+																{divideNumberToDigits(candidate.property) ||
+																	'없음'}
+																(천원)
+															</span>
+														)}
 													</div>
 												</div>
 											</div>
