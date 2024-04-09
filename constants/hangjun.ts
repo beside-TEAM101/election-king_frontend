@@ -22434,6 +22434,13 @@ const hangjun: KoreanLocation = {
 			dong: '중문동',
 			codeNm: '중문동',
 		},
+		{
+			no: 1,
+			sido: '제주특별자치도',
+			sigugun: '서귀포시',
+			dong: '예래동',
+			codeNm: '예래동',
+		},
 	],
 }
 export default hangjun
