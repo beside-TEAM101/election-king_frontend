@@ -96,18 +96,15 @@ export default function List() {
 		setOrdering(newSort === null ? '기호순' : newSort)
 	}
 
-	// test
 	const handleOrderingCityClick = (newCity: string | null) => {
 		const newQueries = objectToQueryString({ ...query, city: newCity })
 		router.push(`${pathname}${newQueries}`)
 		setSelectedCity(newCity)
 	}
-	// test
 
 	return (
 		<div className={listStyle.candidateWrap}>
 			<div className={listStyle.candidateOptions}>
-				{/* test */}
 				{!query.top10 && (
 					<div className="noOutline">
 						<select
@@ -132,9 +129,7 @@ export default function List() {
 						</span>
 					</div>
 				)}
-				{/* test */}
 
-				{/* test */}
 				{query.top10 && (
 					<div className="noOutline">
 						<select
@@ -159,7 +154,6 @@ export default function List() {
 						</span>
 					</div>
 				)}
-				{/* test */}
 
 				{!query.top10 && (
 					<div className="noOutline">
