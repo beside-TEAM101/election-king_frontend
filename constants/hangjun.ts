@@ -1779,7 +1779,7 @@ const hangjun: KoreanLocation = {
 			no: 10,
 			sido: '서울특별시',
 			sigugun: '도봉구갑',
-			dong: '쌍문1동',
+			dong: '쌍문1동', //
 			codeNm: '쌍문1동',
 		},
 
@@ -1787,7 +1787,7 @@ const hangjun: KoreanLocation = {
 			no: 10,
 			sido: '서울특별시',
 			sigugun: '도봉구갑',
-			dong: '쌍문3동',
+			dong: '쌍문3동', //
 			codeNm: '쌍문3동',
 		},
 		{
@@ -1881,49 +1881,49 @@ const hangjun: KoreanLocation = {
 			no: 10,
 			sido: '서울특별시',
 			sigugun: '도봉구을',
-			dong: '쌍문2동',
+			dong: '쌍문2동', //
 			codeNm: '쌍문2동',
 		},
 		{
 			no: 10,
 			sido: '서울특별시',
 			sigugun: '도봉구을',
-			dong: '쌍문4동',
+			dong: '쌍문4동', //
 			codeNm: '쌍문4동',
 		},
 		{
 			no: 10,
 			sido: '서울특별시',
 			sigugun: '도봉구을',
-			dong: '방학1동',
+			dong: '방학1동', //
 			codeNm: '방학1동',
 		},
 		{
 			no: 10,
 			sido: '서울특별시',
 			sigugun: '도봉구을',
-			dong: '방학2동',
+			dong: '방학2동', //
 			codeNm: '방학2동',
 		},
 		{
 			no: 10,
 			sido: '서울특별시',
 			sigugun: '도봉구을',
-			dong: '방학3동',
+			dong: '방학3동', //
 			codeNm: '방학3동',
 		},
 		{
 			no: 10,
 			sido: '서울특별시',
 			sigugun: '도봉구을',
-			dong: '도봉1동',
+			dong: '도봉1동', //
 			codeNm: '도봉1동',
 		},
 		{
 			no: 10,
 			sido: '서울특별시',
 			sigugun: '도봉구을',
-			dong: '도봉2동',
+			dong: '도봉2동', //
 			codeNm: '도봉2동',
 		},
 
@@ -1932,7 +1932,7 @@ const hangjun: KoreanLocation = {
 			no: 11,
 			sido: '서울특별시',
 			sigugun: '노원구갑',
-			dong: '월계1동',
+			dong: '월계1동', //
 			codeNm: '월계1동',
 		},
 		{
@@ -1987,7 +1987,7 @@ const hangjun: KoreanLocation = {
 		{
 			no: 11,
 			sido: '서울특별시',
-			sigugun: '노원구갑',
+			sigugun: '노원구을',
 			dong: '중계1동',
 			codeNm: '중계1동',
 		},
@@ -2520,14 +2520,14 @@ const hangjun: KoreanLocation = {
 		{
 			no: 15,
 			sido: '서울특별시',
-			sigugun: '양천구을',
+			sigugun: '양천구갑',
 			dong: '신정6동',
 			codeNm: '신정6동',
 		},
 		{
 			no: 15,
 			sido: '서울특별시',
-			sigugun: '양천구을',
+			sigugun: '양천구갑',
 			dong: '신정7동',
 			codeNm: '신정7동',
 		},

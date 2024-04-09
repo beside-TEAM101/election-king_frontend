@@ -59,7 +59,7 @@ export default function HomePage() {
 			tag: '#당돌한MZ',
 			title1: '나이가',
 			title2: '가장 어린 후보',
-			sort: null,
+			sort: 'age',
 			icon: 'card-item3.svg',
 		},
 	]

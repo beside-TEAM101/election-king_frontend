@@ -40,7 +40,7 @@ export default function List() {
 		{ no: 1, order: '전과 많은 순', sortValue: 'conviction' },
 		{ no: 2, order: '재산 많은 순', sortValue: 'property' },
 		// { no: 2, order: '군필', sortValue: '' },
-		// { no: 3, order: '나이 많은 순/ 나이 어린 순', sortValue: '' },
+		{ no: 3, order: '나이 어린 순', sortValue: 'age' },
 		// { no: 4, order: '투표율 높은 순', sortValue: '' },
 	]
 
@@ -183,10 +183,22 @@ export default function List() {
 					</div>
 				)}
 			</div>
+			{/* {query.sort === 'property' ? (
+				<h2>재산이 가장 많은 후보자를 확인해보세요</h2>
+			) : query.sort === 'conviction' ? (
+				<h2>전과가 가장 많은 후보자를 확인해보세요</h2>
+			) : !query.sort && query.district ? (
+				<h1>후보자를 확인해보세요.</h1>
+			) : (
+				<h1>후보자를 확인해보세요.</h1>
+			)} */}
+
 			{query.sort === 'property' ? (
 				<h2>재산이 가장 많은 후보자를 확인해보세요</h2>
 			) : query.sort === 'conviction' ? (
 				<h2>전과가 가장 많은 후보자를 확인해보세요</h2>
+			) : query.sort === 'age' ? (
+				<h2>나이가 가장 어린/많은 후보자를 확인해보세요</h2>
 			) : !query.sort && query.district ? (
 				<h1>후보자를 확인해보세요.</h1>
 			) : (
