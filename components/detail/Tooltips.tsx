@@ -9,7 +9,11 @@ export default function Tooltips({ id, text }: { id: string; text: string }) {
 	return (
 		<>
 			<button type="button" data-tooltip-id={id}>
-				<img src="/assets/icons/icon_info.svg" alt="" />
+				<img
+					src="/assets/icons/icon_info.svg"
+					alt="tooltip-icon"
+					// style={{ paddingTop: '4px' }}
+				/>
 			</button>
 			<Tooltip
 				id={id}
