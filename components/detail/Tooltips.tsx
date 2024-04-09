@@ -12,7 +12,7 @@ export default function Tooltips({ id, text }: { id: string; text: string }) {
 				<img
 					src="/assets/icons/icon_info.svg"
 					alt="tooltip-icon"
-					// style={{ paddingTop: '4px' }}
+					style={{ paddingTop: '4px' }}
 				/>
 			</button>
 			<Tooltip
