@@ -122,31 +122,33 @@ export default function List() {
 					</span>
 				</div>
 
-				<div className="noOutline">
-					<select
-						className="select"
-						value={selectedDistrict}
-						onChange={(e) => {
-							handleDistrictButtonClick(e.target.value)
-						}}>
-						<option value="구 선택">구 선택</option>
-						{sigugun
-							.filter((el) => el.sido === city)
-							.map((el) => (
-								<option key={el.sigugun} value={el.sigugun}>
-									{el.codeNm}
-								</option>
-							))}
-					</select>
-					<span className="icoArrow">
-						<Image
-							src={arrowBtnIcon}
-							alt="dropdown arrow button"
-							width={16}
-							height={16}
-						/>
-					</span>
-				</div>
+				{!query.top10 && (
+					<div className="noOutline">
+						<select
+							className="select"
+							value={selectedDistrict}
+							onChange={(e) => {
+								handleDistrictButtonClick(e.target.value)
+							}}>
+							<option value="구 선택">구 선택</option>
+							{sigugun
+								.filter((el) => el.sido === city)
+								.map((el) => (
+									<option key={el.sigugun} value={el.sigugun}>
+										{el.codeNm}
+									</option>
+								))}
+						</select>
+						<span className="icoArrow">
+							<Image
+								src={arrowBtnIcon}
+								alt="dropdown arrow button"
+								width={16}
+								height={16}
+							/>
+						</span>
+					</div>
+				)}
 			</div>
 			{query.sort === 'property' ? (
 				<h2>재산이 가장 많은 후보자를 확인해보세요</h2>
@@ -235,7 +237,7 @@ export default function List() {
 														{(query.sort === 'conviction' ||
 															query.sort === null) && (
 															<span>
-																∙&nbsp; 전과 {candidate.conviction || 0} 건
+																∙&nbsp; 전과 {candidate.conviction || 0}건
 															</span>
 														)}
 
