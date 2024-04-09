@@ -89,6 +89,8 @@ export default function HomePage() {
 	// const EarlyVote = Math.ceil(gap / (1000 * 60 * 60 * 24))
 	const voteDday = Math.ceil(gapDay / (1000 * 60 * 60 * 24))
 
+	const voteDdayText = voteDday === 0 ? 'DAY' : `${voteDday}`
+
 	const EarlyVote = Math.ceil(
 		(today.getTime() - EarlyDday.getTime()) / (1000 * 60 * 60 * 24) - 1
 	)
@@ -109,7 +111,7 @@ export default function HomePage() {
 				<div className={variables.dayBox}>
 					<p>본 투표</p>
 					<div className={variables.dayItem}>
-						<p>D-{voteDday}</p>
+						<p>D-{voteDdayText}</p>
 						<span>4월 10일</span>
 					</div>
 				</div>

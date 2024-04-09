@@ -198,7 +198,7 @@ export default function List() {
 			) : query.sort === 'conviction' ? (
 				<h2>전과가 가장 많은 후보자를 확인해보세요</h2>
 			) : query.sort === 'age' ? (
-				<h2>나이가 가장 어린/많은 후보자를 확인해보세요</h2>
+				<h2>나이가 가장 어린 후보자를 확인해보세요</h2>
 			) : !query.sort && query.district ? (
 				<h1>후보자를 확인해보세요.</h1>
 			) : (
