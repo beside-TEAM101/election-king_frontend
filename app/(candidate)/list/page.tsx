@@ -242,7 +242,7 @@ export default function List() {
 														{(query.sort === 'property' ||
 															query.sort === null) && (
 															<span>
-																∙&nbsp; 재산&nbsp;{' '}
+																∙&nbsp; 재산&nbsp;
 																{divideNumberToDigits(candidate.property) ||
 																	'없음'}
 																(천원)
