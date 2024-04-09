@@ -96,31 +96,70 @@ export default function List() {
 		setOrdering(newSort === null ? '기호순' : newSort)
 	}
 
+	// test
+	const handleOrderingCityClick = (newCity: string | null) => {
+		const newQueries = objectToQueryString({ ...query, city: newCity })
+		router.push(`${pathname}${newQueries}`)
+		setSelectedCity(newCity)
+	}
+	// test
+
 	return (
 		<div className={listStyle.candidateWrap}>
 			<div className={listStyle.candidateOptions}>
-				<div className="noOutline">
-					<select
-						className="select"
-						value={selectedCity}
-						onChange={(e) => {
-							handleCityButtonClick(e.target.value)
-						}}>
-						{sido.map((el) => (
-							<option key={el.sido} value={el.sido}>
-								{el.codeNm}
-							</option>
-						))}
-					</select>
-					<span className="icoArrow">
-						<Image
-							src={arrowBtnIcon}
-							alt="dropdown arrow button"
-							width={16}
-							height={16}
-						/>
-					</span>
-				</div>
+				{/* test */}
+				{!query.top10 && (
+					<div className="noOutline">
+						<select
+							className="select"
+							value={selectedCity}
+							onChange={(e) => {
+								handleCityButtonClick(e.target.value)
+							}}>
+							{sido.map((el) => (
+								<option key={el.sido} value={el.sido}>
+									{el.codeNm}
+								</option>
+							))}
+						</select>
+						<span className="icoArrow">
+							<Image
+								src={arrowBtnIcon}
+								alt="dropdown arrow button"
+								width={16}
+								height={16}
+							/>
+						</span>
+					</div>
+				)}
+				{/* test */}
+
+				{/* test */}
+				{query.top10 && (
+					<div className="noOutline">
+						<select
+							className="select"
+							value={selectedCity}
+							onChange={(e) => {
+								handleOrderingCityClick(e.target.value)
+							}}>
+							{sido.map((el) => (
+								<option key={el.sido} value={el.sido}>
+									{el.codeNm}
+								</option>
+							))}
+						</select>
+						<span className="icoArrow">
+							<Image
+								src={arrowBtnIcon}
+								alt="dropdown arrow button"
+								width={16}
+								height={16}
+							/>
+						</span>
+					</div>
+				)}
+				{/* test */}
 
 				{!query.top10 && (
 					<div className="noOutline">
