@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import PreFont from 'next/font/local'
 import '@/styles/globals.css'
 import variables from '@/styles/variables.module.scss'
+import Provider from '@/utils/Providers'
 
 const pretendard = PreFont({
 	src: '../public/assets/fonts/Pretendard-Regular.woff2',
@@ -22,8 +23,9 @@ export default function RootLayout({
 		<html lang="ko">
 			<body>
 				<div className={`${variables.container} ${pretendard.className}`}>
-					{/* <Header /> */}
-					<main>{children}</main>
+					<Provider>
+						<main>{children}</main>
+					</Provider>
 				</div>
 			</body>
 		</html>

@@ -9,8 +9,27 @@ import React, { useState } from 'react'
 import hangjun from '@/constants/hangjun'
 import Image from 'next/image'
 import arrowBtnIcon from '@/public/assets/icons/dropdown-arrow.svg'
+// import { useQuery, useIsFetching } from '@tanstack/react-query'
 
 export default function HomePage() {
+	// const {
+	// 	data: candidateData,
+	// 	isLoading,
+	// 	isError,
+	// 	isSuccess,
+	// } = useQuery<any>({
+	// 	queryKey: ['candidate'],
+	// 	queryFn: () => fetch('').then((res) => res.json),
+	// })
+
+	// if (isLoading) {
+	// 	return <div>로딩로딩</div>
+	// }
+
+	// if (isError) {
+	// 	return <div>에러에러</div>
+	// }
+
 	const [city, setCity] = useState('서울특별시')
 	const [district, setDistrict] = useState('종로구')
 	const { sido, sigugun } = hangjun
@@ -37,6 +56,8 @@ export default function HomePage() {
 
 	const EarlyVote = Math.ceil(gap / (1000 * 60 * 60 * 24))
 	const voteDday = Math.ceil(gapDay / (1000 * 60 * 60 * 24))
+
+	// console.log(candidateData)
 
 	return (
 		<div className={home.container}>
